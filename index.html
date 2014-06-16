@@ -514,6 +514,7 @@ return publicInterface;
 			selectMode: 1,
 			icons: false,
 			activate: function(event, data){
+                           loadContent(data.node.key);
 				var node = data.node;
 				$.ui.fancytree.debug("activate: event=", event, ", data=", data);
 				if(!$.isEmptyObject(node.data)){
