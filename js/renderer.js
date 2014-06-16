@@ -71,12 +71,48 @@ cmapi.channel.renderer = (function () {
       response.push('"' + prop + '"');
       response.push('"' + propVal + '"');
 
-
-
     }
     response.push("}");
     return response.join("");
   }
+
+ function getSchemaString(schema){
+  var response = ["{<br/>"],
+    prop,
+    innerProp,
+    subProp,
+    stab = "&nbsp;&nbsp;",
+    iter = 0;
+  for(prop in schema){
+    if(prop === 'properties'){
+      response.push(stab+'"properties" : {</br>');
+      for(innerProp in schema.properties){
+        response.push(stab+stab+'"'+innerProp+'" : {<br/>');
+        iter = 0;
+        for(subProp in schema.properties[innerProp]){
+          response.push(stab+stab+stab+'"'+subProp+'" : "'+schema.properties[innerProp][subProp]+'"')
+          if(iter>0){
+            response.push(",");
+          }
+          iter++;
+          response.push("<br/>")
+        }
+        
+        response.push(stab+stab+"},</br>");
+        
+      }
+      response.push(stab+"},</br>");
+    } else if(prop === 'required'){
+
+        response.push(stab+'"'+prop+'" : ["'+schema[prop].join('","')+'"]<br/>');
+
+    }else {
+      response.push(stab+'"'+prop+'" : "'+schema[prop]+'",<br/>');
+    }
+  }
+  response.push("}");
+  return response.join("");
+ }
 
   function validate(payload, schema) {
     var message,
@@ -103,7 +139,8 @@ cmapi.channel.renderer = (function () {
       schema = channelDef.schema,
       noteLen = channelDef.notes.length,
       exampleLen,
-      exampleValidation;
+      exampleValidation,
+      validationIntent;
 
     output.push('<h2 id="toc_0">' + schema.title + '</h2>');
 
@@ -132,8 +169,9 @@ cmapi.channel.renderer = (function () {
     }
     i = 0;
     output.push('<br/>}');
-    output.push('</code></pre>');
 
+    output.push('</code></pre>');
+output.push('<h3 id="toc_3">Properties:</h4>');
     output.push('<table><thead><tr><th>Property</th><th>Required</th><th>type</th><th>Description</th></tr></thead><tbody>');
 
     for (prop in schema.properties) {
@@ -147,10 +185,9 @@ cmapi.channel.renderer = (function () {
       output.push('<td>' + propVal.description + '</td>');
       output.push('</tr>');
 
-
     }
     output.push('</tbody></table>');
-    output.push('<h3 id="toc_4">Notes</h3>');
+    output.push('<h3 id="toc_3">Notes</h3>');
 
     for (i = 0; i < noteLen; i++) {
 
@@ -159,21 +196,25 @@ cmapi.channel.renderer = (function () {
     output.push('<h3 id="toc_4">Schema</h3>');
     output.push('<h4 id="toc_4">Link</h4>');
     output.push('<p><a href="' + link + '" target="_blank">' + link + '</a></p>');
-    //output.push('<pre><code class="javascript">');
-    output.push('<p>' + JSON.stringify(channelDef.schema) + '</p>');
-    //output.push('</code></pre>');
-
+   // output.push('<p>' + JSON.stringify(channelDef.schema) + '</p>');
+    output.push('<pre><code class="javascript">');
+    output.push(getSchemaString(channelDef.schema));
+    output.push('</code></pre>');
 
     if (examples !== undefined && examples !== null) {
       exampleLen = examples.length;
       if (exampleLen > 0) {
-        output.push('<h3 id="toc_4">Examples</h3>');
+        output.push('<h3 id="toc_3">Examples</h3>');
         output.push('<h4 id="toc_4">Link</h4>');
         output.push('<p><a href="' + exampleLink + '" target="_blank">' + exampleLink + '</a></p>');
         for (i = 0; i < exampleLen; i++) {
-          //getExampleString(examples[i].payload)
-          //output.push('<h4>'+examples[i].title+'</h4></p><textarea rows="6" style="width: 100%">'+JSON.stringify(examples[i].payload)+'</textarea>');
-          output.push('<h4>' + examples[i].title + '</h4></p><textarea rows="6" style="width: 100%">' + getExampleString(examples[i].payload) + '</textarea>');
+          if(examples[i].valid === true){
+            validationIntent = "Pass Validation";
+          } else {
+            validationIntent = "Fail Validation";
+          }
+
+          output.push('<h4 id="toc_4">' + examples[i].title + ' - '+validationIntent+'</h4>');
           exampleValidation = validate(examples[i].payload, channelDef.schema);
           if (exampleValidation.valid === true) {
             output.push('<p style="color: green">' + exampleValidation.message + '</p>');
@@ -185,6 +226,9 @@ cmapi.channel.renderer = (function () {
           } else {
             output.push('<p style="color: red">This example DID NOT validate as expected.  This example was expected to validate as ' + examples[i].valid.toString() + '</p>');
           }
+          output.push('</p><textarea rows="10" style="width: 100%">' + getExampleString(examples[i].payload) + '</textarea>');
+
+          
         }
       }
     }
@@ -226,7 +270,7 @@ cmapi.channel.renderer = (function () {
           loadChannelDef(target);
           break;
         }
-      } 
+      }
   };
   return publicInterface;
 }());
