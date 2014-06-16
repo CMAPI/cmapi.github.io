@@ -13,7 +13,7 @@ $(function () {
       icons: false,
       minExpandLevel: 1,
       activate: function (event, data) {
-      	if(node.data.key !=== ""){
+      	if(data.node.key !== ""){
       	 cmapi.channel.renderer.loadContent(data.node.key);
       	}
       },

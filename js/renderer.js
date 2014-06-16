@@ -227,8 +227,6 @@ cmapi.channel.renderer = (function () {
           break;
         }
       } 
-    }
-
   };
   return publicInterface;
 }());

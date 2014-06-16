@@ -40,14 +40,8 @@
 	]},
 	
 	{"key": "", "title": "API Extensions", "folder": true, "expanded" : true, "children": [
-		{"key": "cmapi.clustering", "title": "Clustering", "children": [
-			{"key": "", "title": "Sub-item 1.1.1"},
-			{"key": "", "title": "Sub-item 1.1.2"}
-		]},
-		{"key": "1", "title": "Widget Intents", "children": [
-			{"key": "", "title": "Sub-item 1.2.1"},
-			{"key": "", "title": "Sub-item 1.2.2"}
-		]}
+		{"key": "", "title": "Clustering"},
+		{"key": "", "title": "Widget Intents"}
 	]},
 	{"key": "", "title": "Appendecies", "expanded" : true, "folder": true, "children": [
 		{"key": "", "title": "A. KML Support"},
