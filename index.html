@@ -353,9 +353,6 @@ i = 0;
 	return response.join("");
 }
 
-function generateTag(tag,id,class,style,content){
-
-}
 
 /**
      * @method
@@ -488,15 +485,15 @@ publicInterface = {
 		sections = overview.sections;
 		len = sections.length;
 		for(i=0;i<len;i++){
-			sections = sections[i];
+			section = sections[i];
 			output.push('<h3>'+section.title+'</h3>');
-			paragraphs = sections.paragraphs;
+			paragraphs = section.paragraphs;
 			sLen = paragraphs.length;
 			for(k=0;k<sLen;k++) {
 				output.push('<p >'+paragraphs[k]+'</p>');
 			}
 		}
-		return ouput.join("");
+		return output.join("");
 	}
 };
 return publicInterface;
@@ -539,7 +536,7 @@ loadContent(data.node.key);
 		// call methods on multiple instances
 		$("div:ui-fancytree").fancytree("foo", "after init");
 
-		//
+		loadOverview();
 
 	});
 	</script>
