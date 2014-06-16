@@ -1,5 +1,5 @@
 [
-	{"key": "10", "title": "Introduction"},
+	{"key": "cmapi.overview", "title": "Introduction"},
 	{"key": "10", "title": "API CORE", "folder": true, "children": [
 		{"key": "10", "title": "Overlay Channels", "folder": true, "children": [
 			{"key": "map.overlay.create", "title": "Create Overlay"},
@@ -42,14 +42,7 @@
 	
 	{"key": "10", "title": "API Extensions", "folder": true, "children": [
 		{"key": "10", "title": "User Manipulation", "folder": true, "children": [
-		{"key": "10_1", "title": "Sub-item 1.1", "children": [
-			{"key": "10_1_1", "title": "Sub-item 1.1.1"},
-			{"key": "10_1_2", "title": "Sub-item 1.1.2"}
-		]},
-		{"key": "10_2", "title": "Sub-item 1.2", "children": [
-			{"key": "10_2_1", "title": "Sub-item 1.2.1"},
-			{"key": "10_2_2", "title": "Sub-item 1.2.2"}
-		]}
+		
 	]},
 		{"key": "10_1", "title": "Sub-item 1.1", "children": [
 			{"key": "10_1_1", "title": "Sub-item 1.1.1"},
@@ -70,5 +63,5 @@
 			{"key": "10_2_2", "title": "Sub-item 1.2.2"}
 		]}
 	]},
-	{"key": "32", "title": "Lazy folder 3", "folder": true, "lazy": true }
+
 ]

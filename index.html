@@ -8,7 +8,7 @@
 <style type="text/css">
 html,body{margin:0;padding:0;}
 body {padding: 20px}
-h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,cite,code,del,dfn,em,img,q,s,samp,small,strike,strong,sub,sup,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,button,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1;font-family:inherit;}
+h1,h2,h3,h3,h3,h4,p,blockquote,pre,a,abbr,acronym,address,cite,code,del,dfn,em,img,q,s,samp,small,strike,strong,sub,sup,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,button,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1;font-family:inherit;}
 table{border-collapse:collapse;border-spacing:0;}
 ol,ul{list-style:none;}
 q:before,q:after,blockquote:before,blockquote:after{content:"";}
@@ -45,14 +45,14 @@ a{color:#0069d6;text-decoration:none;line-height:inherit;font-weight:inherit;}a:
 .row{zoom:1;margin-left:-20px;}.row:before,.row:after{display:table;content:"";zoom:1;*display:inline;}
 .row:after{clear:both;}
 p{font-size:13px;font-weight:normal;line-height:18px;margin-bottom:9px;}p small{font-size:11px;color:#bfbfbf;}
-h1,h2,h3,h4,h5,h6{font-weight:bold;color:#404040;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{color:#bfbfbf;}
+h1,h2,h3,h3,h3,h4{font-weight:bold;color:#404040;}h1 small,h2 small,h3 small,h3 small,h3 small,h4 small{color:#bfbfbf;}
 h1{margin-bottom:18px;font-size:30px;line-height:36px;}h1 small{font-size:18px;}
 h2{font-size:24px;line-height:36px;}h2 small{font-size:14px;}
-h3,h4,h5,h6{line-height:36px;}
+h3,h3,h3,h4{line-height:36px;}
 h3{font-size:18px;}h3 small{font-size:14px;}
-h4{font-size:16px;}h4 small{font-size:12px;}
-h5{font-size:14px;}
-h6{font-size:13px;color:#bfbfbf;text-transform:uppercase;}
+h3{font-size:16px;}h3 small{font-size:12px;}
+h3{font-size:14px;}
+h4{font-size:13px;color:#bfbfbf;text-transform:uppercase;}
 ul,ol{margin:0 0 18px 25px;}
 ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
 ul{list-style:disc;}
@@ -137,18 +137,18 @@ body a:active {outline: none;}
 body a:hover {text-decoration: underline;}
 body a {color: #4183C4;text-decoration: none;}
 body a.absent{color:#c00;}
-body h1, body h2, h3, h4, h5, h6{margin:20px 0 10px;padding:0;font-weight:bold;-webkit-font-smoothing:antialiased;}
-body h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code{font-size:inherit;}
+body h1, body h2, h3, h3, h3, h4{margin:20px 0 10px;padding:0;font-weight:bold;-webkit-font-smoothing:antialiased;}
+body h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h3 tt, h3 code, h3 tt, h3 code, h4 tt, h4 code{font-size:inherit;}
 body h1{font-size:28px;color:#000;}
 body h2{font-size:24px;border-bottom:1px solid #ccc;color:#000;}
 body h3{font-size:18px;}
-body h4{font-size:16px;}
-body h5{font-size:14px;}
-body h6{color:#777;font-size:14px;}
+body h3{font-size:16px;}
+body h3{font-size:14px;}
+body h4{color:#777;font-size:14px;}
 body p, blockquote, ul, ol, dl, li, table, pre{margin:15px 0;}
 body hr{background:transparent url('../../images/modules/pulls/dirty-shade.png') repeat-x 0 0;border:0 none;color:#ccc;height:4px;padding:0;}
-body>h2:first-child,>h1:first-child,>h1:first-child+h2,>h3:first-child,>h4:first-child,>h5:first-child,>h6:first-child{margin-top:0;padding-top:0;}
-body h1+p, h2+p, h3+p, h4+p, h5+p, h6+p{margin-top:0;}
+body>h2:first-child,>h1:first-child,>h1:first-child+h2,>h3:first-child,>h3:first-child,>h3:first-child,>h4:first-child{margin-top:0;padding-top:0;}
+body h1+p, h2+p, h3+p, h3+p, h3+p, h4+p{margin-top:0;}
 body li p.first{display:inline-block;}
 body ul, ol{padding-left:30px;}
 body ul li>:first-child, ol li>:first-child{margin-top:0;}
@@ -251,18 +251,55 @@ body pre code, pre tt{background-color:transparent;border:none;}
 	}
 	</style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js" ></script>
+ <script type="text/javascript" src="js/libs/tv4.js" ></script>
 	<script src="http://wwwendt.de/tech/fancytree/lib/jquery.js" type="text/javascript"></script>
 	<script src="http://wwwendt.de/tech/fancytree/lib/jquery-ui.custom.js" type="text/javascript"></script>
 
 	<link href="http://wwwendt.de/tech/fancytree/src/skin-xp/ui.fancytree.css" rel="stylesheet" type="text/css">
 	<script src="http://wwwendt.de/tech/fancytree/src/jquery.fancytree.js" type="text/javascript"></script>
 <script>
+
+
+
+
 var baseUrl = "https://raw.githubusercontent.com/CMAPI/cmapi-1.2.0/master/channels/";
+
+function loadContent (target){
+	switch(target.toLowerCase()){
+		case "cmapi.overview":
+			loadOverview();
+		break;
+		default:
+			loadChannelDef(target);
+		break;
+	}
+}
+
 function loadChannelDef(channel){
-	var url = baseUrl+channel+".js"
+	var url = baseUrl+channel+".js",
+		exampleUrl = baseUrl+channel+".examples.js";
 $.getScript( url )
   .done(function( script, textStatus ) {
- $('#main').html(cmapi.channel.renderer.render(url,cmapi.channel[channel]));
+ 	//$('#main').html(cmapi.channel.renderer.render(url,cmapi.channel[channel]));
+	 $.getScript( exampleUrl )
+	  .done(function( script, textStatus ) {
+	 	$('#main').html(cmapi.channel.renderer.render(url,cmapi.channel[channel],exampleUrl,cmapi.channel[channel].examples));
+	  })
+	  .fail(function( jqxhr, settings, exception ) {
+	   alert(exception);
+	   	$('#main').html(cmapi.channel.renderer.render(url,cmapi.channel[channel]));
+	});
+  })
+  .fail(function( jqxhr, settings, exception ) {
+   alert(exception);
+});
+}
+
+function loadOverview(){
+	var url = "https://raw.githubusercontent.com/CMAPI/cmapi-1.2.0/master/cmapi.overview.js";
+$.getScript( url )
+  .done(function( script, textStatus ) {
+ 	$('#main').html(cmapi.channel.renderer.renderOverview(cmapi.overview));
   })
   .fail(function( jqxhr, settings, exception ) {
    alert(exception);
@@ -287,27 +324,82 @@ function checkRequired (prop,schema){
 	}
 	return returnValue;
 }
+function getValidationErrorString (valError) {
+	var message = "The example has failed to validate:  ";
+    for (i = 0; i < valError.errors.length; i = 1 + i) {
+        message += "\n " + valError.errors[i].message + "\n Data path: " + valError.errors[i].dataPath;
+    }
+    for (i = 0; i < valError.missing.length; i = 1 + 1) {
+        message += "\n " + valError.missing[i].message + "\n Data path: " + valError.missing[i].dataPath;
+    }
+    return message;
+}
+
+function getExampleString (example) {
+var response = ["{"],
+i = 0;
+		for(prop in example){
+			if(i != 0){
+				response.push(",");
+			}
+			propVal = example[prop];
+			response.push('"'+prop+'"');
+			response.push('"'+propVal+'"');
+
+
+
+	}
+	response.push("}");
+	return response.join("");
+}
+
+function generateTag(tag,id,class,style,content){
+
+}
+
+/**
+     * @method
+     * @desc Validates EMP {@link global} Types against the schema using TinyValidator 4 with the JSON Schema Specification
+     * @returns {boolean} valid - Whether or not the object is valid
+     * @returns {object} validationErrors - What is not validating correctly
+     * @returns {object} validationMissing - What is missing per schema
+     */
+    function validate (payload, schema) {
+        var message, 
+	        i, 
+	        response = {valid: true, message: "Valid CMAPI Payload"},
+	        valid = tv4.validateMultiple(payload, schema);
+
+        if (!valid.valid) {
+			response.message = getValidationErrorString(valid);
+            response.valid = false;
+        }
+        return response;
+    }
+
 publicInterface = {
-	render: function (link,channelDef){
+	render: function (link,channelDef,exampleLink,examples){
 		var output = [],
 		i=0,
 		prop,
 		propVal,
 		optional,
 		schema = channelDef.schema,
-		noteLen = channelDef.notes.length;
+		noteLen = channelDef.notes.length,
+		exampleLen,
+		exampleValidation;
 
 		output.push('<h2 id="toc_0">'+schema.title+'</h2>');
 
-		output.push('<h5 id="toc_1">Purpose:</h5>');
+		output.push('<h3 id="toc_1">Purpose:</h3>');
 
 		output.push('<p>'+schema.description+'</p>');
 
-		output.push('<h5 id="toc_2">Channel:</h5>');
+		output.push('<h3 id="toc_2">Channel:</h3>');
 
 		output.push('<p>'+schema.title+'</p>');
 
-		output.push('<h5 id="toc_3">Payload:</h5>');
+		output.push('<h3 id="toc_3">Payload:</h3>');
 
 		output.push('<pre><code class="javascript">');
 		output.push('{');
@@ -342,19 +434,69 @@ publicInterface = {
 
 		}
 		output.push('</tbody></table>');
-		output.push('<h5 id="toc_4">Notes</h5>');
+		output.push('<h3 id="toc_4">Notes</h3>');
 
 		for(i=0;i<noteLen;i++){
 
 			output.push('<p>'+(i+1)+':  <em>'+channelDef.notes[i]+'</em></p>');
 		}
-		output.push('<h5 id="toc_4">Schema</h5>');
+		output.push('<h3 id="toc_4">Schema</h3>');
+		output.push('<h4 id="toc_4">Link</h4>');
+		output.push('<p><a href="'+link+'" target="_blank">'+link+'</a></p>');
 		//output.push('<pre><code class="javascript">');
 		output.push('<p>'+JSON.stringify(channelDef.schema)+'</p>');
 		//output.push('</code></pre>');
-		output.push('<h5 id="toc_4">Link</h5>');
-		output.push('<p><a href="'+link+'" target="_blank">'+link+'</a></p>');
+		
+
+		if(examples !== undefined && examples !== null){
+			exampleLen = examples.length;
+			if(exampleLen > 0){
+				output.push('<h3 id="toc_4">Examples</h3>');
+				output.push('<h4 id="toc_4">Link</h4>');
+				output.push('<p><a href="'+exampleLink+'" target="_blank">'+exampleLink+'</a></p>');
+				for(i=0;i<exampleLen;i++){
+					//getExampleString(examples[i].payload)
+					//output.push('<h4>'+examples[i].title+'</h4></p><textarea rows="6" style="width: 100%">'+JSON.stringify(examples[i].payload)+'</textarea>');
+					output.push('<h4>'+examples[i].title+'</h4></p><textarea rows="6" style="width: 100%">'+getExampleString(examples[i].payload)+'</textarea>');
+					exampleValidation = validate(examples[i].payload,channelDef.schema);
+					if(exampleValidation.valid === true){
+						output.push('<p style="color: green">'+exampleValidation.message+'</p>');
+					}else{
+						output.push('<p style="color: red">'+exampleValidation.message+'</p>');
+					}
+					if(exampleValidation.valid === examples[i].valid){
+						output.push('<p style="color: green">This message validated as expected</p>');
+					}else{
+						output.push('<p style="color: red">This example DID NOT validate as expected.  This example was expected to validate as '+examples[i].valid.toString()+'</p>');
+					}
+				}
+			}
+		}
+
 		return output.join("");
+	},
+	renderOverview: function (overview) {
+		var len,
+		sLen,
+		i,
+		k,
+		section,
+		sections,
+		paragraphs,
+		output = [];
+
+		sections = overview.sections;
+		len = sections.length;
+		for(i=0;i<len;i++){
+			sections = sections[i];
+			output.push('<h3>'+section.title+'</h3>');
+			paragraphs = sections.paragraphs;
+			sLen = paragraphs.length;
+			for(k=0;k<sLen;k++) {
+				output.push('<p >'+paragraphs[k]+'</p>');
+			}
+		}
+		return ouput.join("");
 	}
 };
 return publicInterface;
@@ -383,7 +525,7 @@ return publicInterface;
 			},
 			dblclick: function (event, data){
 
-loadChannelDef(data.node.key);
+loadContent(data.node.key);
 			}
 		}).bind("fancytreeactivate", function(event, data){
 			$.ui.fancytree.debug("fancytreeactivate: event=", event, ", data=", data);
@@ -403,21 +545,18 @@ loadChannelDef(data.node.key);
 	</script>
 </head>
 <body>
+	<div id="wrap">
+		<div id="sidebar">
+			<h2>CMAPI v1.2.0 </h2>
+			<div id="tree" data-source="ajax" class="sampletree">
 
-<div id="wrap">
-
-	<div id="main">
-
+			</div>
+		</div>
+		<div id="main">
+		</div>
+		<div id="footer">
+			<p><a href="htp://www.cmapi.org">Learn more at cmapi.org</a></p>
+		</div>
 	</div>
-	<div id="sidebar">
-	<h2>CMAPI v1.2.0 </h2>
-	<div id="tree" data-source="ajax" class="sampletree">
-
-	</div>
-	</div>
-	<div id="footer">
-		<p><a href="htp://www.cmapi.org">Learn more at cmapi.org</a></p>
-	</div>
-</div>
 </body>
 </html>
