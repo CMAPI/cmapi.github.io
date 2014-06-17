@@ -12,13 +12,13 @@ cmapi.channel.renderer = (function () {
       exampleUrl = baseUrl + channel + ".examples.js";
     $.getScript(url)
       .done(function (script, textStatus) {
+        $('#main').html(render(url, cmapi.channel[channel]));
         $.getScript(exampleUrl)
           .done(function (script, textStatus) {
-            $('#main').html(render(url, cmapi.channel[channel], exampleUrl, cmapi.channel[channel].examples));
+            $('#main').html($('#main').html()+appendExamples( exampleUrl, cmapi.channel[channel].examples, cmapi.channel[channel]));
           })
           .fail(function (jqxhr, settings, exception) {
             alert(exception);
-            $('#main').html(render(url, cmapi.channel[channel]));
           });
       })
       .fail(function (jqxhr, settings, exception) {
@@ -130,17 +130,15 @@ cmapi.channel.renderer = (function () {
     return response;
   }
 
-  function render(link, channelDef, exampleLink, examples) {
+  function render(link, channelDef) {
     var output = [],
       i = 0,
       prop,
       propVal,
       optional,
       schema = channelDef.schema,
-      noteLen = channelDef.notes.length,
-      exampleLen,
-      exampleValidation,
-      validationIntent;
+      noteLen = channelDef.notes.length;
+      
 
     output.push('<h2 id="toc_0">' + schema.title + '</h2>');
 
@@ -201,6 +199,18 @@ output.push('<h3 id="toc_3">Properties:</h4>');
     output.push(getSchemaString(channelDef.schema));
     output.push('</code></pre>');
 
+    
+
+    return output.join("");
+  }
+
+  function appendExamples (exampleLink, examples, channelDef){
+    var output = [],
+      exampleLen,
+      exampleValidation,
+      validationIntent,
+      i;
+
     if (examples !== undefined && examples !== null) {
       exampleLen = examples.length;
       if (exampleLen > 0) {
@@ -215,6 +225,7 @@ output.push('<h3 id="toc_3">Properties:</h4>');
           }
 
           output.push('<h4 id="toc_4">' + examples[i].title + ' - '+validationIntent+'</h4>');
+          
           exampleValidation = validate(examples[i].payload, channelDef.schema);
           if (exampleValidation.valid === true) {
             output.push('<p style="color: green">' + exampleValidation.message + '</p>');
@@ -226,13 +237,11 @@ output.push('<h3 id="toc_3">Properties:</h4>');
           } else {
             output.push('<p style="color: red">This example DID NOT validate as expected.  This example was expected to validate as ' + examples[i].valid.toString() + '</p>');
           }
-          output.push('</p><textarea rows="10" style="width: 100%">' + getExampleString(examples[i].payload) + '</textarea>');
-
           
+          output.push('</p><textarea rows="10" style="width: 100%">' + getExampleString(examples[i].payload) + '</textarea>');
         }
       }
     }
-
     return output.join("");
   }
 
