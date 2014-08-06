@@ -1,168 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="description" content="Common Map Application Progamming Interface">
-<meta name="keywords" content="map, communication, pub/sub, channel, widget, owf, ozone">
-<meta name="Copyright" content="2014 copyright">
-  <title>CMAPI - Versions</title>
-  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
-  <link rel="stylesheet" type="text/css" href="css/main.css"/>
-  <!--[if lt IE 9]>
+    <meta charset="UTF-8">
+    <meta name="description" content="Common Map Application Progamming Interface">
+    <meta name="keywords" content="map, communication, pub/sub, channel, widget, owf, ozone">
+    <meta name="Copyright" content="2014 copyright">
+    <title>CMAPI - Home</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
-  <![endif]--> 
-  <script src="js/jquery-1.2.6.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-
+  <![endif]-->
+    <script src="js/jquery-1.2.6.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
     // Add .last class to certain lists
-    $(document).ready(function(){
-      $("ul.lst li:last").addClass("last");
-      });
-  </script>
+    $(document).ready(function() {
+        $("ul.lst li:last").addClass("last");
+    });
+    </script>
 </head>
+
 <body>
-  <header >
-    <div class="header-inner">
-      &nbsp;
-      <div class="header-nav">
-       
-         <nav class="nav-header">
-          <ul>
-          <li >
-              <span>
-               CMAPI &nbsp;&nbsp;&nbsp;
-             </span>
-            </li>
-            <li >
-              <a href="index.html" >
-                <strong>Home</strong>
-              </a>
-            </li>
-            <li>
-              <a href="#" style="background-color: #ffffff; color:#002E3D; ">
-                <strong>Versions</strong>
-              </a>
-            </li>
-            <li>
-              <a href="usage.html">
-                <strong>Usage</strong>
-              </a>
-            </li>
-            <li style="border-right:none;">
-              <a href="community.html">
-                <strong>Community</strong>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div><!-- /header-nav -->
-    </div><!-- /header-inner -->
-  </header><!-- /header -->
+<a href="https://github.com/CMAPI/cmapi/tree/v1.3.0"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <header>
+        <div class="header-inner">
+            &nbsp;
+            <div class="header-nav">
 
-  <div class="content">
-    <div class="content-inner group">
-
-      <aside class="aside-right">
-     
-             <ol class="testamonials group">
-          <li class="group">
-            <div >
-              <blockquote >
-     
-                <p>&#8220;CMAPI has really made our product reusable by a much wider community...&#8221;</p>
-                <p class="customer">&#8212; Developer, <br/>Extensible Maping Platform</p>
-              </blockquote>
+                <nav class="nav-header">
+                    <ul>
+                        <li>
+                            <span>
+                                CMAPI &nbsp;&nbsp;&nbsp;
+                            </span>
+                        </li>
+                        <li>
+                            <a href="index.html" >
+                                <strong>Home</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" style="background-color: #ffffff; color:#008AB8; ">
+                                <strong>Versions</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="usage.html">
+                                <strong>Usage</strong>
+                            </a>
+                        </li>
+                        <li style="border-right:none;">
+                            <a href="community.html">
+                                <strong>Community</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-          </li>
-          <li class="group">
-            <div>
-              <blockquote >
-                <p>&#8220;Another qoute herer...&#8221;</p>
-                <p class="customer">&#8212; Porject Manager, <br/>Project</p>
-              </blockquote>
-            </div>
-          </li>
-          <li class="group third">
-            <div>
-              <blockquote class="testamonial">
-                <p>&#8220;CMAPI is awesome...&#8221;</p>
-                <p class="customer">&#8212; Satisfied Customer, <br/>Project A</p>
-              </blockquote>
-            </div>
-          </li>
-        </ol>
-      </aside>
-      <section class="main">
-      <div class="content-outer welcome group" style="background-color: #5DB25D;">
-          <ul>
-            <li>
-              <strong style="padding-right: 15px;padding-bottom: 2px;">Welcome</strong>
-            </li>
-            <li style="font-size: 1.2em; line-height: 1.5em;">
-              Many programs and projects create widgets that search for or manipulate data then present the results on a map. The desire is to be able to combine data search/manipulation widgets from any provider with map widgets from other providers. In order to accomplish this, a standard way for the data search/manipulation widgets to be able to communicate with the map widget is necessary. This Application Program Interface (API) is the codification of that standard. 
-            </li>
+            <!-- /header-nav -->
+        </div>
+        <!-- /header-inner -->
+    </header>
+    <!-- /header -->
 
-          </ul>
-        </div>
-        <div class="content-outer serving" style="position: relative">
-            <img src="img/mashup.jpg" />
-            <span>Pub/sub messaging for fantastic geospatial mashups</span>
-        </div>
-        
-         <div class="content-outer welcome group">
-          <ul>
-            <li>
-              <strong style="padding-right: 15px;padding-bottom: 2px;">MISSION</strong>
-            </li>
-            <li style="font-size: 1.2em; line-height: 1.5em;">
-              To develop and codify a common API between data widgets and map widgets that will enable data or other widgets from any program to interoperate with map or grid widgets from any other program.
-            </li>    
-          </ul>
-        </div>
+    <div class="content">
+        <div class="content-inner group">
 
-       <div class="content-outer welcome group" style="background-color: #FF9F5F;">
-          <ul>
-            <li>
-              <strong style="padding-right: 15px;padding-bottom: 2px;">AUDIENCE</strong>
-            </li>
-            <li style="font-size: 1.2em; line-height: 1.5em;">
-              The CMAPI specification is targeted at groups who need to communicate multiple application's data with a central map.  In many cases multiple organizations have applications developed internally with different requirments that hvae a loose interoperability requirement with other data sources.  CMAPI allows for each application to encapsulate it's business logic and display and interact with data on a common display.
-            </li>    
-          </ul>
+            <aside class="aside-right">
+
+                <ol class="pod group">
+                    <li class="group">
+                        <div>
+                            <h2>Releated Maps</h2>
+                            <br/>
+                            <ul class="indent">
+                                <li>
+                                    <h4>Vixen Map Widget</h4>
+                                    <a href="https://stash.di2e.net/projects/VIX/repos/vixen" targt="_blank">Source</a>
+                            
+                                </li>
+                                <li>
+                                    <h4>Extensible Mapping Platform</h4>
+                                    <a href="https://confluence.di2e.net/display/EMP/Extensible+Mapping+Platform+Home" targt="_blank">Project Home</a>
+                                    |
+                                    <a href="https://stash.di2e.net/projects/EMP" targt="_blank">Source</a>
+                            
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li class="group">
+                        <div>
+                            <h2>Releated Projects</h2>
+                            <br/>
+                            <ul class="indent">
+                                <li>
+                                    <h4>Ozone Widget Framework</h4>
+                                    <a href="http://owfgoss.org" targt="_blank">Project Home</a>
+                                    |
+                                    <a href="https://github.com/ozoneplatform/owf" targt="_blank">Source</a>
+                                </li>
+                                <li>
+                                    <h4>Joint Command and Control Common User Interface (JC2-CUI)</h4>
+                                    <a href="https://software.forge.mil/sf/projects/jc2cui" targt="_blank">Project Home</a>
+                            
+                                </li>
+                                <li>
+                                    <h4>Enterprise Situational Awareness Widget</h4>
+                                    <a href="https://software.forge.mil/sf/projects/di2e-f" targt="_blank">Project Home</a>
+                            
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </li>
+                </ol>
+            </aside>
+            <section class="main">
+                <div class="content-outer welcome group" style="background-color: #5DB25D;">
+                    <ul>
+                        <li>
+                            <strong style="padding-right: 15px;padding-bottom: 2px;">1.2.0 - Release</strong>
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+                            CAMPI version 1.2.0 is the latest stable relase of CMAPI. The updates from version 1.1.1 include the addtions of, Overlay Level feature clustering, GeoJSON support, improved feature selection/deselection, OWF Widget intents, and more.
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em">
+                            <button class="right" title="Download CMAPI version 1.2.0 for offline use" onclick="window.open('versions/cmapi_v1.2.0.zip')">Download</button>
+                            <button class="right" title="View CMAPI version 1.2.0 online" onclick="window.open('versions/v1.2.0/index.html')">View Online</button>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="content-outer welcome group" style="background-color: #FF9F5F;">
+               
+                    <ul>
+                        <li>
+                            <strong style="padding-right: 15px;padding-bottom: 2px;">1.3.0 - Draft</strong>
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+                            CMAPI 1.3.0 is the current working draft version. CAMPI 1.3.0 is focused on adding user manipulation extensions to the API to enable more robust interaction between the the user, that data, and the map. Some of the proposed capabilities in this version
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+                            <br/>NOTE: This version will be updated regularly and should only be used as a reference for prototyping new capabilities until it is finalized
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em">
+                            <button class="right" title="Download CMAPI version 1.3.0 Draft for offline use" onclick="window.open('versions/cmapi_v1.3.0.zip')">Download</button>
+                            <button class="right" title="View CMAPI version 1.3.0 Draft online" onclick="window.open('versions/v1.3.0/index.html')">View Online</button>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="content-outer welcome group">
+                    <ul>
+                        <li>
+                            <strong style="padding-right: 15px;padding-bottom: 2px;">Archive</strong>
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+                            The CMAPI specification changed formats starting at 1.2.0. Versions 1.1.0 and 1.0.0 are availble in the orginal format as Microsoft Word or PDF forts.
+                        </li>
+                        <li>
+                            <br/>
+                            CMAPI version 1.1.1 -
+                                <button title="Download CMAPI 1.1.0 in PDF format" onclick="window.open('versions/Common_map_widget_API_v1.1.0.pdf')">PDF</button>
+                                <button title="Download CMAPI 1.1.0 in Microsoft Word&#153; format" onclick="window.open('versions/Common_map_widget_API_v1.1.0.docx')">Word</button>
+                            
+                        </li>
+                      <li>
+                      <br/><br/>
+                            CMAPI version 1.1.1 -
+                                <button title="Download CMAPI 1.0.0 in PDF format" onclick="window.open('versions/DI2E_JC2CUI_I3_map_widget_API_v1.0.docx')">PDF</button>
+                                <button title="Download CMAPI 1.0.0 in Microsoft Word&#153; format" onclick="window.open('versions/DI2E_JC2CUI_I3_map_widget_API_v1.0.0.docx')">Word</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
         </div>
-       
-      </section>
     </div>
-  </div><!-- end content -->
+    <!-- end content -->
 
-  <footer>
-    <div class="footer-inner">
-    <p>&copy; 2014 CMAPI</p>
-    <nav class="nav-footer">
-      <ul>
-        <li >
-          <a href="#" >
-            <strong>Home</strong>
-          </a>
-        </li>
-        <li>
-          <a href="versions.html" style="background-color: #ffffff; color:#002E3D; ">
-            <strong>Versions</strong>
-          </a>
-        </li>
-        <li>
-          <a href="usage.html">
-            <strong>Usage</strong>
-          </a>
-        </li>
-        <li style="border-right:none;">
-          <a href="community.html">
-            <strong>Community</strong>
-          </a>
-        </li>
-      </ul>
-      </div>
-    </nav>
-  </footer>
+    <footer>
+        <div class="footer-inner">
+            <p>&copy; 2014 CMAPI</p>
+            <nav class="nav-footer">
+                <ul>
+                    <li>
+                        <a href="index.html" >
+                            <strong>Home</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="background-color: #ffffff; color:#008AB8; ">
+                            <strong>Versions</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="usage.html">
+                            <strong>Usage</strong>
+                        </a>
+                    </li>
+                    <li style="border-right:none;">
+                        <a href="community.html">
+                            <strong>Community</strong>
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        </nav>
+    </footer>
 </body>
+
 </html>
