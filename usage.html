@@ -6,7 +6,7 @@
     <meta name="description" content="Common Map Application Progamming Interface">
     <meta name="keywords" content="map, communication, pub/sub, channel, widget, owf, ozone">
     <meta name="Copyright" content="2014 copyright">
-    <title>CMAPI - Home</title>
+    <title>CMAPI - Usage</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <!--[if lt IE 9]>
@@ -32,10 +32,8 @@
 
                 <nav class="nav-header">
                     <ul>
-                        <li>
-                            <span>
-                                CMAPI &nbsp;&nbsp;&nbsp;
-                            </span>
+                        <li class="headerText">
+                             Common Map API
                         </li>
                         <li>
                             <a href="index.html">
@@ -142,7 +140,7 @@
                             <strong>OWF</strong>
                         </li>
                         <li style="font-size: 1.2em; line-height: 1.5em;">
-                            To develop and codify a common API between applications and maps that will enable data from any program to interoperate with maps from any program.
+                            When using CMAPI in the Ozone Widget Framework it is recomeded to develop a widget according to the OWF widget developer's documentation included in the OWF distributions.
                         </li>
                     </ul>
                 </div>
@@ -153,12 +151,7 @@
                             <strong>HTML Messaging</strong>
                         </li>
                         <li style="font-size: 1.2em; line-height: 1.5em;">
-                            The CMAPI specification is targeted at groups who need to communicate multiple application's data with a central map.
-                            <br/>
-                            <br/>
-                            <p>In many cases multiple organizations have applications developed internally with different requirments that have a loose interoperability requirement with other data sources.</p>
-                            <br/>
-                            <p>CMAPI enables encapsulation of application business logic while allowing the user to interact with data on a common display.</p>
+                            HTML messaging provides a means to use CMAPI as a communication protocal between applictations running is seperate browser windows.  Although this is possible there are currently no known production ready implmentations of this capability available.  Some prototypes have been developed whioch may be made avaialble to the community in the future.
                         </li>
                     </ul>
                 </div>
@@ -169,12 +162,7 @@
                             <strong>Services</strong>
                         </li>
                         <li style="font-size: 1.2em; line-height: 1.5em;">
-                            The CMAPI specification is targeted at groups who need to communicate multiple application's data with a central map.
-                            <br/>
-                            <br/>
-                            <p>In many cases multiple organizations have applications developed internally with different requirments that have a loose interoperability requirement with other data sources.</p>
-                            <br/>
-                            <p>CMAPI enables encapsulation of application business logic while allowing the user to interact with data on a common display.</p>
+                            CMAPI can also be used a way to send messages between a ervice and a client, or between two services.  This setup could be leveraged to accomplish multi-user collaboration between users in seperate locations.
                         </li>
                     </ul>
                 </div>
@@ -185,7 +173,7 @@
     <!-- end content -->
 
     <footer>
-        <div class="footer-inner">
+        <div id="footer-inner">
             <p>&copy; 2014 CMAPI</p>
             <nav class="nav-footer">
                 <ul>
