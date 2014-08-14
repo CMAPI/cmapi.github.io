@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Common Map Application Progamming Interface">
+    <meta name="keywords" content="map, communication, pub/sub, channel, widget, owf, ozone">
+    <meta name="Copyright" content="2014 copyright">
+    <title>CMAPI - Usage</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <![endif]-->
+    <script src="js/jquery-1.2.6.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    // Add .last class to certain lists
+    $(document).ready(function() {
+        $("ul.lst li:last").addClass("last");
+    });
+    </script>
+</head>
+
+<body>
+    <a href="https://github.com/CMAPI/cmapi/tree/v1.3.0">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png">
+    </a>
+    <header>
+        <div class="header-inner">
+            &nbsp;
+            <div class="header-nav">
+
+                <nav class="nav-header">
+                    <ul>
+                        <li class="headerText">
+                             Common Map API
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                <strong>Home</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="versions.html">
+                                <strong>Versions</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" style="background-color: #ffffff; color:#008AB8; ">
+                                <strong>Usage</strong>
+                            </a>
+                        </li>
+                        <li style="border-right:none;">
+                            <a href="community.html">
+                                <strong>Community</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- /header-nav -->
+        </div>
+        <!-- /header-inner -->
+    </header>
+    <!-- /header -->
+
+    <div class="content">
+        <div class="content-inner group">
+
+            <aside class="aside-right">
+
+                <ol class="pod group">
+                     <li class="group">
+                        <div>
+                            <h2>Releated Maps</h2>
+                            <br/>
+                            <ul  class="indent">
+                                <li>
+                                    <h4>Vixen Map Widget</h4>
+                                    <a href="https://stash.di2e.net/projects/VIX/repos/vixen" targt="_blank">Source</a>
+                            
+                                </li>
+                                <li>
+                                    <h4>Extensible Mapping Platform</h4>
+                                    <a href="https://confluence.di2e.net/display/EMP/Extensible+Mapping+Platform+Home" targt="_blank">Project Home</a>
+                                    |
+                                    <a href="https://stash.di2e.net/projects/EMP" targt="_blank">Source</a>
+                            
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li class="group">
+                        <div>
+                            <h2>Releated Projects</h2>
+                            <br/>
+                            <ul class="indent">
+                                <li>
+                                    <h4>Ozone Widget Framework</h4>
+                                    <a href="http://owfgoss.org" targt="_blank">Project Home</a>
+                                    |
+                                    <a href="https://github.com/ozoneplatform/owf" targt="_blank">Source</a>
+                                </li>
+                                <li>
+                                    <h4>Joint Command and Control Common User Interface (JC2-CUI)</h4>
+                                    <a href="https://software.forge.mil/sf/projects/jc2cui" targt="_blank">Project Home</a>
+                            
+                                </li>
+                                <li>
+                                    <h4>Enterprise Situational Awareness Widget</h4>
+                                    <a href="https://software.forge.mil/sf/projects/di2e-f" targt="_blank">Project Home</a>
+                            
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </li>
+                </ol>
+            </aside>
+            <section class="main">
+
+                <div class="content-outer welcome group">
+                    <ul>
+                        <li>
+                            <strong>Overview</strong>
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+                            CMAPI was originally developed to codify a reusable messaging specification for use in the Ozone Widget Framework (OWF) and leveraging the OWF pub/sub mechanism. As CMAPI has matured, it has begun focusing on environment/runtime flexibility. Because CMAPI uses channel based pub/sub, which is a well established concept, the channels and data messages can be used in any environment where the pub/sub messaging model is supported.
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                <div class="content-outer welcome group">
+                    <ul>
+                        <li>
+                            <strong>OWF</strong>
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+                            When using CMAPI in the Ozone Widget Framework it is recommended that widgets be developed according to the OWF widget developer's documentation included in the OWF distributions.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-outer welcome group">
+                    <ul>
+                        <li>
+                            <strong>HTML Messaging</strong>
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+                            HTML messaging provides a communication protocol between applications (widgets) running in separate browser windows, and provides a means to implement CMAPI outside of OWF.  Although this has been proven in pilot implementations, there are currently no known production-ready HTML5 implementations of CMAPI.  Those pilots that have been developed may be made available to the community in the future.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-outer welcome group">
+                    <ul>
+                        <li>
+                            <strong>Services</strong>
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+                            CMAPI can also be used as a way to send messages between a service and a client, or between two services.  This setup could be leveraged to accomplish multi-user collaboration between users in separate locations.
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <!-- end content -->
+
+    <footer>
+        <div id="footer-inner">
+            <p>&copy; 2014 CMAPI</p>
+            <nav class="nav-footer">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <strong>Home</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="versions.html">
+                            <strong>Versions</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="background-color: #ffffff; color:#008AB8; ">
+                            <strong>Usage</strong>
+                        </a>
+                    </li>
+                    <li style="border-right:none;">
+                        <a href="community.html">
+                            <strong>Community</strong>
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        </nav>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Common Map Application Progamming Interface">
+    <meta name="keywords" content="map, communication, pub/sub, channel, widget, owf, ozone">
+    <meta name="Copyright" content="2014 copyright">
+    <title>CMAPI - Community</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <![endif]-->
+    <script src="js/jquery-1.2.6.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    // Add .last class to certain lists
+    $(document).ready(function() {
+        $("ul.lst li:last").addClass("last");
+    });
+    </script>
+</head>
+
+<body>
+    <a href="https://github.com/CMAPI/cmapi/tree/v1.3.0">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png">
+    </a>
+    <header>
+        <div class="header-inner">
+            &nbsp;
+            <div class="header-nav">
+
+                <nav class="nav-header">
+                    <ul>
+                        <li class="headerText">
+                            Common Map API
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                <strong>Home</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="versions.html">
+                                <strong>Versions</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="usage.html">
+                                <strong>Usage</strong>
+                            </a>
+                        </li>
+                        <li style="border-right:none;">
+                            <a href="#" style="background-color: #ffffff; color:#008AB8; ">
+                                <strong>Community</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- /header-nav -->
+        </div>
+        <!-- /header-inner -->
+    </header>
+    <!-- /header -->
+
+    <div class="content">
+        <div class="content-inner group">
+
+            <aside class="aside-right">
+
+                <ol class="pod group">
+                    <li class="group">
+                        <div>
+                            <h2>Connect</h2>
+                            <br/>
+                            <p class="indent">Get connected to the CMAPI community with our Google&#153; Group.</p>
+                            <button class="right" title="Join the CMAPI Google Group" onclick="window.open('https://groups.google.com/forum/#!forum/common-map-widget-api/join')">Join Group</button>
+                        </div>
+                    </li>
+                    <li class="group">
+                        <div>
+                            <h2>Announcements</h2>
+
+                            <br/>
+                            <ul class="indent">
+                                <li>
+                                    <h4>v1.3.0 Completion</h4>
+                                    <br/>
+                                    <p class="indent">The CMAPI Technical committee is aiming to complete version 1.3.0 by the end of August 2014</p>
+                                    <hr/>
+                                </li>
+                                <li>
+                                    <h4>OGC Adoption</h4>
+                                    <br/>
+                                    <p class="indent">The CMAPI Technical committee is working with the Open Geospatial Consortium (OGC) on the possibility of CMAPI becoming an OGC standard</p>
+
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </li>
+
+                    <li class="group third">
+                        <div>
+                            <h2>Oversight</h2>
+
+                            <br/>
+                            <ul class="indent">
+                                <li>
+                                    <a href="https://www.nga.mil" target="_blanl">National Geospatial Agency (NGA)</a>
+                                </li>
+                                <li>
+                                    Defense Intelligence Information Enterprise (DI2E)
+
+                                </li>
+                            </ul>
+                            <hr/>
+                            <h2>Editors</h2>
+
+                            <br/>
+
+                            <ul class="indent">
+                                <li>
+                                    <a href="mailto:cbashioum@mitre.org">Chris Bashioum</a>
+                                </li>
+                                <li>
+                                    <a href="mailto:eric.j.briscoe@gmail.com">Eric Briscoe</a>
+                                </li>
+                                <li>
+                                    <a href="mailto:scott.hammonds@lmco.com">Scott Hammonds</a> 
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </aside>
+            <section class="main">
+                <div class="content-outer mashup" style="position: relative">
+                    <img id="mashupimg" src="img/fotolia_67042461_S_crop.jpg" alt="Teamwork image" title="© treenabeena - Fotolia.com" />
+                </div>
+
+                <div class="content-outer welcome group">
+                    <ul>
+                        <li>
+                            <strong>Process</strong>
+                        </li>
+                        <li style="font-size: 1.2em; line-height: 1.5em;">
+
+
+                            The scope of this technical committee is limited to creating a technical specification of the channels, messages, behaviours and other technical details of what is needed to enable interoperability between map widgets and other non-map widgets.  
+							<br/>
+							<br/>
+							Note that the 1.x series of the CMAPI specification are targeted to the Ozone Widget Framework (OWF).  It is anticipated that version 2.x and later of the specification will remove any OWF dependencies and be applicable to all browser-based widgets (e.g., HTML5 based widgets)
+                            <br/>
+                            <br/>The criteria for promulgating a new version of the specification includes:
+                            <ol type="A" style="padding-left: 50px;">
+                                <li>At least two implementations of the specification showing interoperability</li>
+                                <li>A submission of the JSON Schema for new channels, or updated JSON schema for changes to an existing channel</li>
+								<li>Agreement via formal voting that the specification is sufficiently complete, with at least 75% of the technical committee voting for approval</li>
+                            </ol>
+                            <br/>
+
+                            <h2><b>Meeting Mechanisms and Frequency</b>
+                            </h2>
+                            The technical committee will meet on the first and third Thursday of every month, from 1-3 Eastern Time via dial-in.  Dial-in information and agenda are sent to the CMAPI mailing list prior to each meeting.
+                            <br/>
+							<br/>
+                            <h2><b>Communication Mechanisms</b>
+                            </h2>
+                            Outside of the regular meetings, updates, meeting notices, and regular collaboration are expected to occur via email at common-map-widget-api@googlegroups.com. This allows communications to be open and to be recorded for those who might join the group later.
+                            <br/>
+                            <br/>
+                            <h2><b>Technical Committee Members</b>
+                            </h2>
+                            Bi-weekly dial-ins are expected to be no more that two hours in length. Members are expected to participate in the bi-weekly dial-ins and to review materials sent out via the group mailing list.    
+                            <br/>
+							<br/>
+							<h2><b>Editors</b>
+                            </h2>
+							The role of editor is currently limited to 3 members of the technical committee.  Editors are expected to perform the following functions
+							<ol type="A" style="padding-left: 50px;">
+							<li>Lead, and capture minutes from, the bi-weekly dial-ins</li>
+							<li>Make updates to the specification based on Technical Committee input</li>
+                            <li>Send notifications to the group mailing list as updates are accomplished and ready for TC review</li>
+                            </ol>
+							<br/>
+                            <br/>
+                            <h2><b>Voting and Participation Rules</b>
+                            </h2>
+                            In order to be able to vote on the specification, a member of the technical committee must attend at least 50% of the meetings, and actively participate in the email collaboration. Note that voting on the specification is voting only on the technical details of the specification itself, and does NOT imply a commitment to implement the specification.  Additionally, voting will be done on portions of the specification as those portions are completed, and then a single vote on the overall specification will be done when the editors consider all the elements of a particular version are complete
+                            <br/>
+                            <br/>
+                            <h2><b>Anticipated Audience</b>
+                            </h2>
+                            This specification is targeted for widget developers, and developers of libraries to be re-used by widget developers.
+
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <!-- end content -->
+
+    <footer>
+        <div id="footer-inner">
+            <p>&copy; 2014 CMAPI</p>
+            <nav class="nav-footer">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <strong>Home</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="versions.html">
+                            <strong>Versions</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="usage.html">
+                            <strong>Usage</strong>
+                        </a>
+                    </li>
+                    <li style="border-right:none;">
+                        <a href="#" style="background-color: #ffffff; color:#008AB8; ">
+                            <strong>Community</strong>
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        </nav>
+    </footer>
+</body>
+
+</html>
