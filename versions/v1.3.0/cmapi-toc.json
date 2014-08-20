@@ -138,7 +138,8 @@
         "title": "API Extensions",
         "folder": true,
         "expanded": true,
-        "children": [{
+        "children": [
+		{
 
             "key": "",
             "title": "Widget Intents",
@@ -188,6 +189,24 @@
                 "key": "map.overlay.cluster.replaceableParameters",
                 "type": "overview",
                 "title": "Clustering: Replaceable Parameters"
+            }]
+        },{
+            "key": "",
+            "type": "overview",
+            "title": "User Manipulation Core",
+            "children": [{
+                "key": "userManipulationCore.overview",
+                "type": "overview",
+                "title": "Background"
+            }, {
+                "key": "map.message.complete",
+                "title": "Report Message Processing Results"
+            }, {
+                "key": "map.message.progress",
+                "title": "Report Message Processing Progress"
+            }, {
+                "key": "map.message.cancel",
+                "title": "Report Message Cancellation"
             }]
         }]
     }, {
