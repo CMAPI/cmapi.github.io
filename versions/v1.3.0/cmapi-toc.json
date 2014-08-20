@@ -34,7 +34,7 @@
                 "title": "Plot Feature"
             },{
                 "key": "map.feature.plot.batch",
-                "title": "Plot a batch of Features"
+                "title": "Plot Feature Batch"
             }, {
                 "key": "map.feature.plot.url",
                 "title": "Plot URL"
@@ -43,7 +43,7 @@
                 "title": "Unplot Feature"
             },{
                 "key": "map.feature.unplot.batch",
-                "title": "Unplot a batch of Features"
+                "title": "Unplot Feature Batch"
             }, {
                 "key": "map.feature.hide",
                 "title": "Hide Feature"
@@ -54,9 +54,15 @@
                 "key": "map.feature.selected",
                 "title": "Feature Selected"
             }, {
+                "key": "map.feature.selected.batch",
+                "title": "Feature Selected Batch"
+            },{
                 "key": "map.feature.deselected",
                 "title": "Feature De-Selected"
             }, {
+                "key": "map.feature.deselected.batch",
+                "title": "Feature DeSelected Batch"
+            },{
                 "key": "map.feature.update",
                 "title": "Update Feature Data"
             }, {
