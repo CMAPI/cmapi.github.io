@@ -65,20 +65,6 @@
             },{
                 "key": "map.feature.update",
                 "title": "Update Feature Data"
-            }, {
-                "key": "map.feature.edit",
-                "title": "Edit Feature Data"
-            }, {
-                "key": "map.feature.draw",
-                "title": "Draw Feature Data",
-                "children": [{
-                    "key": "map.feature.draw.progress",
-                    "title": "Message Progress - details object"
-                },
-                {
-                    "key": "map.feature.draw.complete",
-                    "title": "Message Complete - details object"
-                }]
             }]
         }, {
             "key": "",
@@ -207,6 +193,20 @@
             }, {
                 "key": "map.message.cancel",
                 "title": "Report Message Cancellation"
+            }, {
+                "key": "map.feature.edit",
+                "title": "Edit Feature Data"
+            }, {
+                "key": "map.feature.draw",
+                "title": "Draw Feature Data",
+                "children": [{
+                    "key": "map.feature.draw.progress",
+                    "title": "Message Progress - details object"
+                },
+                {
+                    "key": "map.feature.draw.complete",
+                    "title": "Message Complete - details object"
+                }]
             }]
         }]
     }, {
