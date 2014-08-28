@@ -1,8 +1,8 @@
-cmapi.channel["map.feature.draw.progress"] = {
+cmapi.channel["map.feature.edit.progress"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.feature.draw.progress",
-    "description": "Schema for the details object for a map.message.progress message during a map.feature.draw.",
+    "title": "map.feature.edit.progress",
+    "description": "Schema for the details object for a map.message.progress message during a map.feature.edit.",
     "type": "object",
     "properties": {
       "overlayId": {
@@ -11,10 +11,6 @@ cmapi.channel["map.feature.draw.progress"] = {
       },
       "featureId": {
         "description": "The unique identifier for the feature to be edited. ",
-        "type": "string"
-      },
-      "type": {
-        "description": "Type of feature to be drawn.  Options are line, polygon, point or symbol.  This field may be overloaded to handle future draw types such as bufferedline, circle, aoi, etc.",
         "type": "string"
       },
       "properties": {
@@ -42,7 +38,7 @@ cmapi.channel["map.feature.draw.progress"] = {
     "required": ["featureId", "messageId"]
   },
   "notes": [
-    "This is the format of the dtails object to be used in a map.message.progress event for feature drawing."
+    "This is the format of the dtails object to be used in a map.message.progress event for feature editing."
   ],
   "changeLog": [{
     "version": "1.3.0",
