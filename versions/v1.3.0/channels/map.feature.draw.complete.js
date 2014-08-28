@@ -1,8 +1,8 @@
-cmapi.channel["map.feature.draw.progress"] = {
+cmapi.channel["map.feature.draw.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.feature.draw.progress",
-    "description": "Schema for the details object for a map.message.progress message during a map.feature.draw.",
+    "title": "map.feature.draw.complete",
+    "description": "Schema for the details object for a map.message.complete message during a map.feature.draw.",
     "type": "object",
     "properties": {
       "overlayId": {
