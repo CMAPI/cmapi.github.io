@@ -1,16 +1,16 @@
 cmapi.channel["map.feature.deselected.batch"] = {
-  schema: {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.deselected.batch",
-    "description": "“De-Select,” or report that a collection of feature objects were de-selected.",
+    "description": "De-Select, or report that a collection of feature objects were de-selected.",
     "type": "object",
     "properties": {
       "payloads": {
-        "description" : "An array of map.feature.deSelected payload objects.  See map.feature.deSelected for the object format and schema",
+        "description": "An array of map.feature.deSelected payload objects.  See map.feature.deSelected for the object format and schema",
         "type": "Array"
       },
       "overlayId": {
-        "description": "The default overlayId to be applied to all map.feature.deSelected objects in the payloads array that don’t include an overlayId. I.e., similar behavior to CSS.  See map.feature.deSelected for more details",
+        "description": "The default overlayId to be applied to all map.feature.deSelected objects in the payloads array that don't include an overlayId. I.e., similar behavior to CSS.  See map.feature.deSelected for more details",
         "type": "string",
         "default": ""
       },
@@ -22,5 +22,8 @@ cmapi.channel["map.feature.deselected.batch"] = {
     "required": ["payloads"]
   },
   "notes": [],
-  "changeLog": [{"version": "1.3.0", "change" : "This channel is new"}]
+  "changeLog": [{
+    "version": "1.3.0",
+    "change": "This channel is new"
+  }]
 };

@@ -25,20 +25,55 @@ cmapi.channel["map.feature.edit.progress"] = {
         "type": "string",
         "description": "Type of feature data based on the map.feature.plot type"
       },
-      "updates": {
-        "type": "array",
-        "description": "Array of vertice locations that have been changed, added, or removed"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
-        "type": "string",
-        "status": "new"
-      }
+        "updates": {
+            "type": "object",
+            "description": "This object contains the details of the changes made during the draw operation.",
+            "properties": {
+                "type":{
+                    "enum": ["add", "update", "remove"],
+                    "description": "This field identifies the operation performed."
+                },
+                "indices":{
+                    "type": "array",
+                    "items":{
+                        "type": "integer"
+                    },
+                    "additionalItems": true,
+                    "description": "This field is an array of integer indexes identifying the coordinates affected. This array can be empty if the operation applies to property other than a coordinate."
+                },
+                "coordinates":{
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "lat":{
+                                "type": "number",
+                                "maximum": 90.0,
+                                "minimum": -90.0,
+                                "description": "The latitude component of the coordinate."
+                            },
+                            "lon":{
+                                "type": "number",
+                                "maximum": 180.0,
+                                "minimum": -180.0,
+                                "description": "The longitude component of the coordinate."
+                            },
+                            "alt":{
+                                "type": "number",
+                                "description": "The optional altitude component of the coordinate."
+                            }
+                        }
+                    },
+                    "additionalItems": true,
+                    "description": "This field is an array of all the objects coordiantes. Each coordinate object is as follows {lat: number, lon: number, [alt: number]}."
+                }
+            }
+        }
     },
-    "required": ["featureId", "messageId"]
+    "required": ["featureId", "overlayId"]
   },
   "notes": [
-    "This is the format of the dtails object to be used in a map.message.progress event for feature editing."
+    "This is the format of the details object to be used in a map.message.progress event for feature editing."
   ],
   "changeLog": [{
     "version": "1.3.0",

@@ -1,10 +1,18 @@
-cmapi.channel["map.view.clicked"] = {
-  schema: {
+cmapi.channel["map.feature.clicked"] = {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.clicked",
     "description": "'Click', or report that map was clicked",
     "type": "object",
     "properties": {
+      "overlayId": {
+        "description": "The ID of the overlay this feature is loaded into.",
+        "type": "string"
+      },
+      "featureId": {
+        "description": "Unique identifier for the given feature clicked.",
+        "type": "string"
+      },
       "lat": {
         "type": "number",
         "description": "The latitude of the location that was clicked",
@@ -37,11 +45,15 @@ cmapi.channel["map.view.clicked"] = {
         "uniqueItems": true,
         "default": ["none"],
         "items": {
-            "enum": ["shift", "alt", "ctrl", "none"]
+          "enum": ["shift", "alt", "ctrl", "none"]
         }
       }
     },
     "required": ["lat", "lon", "button", "keys", "type"]
   },
-  "notes": []
+  "notes": [],
+  "changeLog": [{
+    "version": "1.3.0",
+    "change": "This channel is new"
+  }]
 };
