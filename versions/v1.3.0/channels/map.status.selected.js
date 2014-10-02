@@ -44,11 +44,6 @@ cmapi.channel["map.status.selected"] = {
                     }
                 }
             }
-        },
-        "messageId": {
-          "description": "This ID that should match the ID provided in the map.status.request message.",
-          "type": "string",
-          "status": "new"
         }
     },
     "required": ["overlayId", "selectedFeatures"]
@@ -58,8 +53,5 @@ cmapi.channel["map.status.selected"] = {
     "The payload sent out in map.selected.status is intended to be itself an array.",
 	"If the list of selected objects spans multiple overlays, then the payload will be an array of messages – one message for each overlay that contains selected objects."
   ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added initialization as a request option"
-  }]
+  "changeLog": []
 };
