@@ -85,12 +85,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
 	"required": ["dragDropData"]
-  },
-  notes: [
-    "Although marker, feature, and featureUrl are optional, one MUST be present.",
-	"If marker is included, the marker will be placed at the location of the drop.",
-	"Feature and featureUrl data will be placed at their natural location (equivalent to being loaded using map.feature.plot or map.feature.plot.url message)."
-  ]
+  }
 };;cmapi.channel["map.error"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -100,28 +95,23 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "sender": {
         "type": "string",
-		"default": " ",
         "description": "Sender ID of message that caused error."
       },
       "type": {
         "type": "string",
-		"default": " ",
         "description": "Type of message that caused error."
       },
       "msg": {
         "type": "object",
-		"default": " ",
         "description": "The message that caused error."
       },
       "error": {
         "type": "string",
-		"default": " ",
         "description": "A description of the error."
       }
     },
     "required": ["sender", "type", "msg", "error"]
-  },
-  "notes": []
+  }
 };;cmapi.channel["map.feature.clicked"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -140,14 +130,12 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "lat": {
         "type": "number",
         "description": "The latitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-90",
         "maximum": "90"
       },
       "lon": {
         "type": "number",
         "description": "The longitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-180",
         "maximum": "180"
       },
@@ -174,16 +162,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  },
-  {
-    "version": "1.3.0 RC3",
-    "change": "Added featureId and overlayId as required"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.deselected.batch.complete"] = {
   "schema": {
@@ -198,25 +177,18 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.deselected.batch"] = {
   "schema": {
@@ -227,26 +199,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "features": {
         "description": "An array of map.feature.deSelected payload objects.  See map.feature.deSelected for the object format and schema",
-        "type": "Array"
+        "type": "array"
       },
       "overlayId": {
         "description": "The default overlayId to be applied to all map.feature.deSelected objects in the payloads array that don't include an overlayId. I.e., similar behavior to CSS.  See map.feature.deSelected for more details",
-        "type": "string",
-        "default": ""
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
-        "type": "string",
-		"extension": "User Manipulation - Message Complete"
+        "type": "string"
       }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.deselected.complete"] = {
   "schema": {
@@ -261,25 +222,18 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.deselected"] = {
   "schema": {
@@ -306,24 +260,11 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "description": "The ID of the overlay which contains the de-selected object. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
         "type": "string",
         "default": "sending widget's ID"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["featureId"]
-  },
-  "notes": [
-    "Although both deSelectedId and deSelectedName are optional, one MUST be passed in if a sub-feature is to be identified. Generally, deSelectedId is preferred and deSelectedName is used when no deSelectedId is available.",
-    "The expected behavior resulting from this message is that this feature will be removed from the list of currently selected features (see map.status.selected below).  If the identified feature is not currently selected when the message is received, then the map widget SHOULD ignore this message (i.e., this message is idempotent)."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
+
 };
 ;cmapi.channel["map.feature.draw.complete"] = {
   schema: {
@@ -366,14 +307,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["featureId", "overlayId"]
-  },
-  "notes": [
-    "This is the format of the details object to be used in a map.message.complete event for feature drawing."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.draw.progress"] = {
   schema: {
@@ -382,84 +316,77 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "description": "Schema for the details object for a map.message.progress message during a map.feature.draw.",
     "type": "object",
     "properties": {
-        "overlayId": {
-          "description": "The id of the overlay the feature that is to be edited.",
-          "type": "string"
-        },
-        "featureId": {
-          "description": "The unique identifier for the feature to be edited. ",
-          "type": "string"
-        },
-        "type": {
-          "description": "Type of feature to be drawn.  Options are line, polygon, point or symbol.  This field may be overloaded to handle future draw types such as bufferedline, circle, aoi, etc.",
-          "type": "string"
-        },
+      "overlayId": {
+        "description": "The id of the overlay the feature that is to be edited.",
+        "type": "string"
+      },
+      "featureId": {
+        "description": "The unique identifier for the feature to be edited. ",
+        "type": "string"
+      },
+      "type": {
+        "description": "Type of feature to be drawn.  Options are line, polygon, point or symbol.  This field may be overloaded to handle future draw types such as bufferedline, circle, aoi, etc.",
+        "type": "string"
+      },
+      "properties": {
+        "description": "A properties object defining the appearance of the graphic being drawn",
+        "type": "object"
+      },
+      "feature": {
+        "type": "object",
+        "description": "Feature object based on what would be supplied in a map.feature.plot messages feature attribute"
+      },
+      "format": {
+        "type": "string",
+        "description": "Type of feature data based on the map.feature.plot type"
+      },
+      "updates": {
+        "type": "object",
+        "description": "This object contains the details of the changes made during the draw operation.",
         "properties": {
-          "description": "A properties object defining the appearance of the graphic being drawn",
-          "type": "object"
-        },
-        "feature": {
-          "type": "object",
-          "description": "Feature object based on what would be supplied in a map.feature.plot messages feature attribute"
-        },
-        "format": {
-          "type": "string",
-          "description": "Type of feature data based on the map.feature.plot type"
-        },
-        "updates": {
-            "type": "object",
-            "description": "This object contains the details of the changes made during the draw operation.",
-            "properties": {
-                "type":{
-                    "enum": ["add", "update", "remove"],
-                    "description": "This field identifies the operation performed."
+          "type": {
+            "enum": ["add", "update", "remove"],
+            "description": "This field identifies the operation performed."
+          },
+          "indices": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "additionalItems": true,
+            "description": "This field is an array of integer indexes identifying the coordinates affected. This array can be empty if the operation applies to property other than a coordinate."
+          },
+          "coordinates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "lat": {
+                  "type": "number",
+                  "maximum": 90.0,
+                  "minimum": -90.0,
+                  "description": "The latitude component of the coordinate."
                 },
-                "indices":{
-                    "type": "array",
-                    "items":{
-                        "type": "integer"
-                    },
-                    "additionalItems": true,
-                    "description": "This field is an array of integer indexes identifying the coordinates affected. This array can be empty if the operation applies to property other than a coordinate."
+                "lon": {
+                  "type": "number",
+                  "maximum": 180.0,
+                  "minimum": -180.0,
+                  "description": "The longitude component of the coordinate."
                 },
-                "coordinates":{
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "lat":{
-                                "type": "number",
-                                "maximum": 90.0,
-                                "minimum": -90.0,
-                                "description": "The latitude component of the coordinate."
-                            },
-                            "lon":{
-                                "type": "number",
-                                "maximum": 180.0,
-                                "minimum": -180.0,
-                                "description": "The longitude component of the coordinate."
-                            },
-                            "alt":{
-                                "type": "number",
-                                "description": "The optional altitude component of the coordinate."
-                            }
-                        }
-                    },
-                    "additionalItems": true,
-                    "description": "This field is an array of all the objects coordiantes. Each coordinate object is as follows {lat: number, lon: number, [alt: number]}."
+                "alt": {
+                  "type": "number",
+                  "description": "The optional altitude component of the coordinate."
                 }
-            }
+              }
+            },
+            "additionalItems": true,
+            "description": "This field is an array of all the objects coordiantes. Each coordinate object is as follows {lat: number, lon: number, [alt: number]}."
+          }
         }
+      }
     },
     "required": ["featureId", "overlayId"]
-  },
-  "notes": [
-    "This is the format of the details object to be used in a map.message.progress event for feature drawing."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.draw"] = {
   "schema": {
@@ -470,8 +397,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "overlayId": {
         "description": "The ID of the overlay the feature to be drawn should be loaded into. If an overlay with this ID already exists, the new feature will merged into existing overlay; otherwise, a new overlay is created. If no overlayId is included, default overlay with ID equal to sending widget's ID is used. If an overlay exists, it will retain its status (whether visible or hidden). If an overlay is created, it will be made visible.",
-        "type": "string",
-		"default": "sending widget's ID"
+        "type": "string"
       },
       "featureId": {
         "description": "The unique identifier for the feature to be drawn. ",
@@ -484,7 +410,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "type": {
         "description": "Type of feature to be drawn.  Supported types include 'line', 'polygon', 'point' or 'symbol'.  Optional types include 'bufferedline', 'circle', 'aoi', and 'airspace'.  Additional types may be added in the future.",
         "type": "string",
-		"default": "line"
+        "default": "line"
       },
       "name": {
         "description": "Name for the given feature data. Note that feature names do not have to be unique and are intended for display purposes only.",
@@ -502,22 +428,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["featureId", "messageId"]
-  },
-  "notes": [
-    "If a widget sends a map.feature.draw message, the map SHALL go into draw mode.",
-    "When the map is placed in draw mode, the map SHALL issue a map.message.progress message using the messageId provided by the originating map.feature.draw request and the status equal 'start', to indicate to client widgets that the draw operation has started.",
-    "While in draw mode, the map SHALL send a map.message.progress message each time the user adds, deleted, or modifies points/vertices using the messageId provided by the originating map.feature.draw message and the status equal 'update'.",
-    "While in draw mode, as the user inputs, deletes, or updates points, the results SHALL be rendered on the map.",
-    "While the map is in draw mode, it SHOULD ignore messages that manipulate the map view, such as map.view.set, to allow the user to focus on the drawing operation without the map view shifting on them.",
-    "If the drawing is completed, the map SHALL initiate a map.message.complete message with the messageId of the original map.feature.draw request AND the map SHALL continue to display the feature that was drawn.",
-    "If the drawing is completed, the map SHALL issue a map.feature.plot message to notify all widgets listening that a new feature has been generated.  The intent is that widgets other than the one issuing the draw message will not be aware of the new feature until it has been successfully drawn",
-    "A drawing may be cancelled by issuing a map.message.cancel message, or via the map user interface.",
-    "If the draw mode is cancelled before the drawing is completed, the map SHALL issue a map.message.complete message with the messageId of the original map.feature.edit message and a status of 'cancelled' AND the feature being drawn SHALL be removed from the map"
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.edit.complete"] = {
   schema: {
@@ -552,15 +463,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["featureId", "overlayId"]
-  },
-  "notes": [
-    "This is the format of the details object to be used in a map.message.complete message for feature editing.",
-    "In the event that the edit is being cancelled, these fields shall contain the state of the feature prior to the map.feature.edit."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  } 
 };
 ;cmapi.channel["map.feature.edit.progress"] = {
   schema: {
@@ -639,14 +542,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
     },
     "required": ["featureId", "overlayId"]
-  },
-  "notes": [
-    "This is the format of the details object to be used in a map.message.progress event for feature editing."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.edit"] = {
   schema: {
@@ -670,21 +566,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["featureId", "messageId"]
-  },
-  notes: [
-    "If a widget sends a map.feature.edit message, the map widget SHALL go into edit mode for the feature identified by the featureId.",
-    "When the feature is placed into edit mode the Map SHALL issue a map.message.progress message with the status equal 'start' using the messageId provided by the originating edit request, along with all the feature properties set to the current values in order to indicate to client widgets that the edit operation has started.",
-    "If the edit mode was initiated by the map itself (i.e., not via an external widget), then the messageId sent in the map.message.progress and map.message.complete messages will be generated by the map.",
-    "During edit mode, for each user modification of the feature (e.g., moving a point, adding some text, adding a new point, etc.) a map SHALL send a map.message.progress message with the status equal 'update'.  This SHALL occur each time the feature is manipulated during an edit. For instance, if a point of a line is moved to a new location, a map.message.progress message will be sent.",
-    "An edit procedure may be cancelled by issuing a map.message.cancel message",  
-    "If the edit mode is cancelled for any reason before the edit is complete, the map SHALL issue a map.message.complete message with the messageId of the original map.feature.edit message and a status of 'cancelled'.  The details object of the map.message.complete message SHALL contain the original feature (i.e., before the edit began)",
-    "If the edit is completed, the map SHALL issue a map.message.complete with the messageId of the original map.feature.edit message and the details SHALL describe the edited feature",
-    "If the edit is completed, the map SHALL additionally send a map.feature.plot message so that other widgets receive the final state of the edited feature.  The map SHALL NOT issue a map.feature.plot message if the edit was cancelled."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.get"] = {
   "schema": {
@@ -714,13 +596,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["features, messagId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
-
+  }
 };
 ;cmapi.channel["map.feature.hide.complete"] = {
   "schema": {
@@ -735,25 +611,18 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.hide"] = {
   "schema": {
@@ -764,28 +633,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "overlayId": {
         "description": "The ID of the overlay where the feature to be hidden is found. If no overlayId is included, default overlay with ID equal to sending widget's ID is assumed.",
-        "type": "string",
-        "default": "sending widget's ID"
+        "type": "string"
       },
       "featureId": {
         "description": "The ID of the feature to be hidden.",
-        "type": "string",
-        "default": "N/A"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
+        "type": "string"
       }
     },
     "required": ["featureId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.mousedown"] = {
   "schema": {
@@ -805,46 +661,37 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "lat": {
         "type": "number",
         "description": "The latitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-90",
         "maximum": "90"
       },
       "lon": {
         "type": "number",
         "description": "The longitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-180",
         "maximum": "180"
       },
       "button": {
-        "description": "Which mouse button was clicked.  Allowable values are 'right', 'left', and 'middle'.  Default value is 'left'.",
-        "type": ["string", "enum"],
+        "description": "Which mouse button was clicked.",
+        "type" : "string",
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "type": {
-        "description": "The type of click event. Allowable values are 'single' and 'double'.  Default value is 'single'.",
-        "type": ["string", "enum"],
+        "description": "The type of click event.",
+        "type" : "string",
         "enum": ["single", "double"],
         "default": "single"
       },
       "keys": {
-        "description": "An array of keys pressed during the click event.  Allowable values are 'alt', 'ctrl', 'shift', and 'none'.  Default value is 'none'.",
-        "type": ["sring", "enum"],
+        "description": "An array of keys pressed during the click event. ",
         "uniqueItems": true,
-        "default": ["none"],
-        "items": {
-          "enum": ["shift", "alt", "ctrl", "none"]
-        }
+        "type" : "string",
+        "default": "none",
+        "enum": ["shift", "alt", "ctrl", "none"]
       }
     },
     "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.mouseup"] = {
   "schema": {
@@ -864,56 +711,48 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "lat": {
         "type": "number",
         "description": "The latitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-90",
         "maximum": "90"
       },
       "lon": {
         "type": "number",
         "description": "The longitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-180",
         "maximum": "180"
       },
       "button": {
-        "description": "Which mouse button was clicked.  Allowable values are 'right', 'left', and 'middle'.  Default value is 'left'.",
-        "type": ["string", "enum"],
+        "description": "Which mouse button was clicked. ",
+        "type" : "string",
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "type": {
-        "description": "The type of click event. Allowable values are 'single' and 'double'.  Default value is 'single'.",
-        "type": ["string", "enum"],
+        "description": "The type of click event. ",
+        "type" : "string",
         "enum": ["single", "double"],
         "default": "single"
       },
       "keys": {
-        "description": "An array of keys pressed during the click event.  Allowable values are 'alt', 'ctrl', 'shift', and 'none'.  Default value is 'none'.",
-        "type": ["sring", "enum"],
-        "uniqueItems": true,
-        "default": ["none"],
-        "items": {
-          "enum": ["shift", "alt", "ctrl", "none"]
-        }
+        "description": "An array of keys pressed during the click event.",
+        "default": "none",
+        "type" : "string",
+        "enum": ["shift", "alt", "ctrl", "none"]
       }
     },
     "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
-;cmapi.channel["cmapi.dataformat.symbol.2525b"] = {
+;cmapi.channel["map.feature.plot.2525b"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
-    "title": "map.feature.plot - MIL-STD-2525 Revision B Change II",
+    "title": "map.feature.plot.2525b",
     "description": "This optional extension defines the format of the map.feature.plot channel payload for MIL-STD-2525 Revision B Change II features. The feature attibute below defines the format and content of the features attibute of the map.feature.plot. The properties.modifiers attribute defines the MIL-STD-2525 Revision B Change II modifiers that the map implementation shall apply to the feature.",
     "type": "object",
+    "required": ["format", "feature"],
     "properties": {
       "format": {
+        "type" : "string",
         "enum": ["2525b"],
         "description": "Defines the feature format as a CMAPI Symbol with the specific type of MIL-STD-2525 Revision B Change II."
       },
@@ -925,15 +764,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "properties": {
           "symbolCode": {
             "type": "string",
-            "description": "The 15 character MIL-STD-2525 Revision B Change II symbol code.",
-            "minimum": 1
+            "description": "The 15 character MIL-STD-2525 Revision B Change II symbol code."
           },
           "type": {
+            "type" : "string",
             "enum": ["point", "lineString"],
             "description": "Defines the geojson format of the coordinates in the coordinate attribute.  Polygons are not allowed for this symbol type"
           },
           "coordinates": {
-            "type": "object, array",
+            "type": "array",
             "description": "This attribute MUST contain a valid geojson coordinate structure for the type indicated in the type attribute. See http://geojson.org/geojson-spec.html for the valid format."
           }
 
@@ -1129,22 +968,21 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
       }
     }
-  },
-  notes: []
+  }
 };
-;cmapi.channel["cmapi.dataformat.symbol.2525c"] = {
+;cmapi.channel["map.feature.plot.2525c"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
-    "title": "map.feature.plot - MIL-STD-2525 Revision C",
+    "title": "map.feature.plot.2525c",
     "description": "This optional extension defines the format of the map.feature.plot channel payload for MIL-STD-2525 Revision C features. The feature attibute below defines the format and content of the features attibute of the map.feature.plot. The properties.modifiers attribute defines the MIL-STD-2525 Revision C modifiers that the map implementation shall apply to the feature.",
     "type": "object",
+    "required": ["format", "feature"],
     "properties": {
       "format": {
-        "type": {
+        "type" : "string",
           "enum": ["2525c"],
           "description": "Defines the feature format as a CMAPI Symbol with the specific type of MIL-STD-2525 Revision B Change II."
-        }
       },
       "feature": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1154,15 +992,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "properties": {
           "symbolCode": {
             "type": "string",
-            "description": "The 15 character MIL-STD-2525 Revision C symbol code.",
-            "minimum": 1
+            "description": "The 15 character MIL-STD-2525 Revision C symbol code."
           },
           "type": {
+            "type" : "string",
             "enum": ["point", "lineString"],
             "description": "Defines the geojson format of the coordinates in the coordinate attribute.  Polygons are not allowed for this symbol type"
           },
           "coordinates": {
-            "type": "object, array",
+            "type": "array",
             "description": "This attribute MUST contain a valid geojson coordinate structure for the type indicated in the type attribute. See http://geojson.org/geojson-spec.html for the valid format."
           }
 
@@ -1358,14 +1196,13 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
       }
     }
-  },
-  notes: []
+  }
 };
-;cmapi.channel["cmapi.dataformat.aoi"] = {
+;cmapi.channel["map.feature.plot.aoi"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
-    "title": "map.feature.plot - Area of Interest (AOI)",
+    "title": "map.feature.plot.aoi",
     "description": "The Common Map Widget API supports Areas of Interest (AOIs) by extending the GeoJSON specification by adding the “aoi” object to the “Properties” object of the GeoJSON specification.  This extended object ONLY applies to the GeoJSON Feature object.  Note that when passing AOIs, the base GeoJSON object MUST be a single feature object, and MUST NOT be a Feature Collection object.",
     "type": "object",
     "required": ["aoi"],
@@ -1382,6 +1219,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "minimum": 1
           },
           "type": {
+            "type" : "string",
             "enum": ["bbox", "polygon", "line", "point-radius"],
             "description": "Defines how to interpret the passed in AOI geometry.  Valid values are “bbox”, “polygon”, “line”, and “point-radius”. <ul> <li>If type = “bbox”:<br/><ul><li>AOI is interpreted as a geospatial rectangle.  The bbox MUST NOT be allowed to be manipulated into a different geometric shape (e.g. a trapezoid).</li><li>geoJSON feature geometry type MUST be a polygon.</li><li>“buffer” SHALL be ignored.</li></ul></li><li>If type = “line”:<br/><ul><li>geoJSON feature geometry type MUST be a line.</li><li>“buffer” MUST be greater than 0.</li><li>“buffer” is interpreted as distance in meters perpendicular to both sides of the line.  Buffer does not extend past the start and end points of the actual line (i.e., no “end-caps” are supported). </li></ul></li><li>If type = “point-radius”:<br/><ul><li>geoJSON feature geometry type MUST be a point.</li><li>“buffer” MUST be greater than 0.</li><li>“buffer” is interpreted as the radius in meters from the point. </li></ul></li><li>If type = “polygon”:<br/><ul><li>geoJSON feature geometry type MUST be a polygon.</li><li>“buffer” MAY be included.</li><li>“buffer” is interpreted as the distance in meters outside of the polygon boundaries that the AOI is to extend. </li></ul> </ul>"
           }
@@ -1390,11 +1228,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "required": ["type"]
       }
     }
-  },
-  notes: [
-    "If sending an AOI, the GeoJSON object MUST be a single GeoJSON Feature object with either a Line, Point, or Polygon geometry type.  MulitLineStrings, MultiPolygons, and GeometryCollections are NOT supported for AOIs.",
-    "For example of AOI, see map.feature.plot Example 3."
-  ]
+  } 
 };;cmapi.channel["map.feature.plot.batch.complete"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1408,18 +1242,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature data.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "name": {
                   "description": "Name for the given feature data.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "format": {
                   "description": "Data format of the given feature.",
@@ -1432,8 +1263,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
                     "object",
                     "string"
                   ],
-                  "additionalProperties": true,
-                  "default": "N/A"
+                  "additionalProperties": true
                 },
                 "readOnly": {
                   "description": "Valid values are true or false. If true, then the end user MUST NOT be able to edit the feature from the map's user interface, if false the end user MAY edit the feature from the map’s user interface. Default value is true.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.",
@@ -1444,25 +1274,13 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
                   "additionalProperties": true,
                   "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
                   "type": "object"
-                },
-                "menuId": {
-                  "description": "The id of a context menu.",
-                  "type": "string",
-                  "extension": "User Manipulation - Context Menus"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [
-    'An implementation may choose to return updated values based on the actions taken by the map. IE - add required modifiers for milstd symbols, or default line and fill color if not provided.'
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.plot.batch"] = {
   "schema": {
@@ -1473,46 +1291,27 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "features": {
         "description": "An array of map.feature.plot payloads minus the messageId property.  See map.feature.plot for the object format and schema",
-        "type": "Array"
+        "type": "array"
       },
       "overlayId": {
         "description": "The default overlayId to be applied to all feature objects in the features array that don’t include an overlayId. I.e., similar behavior to CSS.  See map.feature.plot for more details",
-        "type": "string",
-        "default": ""
+        "type": "string"
       },
       "format": {
         "description": "The default format to be applied to all feature objects in the features array that don’t include a format value. I.e., similar behavior to CSS.  See map.feature.plot for definition of format property.",
-        "type": "string",
-        "default": ""
+        "type": "string"
       },
       "zoom": {
         "description": "Whether the map should zoom to the newly loaded feature data.  See map.feature.plot for definition of format property.",
-        "type": "boolean",
-        "default": ""
+        "type": "boolean"
       },
       "readOnly": {
         "description": "The default value for readOnly to be applied to all feature objects in the features array that don’t include a readOnly value. I.e., similar behavior to CSS.  See map.feature.plot for definition of readOnly property.",
-        "type": "boolean",
-        "default": ""
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
-        "type": "string",
-        "extension": "User Manipulation - Message Complete"
-      },
-      "menuId": {
-        "description": "The ID of the default menu to be applied to all feature objects in the features array that don't include a menuId value. I.e., similar behaviour to CSS.  See map.feature.plot for definition of menuId property.",
-        "type": "string",
-        "extension": "User Manipulation - Context Menus"
+        "type": "boolean"
       }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.plot.complete"] = {
   "schema": {
@@ -1527,18 +1326,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature data.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "name": {
                   "description": "Name for the given feature data.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "format": {
                   "description": "Data format of the given feature.",
@@ -1551,8 +1347,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
                     "object",
                     "string"
                   ],
-                  "additionalProperties": true,
-                  "default": "N/A"
+                  "additionalProperties": true
                 },
                 "readOnly": {
                   "description": "Valid values are true or false. If true, then the end user MUST NOT be able to edit the feature from the map's user interface, if false the end user MAY edit the feature from the map’s user interface. Default value is true.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.",
@@ -1563,31 +1358,19 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
                   "additionalProperties": true,
                   "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
                   "type": "object"
-                },
-                "menuId": {
-                  "description": "The id of a context menu.",
-                  "type": "string",
-                  "extension": "User Manipulation - Context Menus"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [
-    'An implementation may choose to return updated values based on the actions taken by the map. IE - add required modifiers for milstd symbols, or default line and fill color if not provided.'
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
-;cmapi.channel["cmapi.dataformat.geojson"] = {
-  schema: {
+;cmapi.channel["map.feature.plot.geojson"] = {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
-    "title": "map.feature.plot - GeoJSON",
+    "title": "map.feature.plot.geojson",
     "description": "The GeoJSON specification can be found at <a href=\"http://geojson.org/geojson-spec.html\" >http://geojson.org/geojson-spec.html</a>.  The Common Map Widget API specification extends the GeoJSON specification by adding the “style”, “name”, “id”, “description“, and “timePrimitive“ objects to the “Properties” object of the GeoJSON specification.  These extended objects ONLY apply to the GeoJSON Feature object.",
     "type": "object",
     "properties": {
@@ -1729,8 +1512,12 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties": {
               "url": {
                 "type": "uri",
-                "description": "URL to an image file that will be used for the icon for a point.",
-                "default": "If no URL is provided, result will be map’s default icon."
+                "description": "URL to an image file that will be used for the icon for a point. If no URL is provided, result will be map’s default icon.",
+              },
+              "size": {
+                "type": "integer",
+                "description": "Size of the icon in pixels",
+                "default": 32
               }
             },
             "required": ["url"]
@@ -1738,10 +1525,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
       }
     }
-  },
-  notes: [
-    'See <a href=\"http://www.w3.org/wiki/CSS3/Color/RGBA" >http://www.w3.org/wiki/CSS3/Color/RGBA</a> for more info on RGBA.'
-  ]
+  }
 };;cmapi.channel["map.feature.plot"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1752,17 +1536,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "overlayId": {
         "description": "The ID of the overlay this feature should be loaded into. If an overlay with this ID already exists, the new feature is merged into existing overlay; otherwise, a new overlay is created. If no overlayId is included, default overlay with ID equal to sending widget's ID is used. If an overlay exists, it will retain its status (whether visible or hidden). If an overlay is created, it will be made visible.",
         "type": "string",
-        "default": "sending widget's ID"
+        "default": "sender.id"
       },
       "featureId": {
         "description": "Unique identifier for the given feature data. Note that feature IDs MUST be unique within a given overlay. Reusing a feature ID will be considered a reload, with the original feature data being removed and replaced by the new feature data.",
-        "type": "string",
-        "default": "N/A"
+        "type": "string"
       },
       "name": {
         "description": "Name for the given feature data. Note that feature names do not have to be unique and are intended for display purposes only.",
-        "type": "string",
-        "default": "N/A"
+        "type": "string"
       },
       "format": {
         "description": "Data format of the given feature. All map implementations MUST support kml and geojson.  If no format is specified, the format defaults to kml. A list of formats supported by a particular map implementation may be obtained by querying the map using the map.status channel (see map.status).",
@@ -1775,8 +1557,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
           "object",
           "string"
         ],
-        "additionalProperties": true,
-        "default": "N/A"
+        "additionalProperties": true
       },
       "zoom": {
         "description": "true if map should zoom to newly loaded feature data, false if not. Default is false.",
@@ -1790,49 +1571,22 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       },
       "properties": {
         "additionalProperties": true,
-        "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
+        "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without polluting or conflicting with the CMAPI specified payload of the message.",
         "type": "object",
         "status": "new"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
-      },
-      "menuId": {
-        "description": "The id of a context menu. If populated, the context menu MUST have already been pre-registered via the map.menu.create channel. If populated, the context menu associated with this id will appear when the feature is 'right-clicked', allowing the user to invoke actions on the feature which will be handled by the widget which originally registered the context menu. If no menuId is assigned, the feature will not have a context menu associated when right-clicked.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": ["featureId", "feature"]
-  },
-  "notes": [
-    'If using the channel shouter to send a feature, embedded quotes in KML MUST be escaped with a backward slash (that is, use \\" instead of ").',
-    'If sending GeoJSON follow the guidance in Appendix B for style information.',
-    'When plotting an Area of Interest, the format MUST be geojson AND the aoi object defined in Appendix B MUST be included as part of the GeoJSON parameters object.'
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional properties object as part of the API core"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional menuId parameter to support user manipulation extension"
-  }]
+  }
 };
-;cmapi.channel["cmapi.dataformat.symbol"] = {
+;cmapi.channel["map.feature.plot.symbol"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
-    "title": "map.feature.plot - Symbology",
+    "title": "map.feature.plot.symbol",
     "description": "This optional extension defines the format of the map.feature.plot channel payload for symbols. The feature attibute below defines the format and content of the features attibute of the map.feature.plot. The properties.modifiers attribute defines the modifiers that the map implementation shall apply to the feature. This schema provides a general framework for different symbology standards such as MIL-STD-2525 and NATO APP-6",
     "type": "object",
-    "required": ["aoi"],
+    "required": ["feature"],
     "properties": {
       "feature": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1850,7 +1604,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "description": "Defines the geojson format of the coordinates in the coordinate attribute."
           },
           "coordinates": {
-              "type": "object, array",
+              "type": "array",
               "description": "This attribute MUST contain a valid geojson coordinate structure for the type indicated in the type attribute. See http://geojson.org/geojson-spec.html for the valid format."
           }
 
@@ -1863,17 +1617,11 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "description": "The properties attribute of the map.feature.plot payload. Which in addition to other attributes that may be present, it must contain the following attribute.",
         "type": "object",
         "properties": {
-          "modifiers": {
-            "type": "object",
-            "description": "The symbol modifiers required for the specific symbology set.  This will defined in the symbology specific sub-appendice.",
-            
-          }
-        },
-        "required": ["modifiers"]
+          
+        }
       }
     }
-  },
-  notes: []
+  }
 };;cmapi.channel["map.feature.plot.url.complete"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1887,18 +1635,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature data.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "name": {
                   "description": "Name for the given feature data.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "format": {
                   "description": "Data format of the given feature.",
@@ -1907,8 +1652,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
                 },
                 "url": {
                   "description": "The url provided in the original message.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "params": {
                   "description": "The parameters passed in the original message.",
@@ -1920,13 +1664,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
     },
     "required": ["features"]
-  },
-  "notes": [
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.plot.url"] = {
   "schema": {
@@ -1935,64 +1673,39 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "description": "Have the map plot feature data from a Uniform Resource Locator (URL).",
     "type": "object",
     "properties": {
-      "overlayId": {
-        "description": "The ID of the overlay this feature should be loaded into. If an overlay with this ID already exists, new feature is merged into existing overlay; otherwise, a new overlay will be created. If no overlayId is included, default overlay with ID equal to sending widget's ID is used. If overlay exists, it will retain its status (whether visible or hidden). If overlay is created, it will be made visible.",
-        "required": false,
-        "type": "string",
-        "default": "sending widget's ID"
-      },
       "featureId": {
         "description": "Unique identifier for the given feature data. Note that feature ids must be unique within a given overlay. Reusing a feature id will be considered a reload with the original feature data being removed and replaced by the new feature data.",
-        "required": true,
-        "type": "string",
-        "default": "N/A"
-      },
-      "name": {
-        "description": "Name for the given feature data. Note that feature names do not have to be unique and are intended for display purposes only.",
-        "required": false,
-        "type": "string",
-        "default": "N/A"
-      },
-      "format": {
-        "description": "Data format of the given feature. If no format is specified, the format defaults to kml. A list of formats supported by a particular map implementation can be obtained by querying the map using the map.status channel (see map.status). Note that for this version of the Common Map Widget API, all map implementations MUST support KML, GeoJSON, and WMS (GetMap only).",
-        "required": false,
-        "type": "string",
-        "default": "kml"
+        "type": "string"
       },
       "url": {
         "description": "URL from which to retrieve the feature data to load onto the map",
-        "required": true,
+        "type": "string"
+      },
+      "overlayId": {
+        "description": "The ID of the overlay this feature should be loaded into. If an overlay with this ID already exists, new feature is merged into existing overlay; otherwise, a new overlay will be created. If no overlayId is included, default overlay with ID equal to sending widget's ID is used. If overlay exists, it will retain its status (whether visible or hidden). If overlay is created, it will be made visible.",
+        "type": "string"
+      },
+      "name": {
+        "description": "Name for the given feature data. Note that feature names do not have to be unique and are intended for display purposes only.",
+        "type": "string"
+      },
+      "format": {
+        "description": "Data format of the given feature. If no format is specified, the format defaults to kml. A list of formats supported by a particular map implementation can be obtained by querying the map using the map.status channel (see map.status). Note that for this version of the Common Map Widget API, all map implementations MUST support KML, GeoJSON, and WMS (GetMap only).",
         "type": "string",
-        "default": "N/A"
+        "default": "kml"
       },
       "params": {
         "description": "A JSON object containing a list of parameters to be passed to the server along with the URL when loading WMS data. Params object is ignored unless format is set to wms.  Note that request, exceptions, SRS/CRS, width, height, and bbox params should not be passed in as they are determined by the map as needed and will be ignored if passed. Params as passed will be concatenated to the URL and are expected to follow the WMS specification.   All parameters passed in must not be URL encoded (the map widget implementation will URL encode all passed in params).",
-        "type": "object",
-        "required": [],
-        "default": "N/A"
+        "type": "object"
       },
       "zoom": {
         "description": "true if map should zoom to newly loaded feature data, false if not. Default is false.  Ignored when loading WMS data.",
-        "required": false,
         "type": "boolean",
         "default": false
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["featureId", "url"]
-  },
-  "notes": [
-    "For version 1.1.0 of the API, featureName was changed to name for consistency with feature.plot.  In order to maintain backwards compatibility with version 1.0.* of the API, it is suggested that developers on the receiving side of these messages should look for the old featureName if name is not found in the message."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }] 
+  }
 };
 ;cmapi.channel["map.feature.selected.batch.complete"] = {
   "schema": {
@@ -2007,25 +1720,18 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.selected.batch"] = {
   "schema": {
@@ -2040,8 +1746,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       },
       "overlayId": {
         "description": "The default overlayId to be applied to all map.feature.selected objects in the payloads array that don't include an overlayId. I.e., similar behavior to CSS.  See map.feature.selected for more details",
-        "type": "string",
-        "default": ""
+        "type": "string"
       },
       "messageId": {
         "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
@@ -2050,12 +1755,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.selected.complete"] = {
   "schema": {
@@ -2070,25 +1770,18 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.selected"] = {
   "schema": {
@@ -2098,29 +1791,19 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "selectedId": {
         "description": "The ID of the object to be selected (may be a sub-feature contained within the aggregate feature data with the given featureId).",
-        "type": "string",
-        "default": "N/A"
+        "type": "string"
       },
       "selectedName": {
         "description": "The name of the selected object.",
-        "type": "string",
-        "default": "N/A"
+        "type": "string"
       },
       "featureId": {
         "description": "The ID of the feature that contains the selected object.",
-        "type": "string",
-        "default": "N/A"
+        "type": "string"
       },
       "overlayId": {
         "description": "The ID of the overlay which contains the selected object. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
-        "type": "string",
-        "default": "sending widget's ID"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
+        "type": "string"
       }
     },
     "required": ["featureId"]
@@ -2128,14 +1811,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
   "notes": [
     "Although both selectedId and selectedName are optional, one MUST be passed in if a sub-feature is to be identified. Generally, selectedId is preferred and selectedName is used when no selectedId is available.",
     "The expected behavior resulting from this message is that this feature will be added to the list of currently selected features (see map.status.selected below).  If the identified feature is currently selected when the message is received, then the map widget SHOULD ignore this message (i.e., this message is idempotent)."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }, {
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  ]
 };
 ;cmapi.channel["map.feature.show.complete"] = {
   "schema": {
@@ -2163,12 +1839,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.show"] = {
   "schema": {
@@ -2184,25 +1855,16 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       },
       "featureId": {
         "description": "The ID of the feature to be shown.",
-        "type": "string",
-        "default": "N/A"
+        "type": "string"
       },
       "zoom": {
         "description": "true if map should zoom to the shown feature, false if not. Default is false.",
         "type": "boolean",
         "default": false
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["featureId"]
-  },
-  "notes": [],
-  "changeLog": []
+  }
 };
 ;cmapi.channel["map.feature.unplot.batch.complete"] = {
   "schema": {
@@ -2230,12 +1892,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.unplot.batch"] = {
   "schema": {
@@ -2252,20 +1909,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "description": "when included at the array level, this value will be applied to all map.feature.unplot objects in the features array that don't include an overlayID. I.e., similar behavior to CSS.  See map.feature.unplot for definition of this property",
         "type": "string",
         "default": ""
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
-        "type": "string",
-		"extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.unplot.complete"] = {
   "schema": {
@@ -2280,25 +1927,18 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.unplot"] = {
   "schema": {
@@ -2325,12 +1965,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["featureId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.update.complete"] = {
   "schema": {
@@ -2391,23 +2026,13 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
                   "description": "The parameters passed in the original message.",
                   "type": "boolean",
                   "default": true
-                },
-                "menuId": {
-                  "description": "The id of a context menu.",
-                  "type": "string",
-                  "extension": "User Manipulation - Context Menus"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.feature.update"] = {
   schema: {
@@ -2435,27 +2060,11 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "description": "This represents the ID of an overlay to move the feature to.  If this attribute is provided, the feature MUST be removed from its current overlay and added to the overlay with this ID.  If an overlay with an ID of newOverlayId does not exist, a new overlay will be created with an ID of newOverlayId, and the feature to be updated will be moved to the overlay identified by newOverlayId.",
         "type": "string",
         "default": "N/A"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["featureId"]
   },
-  "notes": ["For updates to a feature's geometry or other properties no covered in the update channel, a map.feature.plot with the same overlayId and feature Id should be used to replace an existing feature."],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional properties object"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional menuId parameter"
-  }]
+  "notes": ["For updates to a feature's geometry or other properties no covered in the update channel, a map.feature.plot with the same overlayId and feature Id should be used to replace an existing feature."]
 };
 ;cmapi.channel["map.get.complete"] = {
     schema: {
@@ -2513,13 +2122,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["menuId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
-
+  }
 };
 ;cmapi.channel["map.menu.clicked"] = {
   "schema": {
@@ -2575,11 +2178,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["menuId", "menuItemId"]
   },
   "notes": ["When the user selects a context menu item, the map MUST send a map.menu.clicked event with the appropriately registered menuId and menuItemId so that the widget that created the context menu can take action on the event"
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  ]
 
 };
 ;cmapi.channel["map.menu.create"] = {
@@ -2638,11 +2237,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "If the scope of the menu is 'objectinstance' then the developer SHOULD assign the id of the created menu to specific feature instances via the map.feature.plot, map.feature.plot.url, map.feature.plot.batch or map.feature.update channels and/or to the specific overlay instances via the map.overlay.create or map.overlay.update channels",
     "When the user right clicks on the map, an overlay or a feature (or the overlay/feature listing in a tree type component), the appropriately registered context menu MUST appear and it's associated menuItems MUST all be selectable by the user.",
     "When the user selects a menu item, the map MUST send a map.menu.clicked event with the appropriately registered menuId and menuItemId so that the widget that created the context menu can take action on the event"
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  ]
 
 };
 ;cmapi.channel["map.menu.remove"] = {
@@ -2661,13 +2256,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["menuId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
-
+  }
 };
 ;cmapi.channel["map.message.cancel"] = {
   "schema": {
@@ -2687,11 +2276,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "When the map widget receives a message over the map.message.cancel channel it SHALL attempt to cancel the indicated previous message (if possible).",
     "IF the map widget was able to successfully cancel the indicated previous message, it SHALL ensure that the applicable map.message.complete message is returned with a status = “cancelled”.",
     "If it was NOT able to cancel the indicated previous message, then it will have no effect on the applicable map.message.complete message (i.e., the applicable map.message.complete message will be sent as if no map.message.cancel message was ever sent).  In other words, the map.message.cancel message is a one-way message event that requires no actual return, but only affects pending or outstanding messages and does not require any additional response messages."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  ]
 };
 ;cmapi.channel["map.message.complete"] = {
   "schema": {
@@ -2739,12 +2324,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["failures", "messageId", "status"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };
 ;cmapi.channel["map.message.progress"] = {
   "schema": {
@@ -2768,11 +2348,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     },
     "required": ["messageId", "details"]
   },
-  "notes": ["The messageId's match in the below examples.  This allows the widget receiving the map.message.progress message to identify the original request message the progress applies to."],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  "notes": ["The messageId's match in the below examples.  This allows the widget receiving the map.message.progress message to identify the original request message the progress applies to."]
 };
 ;cmapi.channel["map.overlay.cluster.activate"] = {
   schema: {
@@ -2787,8 +2363,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": []
-  },
-  notes: []
+  }
 };;cmapi.channel["map.overlay.cluster.deactivate"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2802,8 +2377,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": []
-  },
-  notes: []
+  }
 };;cmapi.overview["map.overlay.cluster.overview"] = {
 	"title" : "Feature Clustering",
 	"sections": [{
@@ -2829,8 +2403,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": []
-  },
-  notes: []
+  }
 };;cmapi.channel["map.overlay.cluster.set"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2852,7 +2425,6 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "clusterStyle": {
         "description": "Styling information to be applied to cluster objects. All string based values (i.e., label, title, description, iconStyle.url) MUST support replacement as detailed in Appendix A.",
         "type": "object",
-		"default": "N/A",
         "properties": {
           "label": {
             "description": "The label to be placed on the clustered item. This SHOULD be rendered adjacent to an icon when using iconStyle or inside the point when using pointStyle. If no value is specified, then the map MUST NOT display a label.",
@@ -2906,7 +2478,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
               },
               "radius": {
                 "description": "Integer value representing the radius of the clustered point in pixels. Default value is 6.",
-                "type": ["integer","string"],
+                "type": ["integer", "string"],
                 "default": 6
               }
 
@@ -2929,16 +2501,16 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "overlayId": {
         "description": "The ID of the overlay where the clustering rule is to be applied. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
         "type": "string",
-		"default": "sending widget's ID"
+        "default": "sending widget's ID"
       }
     },
     "required": []
-  },
-  notes: []
-};;cmapi.channel["map.overlay.create.complete"] = {
+  }
+};
+;cmapi.channel["map.overlay.create.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
+    "title": "Schema for map.overlay.create map.message.complete Details object",
     "description": "Schema for the details object for a map.message.complete message after a map.overlay.create.",
     "type": "object",
     "properties": {
@@ -2968,14 +2540,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["overlayId"]
-  },
-  "notes": [
-    "This is the format of the dtails object to be used in a map.message.complete message for overlay create."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.overlay.create"] = {
   schema: {
@@ -3002,34 +2567,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "description": "A free form object that can contain any additional JSON objects or elements to send with this message.  This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
         "type": "object",
         "status": "new"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
-      },
-      "menuId": {
-        "description": "The id of a context menu.  If populated, the context menu MUST have already been pre-registered via the map.menu.create channel.  If populated, the context menu associated with this id will appear when the feature is 'right-clicked', allowing the user to invoke actions on the feature which will be handled by the widget which originally registered the context menu.  If no menuId is assigned, the feature will not have a context menu associated when right-clicked.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional properties object"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional menuId parameter"
-  }]
-
+  }
 };
 ;cmapi.channel["map.overlay.features.get"] = {
   "schema": {
@@ -3059,13 +2600,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["features, messagId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
-
+  }
 };
 ;cmapi.channel["map.overlay.get"] = {
   "schema": {
@@ -3091,13 +2626,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["features, messagId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
-
+  }
 };
 ;cmapi.channel["map.overlay.hide.complete"] = {
   schema: {
@@ -3112,14 +2641,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["overlayId"]
-  },
-  "notes": [
-    "This is the format of the dtails object to be used in a map.message.complete message for overlay hide."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.overlay.hide"] = {
   schema: {
@@ -3140,12 +2662,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       },
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };
 ;cmapi.channel["map.overlay.remove.complete"] = {
   schema: {
@@ -3160,14 +2677,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["overlayId"]
-  },
-  "notes": [
-    "This is the format of the dtails object to be used in a map.message.complete message for overlay remove."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.overlay.remove"] = {
   "schema": {
@@ -3179,21 +2689,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "description": "The ID of the overlay to be removed. If no overlayId is included, default overlay with ID equal to sending widget's ID is assumed. ",
         "type": "string",
         "default": "sending widget's ID"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
-      },
+      }
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };
 ;cmapi.channel["map.overlay.show.complete"] = {
   schema: {
@@ -3208,14 +2707,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["overlayId"]
-  },
-  "notes": [
-    "This is the format of the dtails object to be used in a map.message.complete message for overlay shown."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.overlay.show"] = {
   "schema": {
@@ -3236,12 +2728,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       },
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };
 ;cmapi.channel["map.overlay.update.complete"] = {
   schema: {
@@ -3276,14 +2763,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["overlayId"]
-  },
-  "notes": [
-    "This is the format of the dtails object to be used in a map.message.complete message for overlay update."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.overlay.update"] = {
   "schema": {
@@ -3293,8 +2773,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "name": {
         "description": "The new name of the overlay. Note that overlay names do not have to be unique and are intended for display purposes only.",
-        "type": "string",
-        "default": "N/A"
+        "type": "string"
       },
       "overlayId": {
         "description": "The unique ID of the overlay being updated. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed. If an overlay with the given ID already exists, this message will update that overlay. If an overlay with the given ID does not exist, an error is generated.  Note that overlay IDs MUST be unique even across multiple parent overlays.",
@@ -3303,29 +2782,11 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       },
       "parentId": {
         "description": "The ID of the parent overlay that is associated with this overlay.  If no ID is provided, the overlay will keep its existing parentage.  If a parentId is provided, the parentage of the overlay will be changed to the new parentId.  If an overlay with an ID of parentId does not exist, a new overlay will be created and the parentage of the overlay identified by overlayId will be changed to the newly created parent overlay. If the this field is set to an empty string, the overlay SHALL become a top level overlay.",
-        "type": "string",
-        "default": "N/A"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
+        "type": "string"
       }
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional properties object"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional menuId parameter"
-  }]
+  }
 };
 ;cmapi.channel["map.status.about"] = {
   "schema": {
@@ -3370,9 +2831,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
     },
     "required": ["version", "type", "widgetName", "extensions"]
-  },
-  "notes": [],
-  "changeLog": []
+  }
 };;cmapi.channel["map.status.format"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -3391,9 +2850,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["formats"]
-  },
-  "notes": [],
-  "changeLog": []
+  }
 };
 ;cmapi.channel["map.status.initialization"] = {
   "schema": {
@@ -3403,26 +2860,13 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "type": "object",
     "properties": {
       "status": {
+        "type": "string",
         "description": "Indicates the current state of the map.  This can be one of the following options: init, ready, teardown. <ol><li>init - means the map has been launched but is not ready to begin accepting commands.</li><li>ready -  means the map is ready to begin accepting commands.  A map will be ready once it has finished loading.</li><li>teardown - indicates the user has closed the map and it is no longer available to use.</li><li>mapswapinprogress - A map swap process has started. A 'ready' status is issued when the process completes.</li></ol>",
         "enum": ["init", "ready", "teardown", "mapswapinprogress"]
       }
     },
     "required": ["status"]
-  },
-  "notes": ["A map notifies widgets when it is launching by sending out an 'initializing' message on the map.status.initialization channel.",
-    "A map then notifies widgets when it finishes initializing and is ready to receive messages by sending out a 'ready' message over the map.status.initialization channel.",
-    "Widgets should refrain sending out messages until it receives a 'ready' status over the map.status.initialization channel.",
-    "A map should send a 'mapswapinprogress' message at the start of the map swap process over the map.status.initialization channel to let widgets know the map is being swapped.",
-    "A widget may choose to stop sending messages after receiving a 'mapswapinprogress' until the next 'ready' is received.",
-    "A widget may choose to issue a status format request after a 'mapswapinprogress'/'ready' sequence to ensure that the formats and operations required are supported in the newly swapped map engine implementation.",
-    "The map core should send a 'teardown' message prior to the map widget being closed over the map.status.initialization channel to let widgets know to stop sending messages.",
-    "Widgets should not send messages after receiving a 'teardown' message until it receives another 'ready' message on the map.status.initialization channel.",
-    "A widget at any point in time may request a initialization status by sending the map a map.status.initialization"
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  } 
 };
 ;cmapi.channel["map.status.request"] = {
   schema: {
@@ -3437,16 +2881,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "items": {
           "enum": ["view", "format", "selected", "about", "initialization"]
         }
-
       }
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added initialization as a request option"
-  }]
+  }
 };
 ;cmapi.channel["map.status.selected"] = {
   schema: {
@@ -3457,7 +2895,6 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "overlayId": {
         "type": "string",
-        "default": " ",
         "description": "The ID of the overlay which contains the selected objects."
       },
       "selectedFeatures": {
@@ -3486,12 +2923,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["overlayId", "selectedFeatures"]
-  },
-  "notes": [
-    "Within a given selectedFeature, although both selectedId and selectedName are optional, one MUST be passed in if a sub-feature is to be identified. Generally, selectedId is preferred and selectedName is used when no selectedId is available. The implication of this is that if sub-features cannot be identified, they cannot be selected.",
-    "If the list of selected objects spans multiple overlays, then the payload will be an array of messages – one message for each overlay that contains selected objects."
-  ],
-  "changeLog": []
+  }
 };
 ;cmapi.channel["map.status.view"] = {
   schema: {
@@ -3512,14 +2944,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -3531,14 +2963,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -3554,14 +2986,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
           "lat": {
             "type": "number",
             "description": "The latitude of the location that was clicked",
-            "minimum": "-90",
-            "maximum": "90"
+            "minimum": -90,
+            "maximum": 90
           },
           "lon": {
             "type": "number",
             "description": "The longitude of the location that was clicked",
-            "minimum": "-180",
-            "maximum": "180"
+            "minimum": -180,
+            "maximum": 180
           }
         },
         "required": ["lat", "lon"]
@@ -3577,12 +3009,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["bounds", "center", "range"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added the requester property to schema which was accidently ommitted from the 1.2.0 schema"
-  }]
+  }
 };
 ;cmapi.channel["map.view.area.selected"] = {
   schema: {
@@ -3603,14 +3030,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -3622,14 +3049,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -3657,11 +3084,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
   },
   "notes": ["For example: the user presses mouse down, drags a rectangular area on the map, and then releases the mouse button - the map then emits a map.view.area.selected message",
     "It is up to the map implementation to define the user interface controls and workflow to allow the user to identify the area to select",
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  ]
 };
 ;cmapi.channel["map.view.center.bounds"] = {
   "schema": {
@@ -3682,14 +3105,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -3701,14 +3124,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -3720,21 +3143,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "description": "Attribute that defines the zoom behaviour of the map. If auto, map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
         "type": ["string", "number"],
         "default": " "
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["bounds"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };
 ;cmapi.channel["map.view.center.feature"] = {
   "schema": {
@@ -3745,33 +3157,19 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "overlayId": {
         "description": "The ID of the overlay overlay where the feature to be centered on is found. If no overlayId is included, default overlay with ID equal to sending widget ID is assumed.",
-        "type": "string",
-        "default": "sending widget's ID"
+        "type": "string"
       },
       "featureId": {
         "description": "The ID of the feature to center on",
-        "type": "string",
-        "default": "N/A"
+        "type": "string"
       },
       "zoom": {
         "description": "Attribute that defines the zoom behaviour of the map. If auto, map will adjust to best fit the feature in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
-        "type": ["string", "number"],
-        "default": "N/A"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
+        "type": ["string", "number"]
       }
     },
     "required": ["featureId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };
 ;cmapi.channel["map.view.center.location"] = {
   "schema": {
@@ -3782,43 +3180,30 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
         "location": {
           "description": "Location to be centered in map.",
-                  "default": "N/A",
           "type": "object",
           "properties": {
             "lat": {
               "type": "number",
               "description": "The latitude value of the point",
-              "minimum": "-90",
-              "maximum": "90"
+              "minimum": -90,
+              "maximum": 90
             },
             "lon": {
               "type": "number",
               "description": "The longitude value of the point",
-              "minimum": "-180",
-              "maximum": "180"
+              "minimum": -180,
+              "maximum": 180
             }
           },
           "required": ["lat", "lon"]
         },
         "zoom": {
           "description": "If auto, map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
-          "type": ["string", "number"],
-          "default": "N/A"
-        },
-        "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
-      },
+          "type": ["string", "number"]
+        }
     },
     "required": ["location"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };;cmapi.channel["map.view.center.overlay"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -3828,28 +3213,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "overlayId": {
         "description": "The ID of the overlay to center on. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
-        "type": "string",
-        "default": "sending widget's ID"
+        "type": "string"
       },
       "zoom": {
         "description": "Attribute that defines the zoom behaviour of the map. If auto, zoom will adjust to best fit the overlay in the user's viewable area.  If a number, map will zoom to specified range in meters.  If no zoom attribute is included, no zoom is performed.",
-        "type": "string",
-        "default": "N/A"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
+        "type": "string"
       }
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };
 ;cmapi.channel["map.view.clicked"] = {
   schema: {
@@ -3861,26 +3233,24 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "lat": {
         "type": "number",
         "description": "The latitude of the location that was clicked",
-        "default": "N/A",
-        "minimum": "-90",
-        "maximum": "90"
+        "minimum": -90,
+        "maximum": 90
       },
       "lon": {
         "type": "number",
         "description": "The longitude of the location that was clicked",
-        "default": "N/A",
-        "minimum": "-180",
-        "maximum": "180"
+        "minimum": -180,
+        "maximum": 180
       },
       "button": {
         "description": "Which mouse button was clicked.  Allowable values are right, left, and middle.  For backwards compatibility, if this attribute is not populated it MUST be treated as a left mouse click the same as if it were populated with left.",
-        "type": ["string", "enum"],
+        "type": "string",
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "type": {
         "description": "The type of click event. Allowable values are single and double.  For backwards compatibility, if this attribute is not populated it MUST be assumed to be a single mouse click and treated the same as if it were populated with single.",
-        "type": ["string", "enum"],
+        "type": "string",
         "enum": ["single", "double"],
         "default": "single"
       },
@@ -3895,8 +3265,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["lat", "lon", "button", "keys", "type"]
-  },
-  "notes": []
+  }
 };;cmapi.channel["map.view.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -3904,75 +3273,68 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "description": "Schema for the details object for a map.message.complete message after a map.view.zoom, map.view.center.*.",
     "type": "object",
     "properties": {
-        "bounds": {
-            "description": "The bounds coordinates of the maps viewing area.",
+      "bounds": {
+        "description": "The bounds coordinates of the maps viewing area.",
+        "type": "object",
+        "properties": {
+          "northEast": {
+            "description": "The coordinates of the north east corner of the maps viewing area.",
             "type": "object",
-            "properties":{
-                "northEast":{
-                    "description": "The coordinates of the north east corner of the maps viewing area.",
-                    "type": "object",
-                    "properties":{
-                        "lat":{
-                            "description": "The latitude of the most northen section of the viewing area. A value between -90 and 90.",
-                            "type": "number"
-                        },
-                        "lon":{
-                            "description": "The longitude of the most easternly section of the viewing area. A value between -180 and 180.",
-                            "type": "number"
-                        }
-                    },
-                    "required": ["lat", "lon"]
-                },
-                "southWest":{
-                    "description": "The coordinates of the south west corner of the maps viewing area.",
-                    "type": "object",
-                    "properties":{
-                        "lat":{
-                            "description": "The latitude of the most southern section of the viewing area. A value between -90 and 90.",
-                            "type": "number"
-                        },
-                        "lon":{
-                            "description": "The longitude of the most westernly section of the viewing area. A value between -180 and 180.",
-                            "type": "number"
-                        }
-                    },
-                    "required": ["lat", "lon"]
-                }
-            },
-            "required": ["northEast", "southWest"]
-        },
-        "range":{
-            "description": "The altitude of the maps view point",
-            "type": "number"
-        },
-        "center":{
-            "description": "The center coordinate of the maps viewing area.",
-            "type": "object",
-            "properties":{
-                "lat":{
-                    "description": "The latitude of the center of the viewing area. A value between -90 and 90.",
-                    "type": "number"
-                },
-                "lon":{
-                    "description": "The longitude of the center of the viewing area. A value between -180 and 180.",
-                    "type": "number"
-                }
+            "properties": {
+              "lat": {
+                "description": "The latitude of the most northen section of the viewing area. A value between -90 and 90.",
+                "type": "number"
+              },
+              "lon": {
+                "description": "The longitude of the most easternly section of the viewing area. A value between -180 and 180.",
+                "type": "number"
+              }
             },
             "required": ["lat", "lon"]
-        }
+          },
+          "southWest": {
+            "description": "The coordinates of the south west corner of the maps viewing area.",
+            "type": "object",
+            "properties": {
+              "lat": {
+                "description": "The latitude of the most southern section of the viewing area. A value between -90 and 90.",
+                "type": "number"
+              },
+              "lon": {
+                "description": "The longitude of the most westernly section of the viewing area. A value between -180 and 180.",
+                "type": "number"
+              }
+            },
+            "required": ["lat", "lon"]
+          }
+        },
+        "required": ["northEast", "southWest"]
+      },
+      "range": {
+        "description": "The altitude of the maps view point",
+        "type": "number"
+      },
+      "center": {
+        "description": "The center coordinate of the maps viewing area.",
+        "type": "object",
+        "properties": {
+          "lat": {
+            "description": "The latitude of the center of the viewing area. A value between -90 and 90.",
+            "type": "number"
+          },
+          "lon": {
+            "description": "The longitude of the center of the viewing area. A value between -180 and 180.",
+            "type": "number"
+          }
+        },
+        "required": ["lat", "lon"]
+      }
     },
     "required": ["bounds", "range", "center"]
-  },
-  "notes": [
-    "This is the format of the dtails object applies to the map.message.compelte for the map.view.zoom, map.view.center.overlay, map.view.center.feature, map.view.center.location, map.view.center.bounds."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };
 ;cmapi.channel["map.view.mousedown"] = {
-  schema: {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.mousedown",
     "description": "Report that a mouse down event was triggered from the map",
@@ -3981,26 +3343,24 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "lat": {
         "type": "number",
         "description": "The latitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-90",
         "maximum": "90"
       },
       "lon": {
         "type": "number",
         "description": "The longitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-180",
         "maximum": "180"
       },
       "button": {
         "description": "Which mouse button was clicked.  Allowable values are right, left, and middle.  For backwards compatibility, if this attribute is not populated it MUST be treated as a left mouse click the same as if it were populated with left.",
-        "type": ["string", "enum"],
+        "type": "string",
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "type": {
         "description": "The type of click event. Allowable values are single and double.  For backwards compatibility, if this attribute is not populated it MUST be assumed to be a single mouse click and treated the same as if it were populated with single.",
-        "type": ["string", "enum"],
+        "type": "string",
         "enum": ["single", "double"],
         "default": "single"
       },
@@ -4015,8 +3375,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["lat", "lon", "button", "keys", "type"]
-  },
-  "notes": []
+  }
 };;cmapi.channel["map.view.mouseup"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -4027,26 +3386,24 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "lat": {
         "type": "number",
         "description": "The latitude of the location that was clicked",
-        "default": "N/A",
-        "minimum": "-90",
-        "maximum": "90"
+        "minimum": -90,
+        "maximum": 90
       },
       "lon": {
         "type": "number",
         "description": "The longitude of the location that was clicked",
-        "default": "N/A",
-        "minimum": "-180",
-        "maximum": "180"
+        "minimum": -180,
+        "maximum": 180
       },
       "button": {
         "description": "Which mouse button was clicked.  Allowable values are right, left, and middle.  For backwards compatibility, if this attribute is not populated it MUST be treated as a left mouse click the same as if it were populated with left.",
-        "type": ["string", "enum"],
+        "type": "string",
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "type": {
         "description": "The type of click event. Allowable values are single and double.  For backwards compatibility, if this attribute is not populated it MUST be assumed to be a single mouse click and treated the same as if it were populated with single.",
-        "type": ["string", "enum"],
+        "type": "string",
         "enum": ["single", "double"],
         "default": "single"
       },
@@ -4061,8 +3418,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       }
     },
     "required": ["lat", "lon", "button", "keys", "type"]
-  },
-  "notes": []
+  }
 };;cmapi.channel["map.view.zoom"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -4072,21 +3428,9 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "properties": {
       "range": {
         "description": "The distance in meters from the map (note that most 2-D map renderers do not support infinite zoom and the range will be translated into the nearest supported zoom level).",
-        "type": "number",
-        "default": "N/A"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
+        "type": "number"
       }
     },
     "required": ["range"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };

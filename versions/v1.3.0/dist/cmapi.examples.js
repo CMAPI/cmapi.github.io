@@ -1,4 +1,6 @@
-cmapi.channel["map.drag-drop"].examples = [{
+var cmapi = cmapi || {};
+cmapi.channel = cmapi.channel || {};
+cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples = [{
     "title": "Example Drag Drop Data",
     "description": "",
     "valid": true,
@@ -336,14 +338,7 @@ cmapi.channel["map.drag-drop"].examples = [{
     "name": "New Name"
   }
 }];
-;cmapi.channel["map.overlay.cluster.activate"].examples = [{
-  "title": "Activate overlay cluster rule example",
-  "description": "",
-  "valid": true,
-  "payload": {
-    "overlayId": "BattlePlan2"
-  }
-}];;cmapi.channel["map.overlay.cluster.deactivate"].examples = [{
+;cmapi.channel["map.overlay.cluster.deactivate"].examples = [{
   "title": "Deactivate overlay cluster rule example",
   "description": "",
   "valid": true,
