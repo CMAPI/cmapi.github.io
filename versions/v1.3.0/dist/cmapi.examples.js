@@ -29,7 +29,27 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     },
     "error": "No feature with id example.mapWidget.doesntExist found to hide."
   }
-}];;cmapi.channel["map.feature.deselected"].examples = [
+}];;cmapi.channel["map.feature.deselected.batch"].examples = [{
+  "title": "de-select batch",
+  "description": "",
+  "valid": true,
+  "payload": {"features": [
+	{
+		"featureId": "example.mapWidget.1",
+		"deSelectedName": "World Trade Center"
+	},{
+		"featureId": "example.mapWidget.2",
+		"deSelectedName": "911 Memorial Museum"
+	},{
+		"featureId": "example.mapWidget.3",
+		"deSelectedName": "Millenium Hilton"
+	},{
+		"featureId": "example.mapWidget.4",
+		"deSelectedName": "911 Tribute Center"
+	}],
+  "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+}}];
+;cmapi.channel["map.feature.deselected"].examples = [
     {
         "title": "Feature De-selected Message",
         "description" : "De-select a feature",
@@ -81,6 +101,33 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
+;cmapi.channel["map.feature.plot.batch"].examples = [{
+  "title": "Plot KML batch",
+  "description": "",
+  "valid": true,
+  "payload": {"features": [
+	{
+		"featureId": "example.mapWidget.1",
+		"feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.1\"><name>World Trade Center</name><description><![CDATA[Site of World Trade Center]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.01324033737183,40.71149172571141,0 </coordinates></Point></Placemark></kml>",
+		"name": "World Trade Center"
+	},{
+		"featureId": "example.mapWidget.2",
+		"feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.2\"><name>911 Memorial Museum</name><description><![CDATA[Site of 911 Memorial Museum]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.0136,40.7117,0 </coordinates></Point></Placemark></kml>",
+		"name": "911 Memorial Museum"
+	},{
+		"featureId": "example.mapWidget.3",
+		"feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.3\"><name>Millenium Hilton</name><description><![CDATA[Site of Millenium Hilton]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.0103,40.7111,0 </coordinates></Point></Placemark></kml>",
+		"name": "Millenium Hilton"
+	},{
+		"featureId": "example.mapWidget.4",
+		"feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.4\"><name>911 Tribute Center</name><description><![CDATA[Site of 911 Tribute Center]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.0124,40.7101,0 </coordinates></Point></Placemark></kml>",
+		"name": "911 Tribute Center"
+	}],
+  "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+  "format":"kml",
+  "zoom":true,
+  "readOnly":false
+}}];
 ;cmapi.channel["map.feature.plot"].examples = [{
   "title": "Plot KML",
   "description": "",
@@ -288,6 +335,26 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
+;cmapi.channel["map.feature.selected.batch"].examples = [{
+  "title": "select batch",
+  "description": "",
+  "valid": true,
+  "payload": {"features": [
+	{
+		"featureId": "example.mapWidget.1",
+		"selectedName": "World Trade Center"
+	},{
+		"featureId": "example.mapWidget.2",
+		"selectedName": "911 Memorial Museum"
+	},{
+		"featureId": "example.mapWidget.3",
+		"selectedName": "Millenium Hilton"
+	},{
+		"featureId": "example.mapWidget.4",
+		"selectedName": "911 Tribute Center"
+	}],
+  "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+}}];
 ;cmapi.channel["map.feature.selected"].examples = [
     {
         "title": "Feature Selected Message",
@@ -319,6 +386,22 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
+;cmapi.channel["map.feature.unplot.batch"].examples = [{
+  "title": "Unplot batch",
+  "description": "",
+  "valid": true,
+  "payload": {"features": [
+	{
+		"featureId": "example.mapWidget.1"
+	},{
+		"featureId": "example.mapWidget.2"
+	},{
+		"featureId": "example.mapWidget.3"
+	},{
+		"featureId": "example.mapWidget.4"
+	}],
+  "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+}}];
 ;cmapi.channel["map.feature.unplot"].examples = [{
   "title": "Unplot a feature",
   "description": "Remove an existing feature from the map",
@@ -338,7 +421,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "name": "New Name"
   }
 }];
-;cmapi.channel["map.overlay.cluster.deactivate"].examples = [{
+;cmapi.channel["map.overlay.cluster.activate"].examples = [{
+  "title": "Activate overlay cluster rule example",
+  "description": "",
+  "valid": true,
+  "payload": {
+    "overlayId": "BattlePlan2"
+  }
+}];;cmapi.channel["map.overlay.cluster.deactivate"].examples = [{
   "title": "Deactivate overlay cluster rule example",
   "description": "",
   "valid": true,
@@ -534,7 +624,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
   "valid": false,
   "payload": {}
 }];
-;cmapi.channel["map.status.request"].examples = [{
+;cmapi.channel["map.status.initialization"].examples = [{
+  "title": "Initialization status",
+  "description": "",
+  "valid": true,
+  "payload": {
+    "status": "mapswapinprogress"
+  }
+}];;cmapi.channel["map.status.request"].examples = [{
   "title": "Send a status request",
   "description": "",
   "valid": true,

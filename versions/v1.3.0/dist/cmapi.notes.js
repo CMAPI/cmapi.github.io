@@ -31,7 +31,9 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].notes = [
     "If the edit is completed, the map SHALL additionally send a map.feature.plot message so that other widgets receive the final state of the edited feature.  The map SHALL NOT issue a map.feature.plot message if the edit was cancelled."
   ];;cmapi.channel["map.feature.plot.aoi"].notes = [
     "If sending an AOI, the GeoJSON object MUST be a single GeoJSON Feature object with either a Line, Point, or Polygon geometry type.  MulitLineStrings, MultiPolygons, and GeometryCollections are NOT supported for AOIs.",
-    "For example of AOI, see map.feature.plot Example 3."
+    "For example of AOI, see map.feature.plot Example 4 (Plot Area of Interest)."
+  ];;cmapi.channel["map.feature.plot.geojson"].notes = [
+    "For example of GeoJSON, see map.feature.plot Example 3 (Plot GeoJSON)."
   ];;cmapi.channel["map.feature.plot"].notes = [
     'If using the channel shouter to send a feature, embedded quotes in KML MUST be escaped with a backward slash (that is, use \\" instead of ").',
     'If sending GeoJSON follow the guidance in Appendix B for style information.',
