@@ -1,6 +1,6 @@
 var cmapi = cmapi || {};
 cmapi.channel = cmapi.channel || {};
-cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
+cmapi.overview = cmapi.overview || {};cmapi.channel["map.drag-drop"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Framework dependent",
@@ -70,7 +70,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["dragDropData"]
   }
 };
-;cmapi.channel["map.error"] = {
+cmapi.channel["map.error"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.error",
@@ -92,7 +92,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["sender", "type", "msg", "error"]
   }
 };
-;cmapi.channel["map.feature.clicked"] = {
+cmapi.channel["map.feature.clicked"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.clicked",
@@ -136,7 +136,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
   }
 };
-;cmapi.channel["map.feature.deselected.batch.complete"] = {
+cmapi.channel["map.feature.deselected.batch.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -145,52 +145,68 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "features": {
         "type": "array",
         "properties": {
+          "deSelectedId": {
+		    "type": "string"
+          },
+          "deSelectedName": {
+            "type": "string"
+          },
           "overlayId": {
             "type": "string"
           },
           "featureId": {
             "type": "string"
-          }
+          }		 
         },
-        "required": ["featureId", "overlayId"]
+        "required": ["deSelectedId", "deSelectedName", "featureId", "overlayId"]
       }
     },
     "required": ["features"]
   }
 };
-;cmapi.channel["map.feature.deselected.batch"] = {
+cmapi.channel["map.feature.deselected.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.deselected.batch",
     "type": "object",
     "properties": {
-      "features": {
+       "features": {
         "type": "array"
       },
       "overlayId": {
         "type": "string"
-      }
+      },
+      "messageId": {
+        "type": "string",
+        "extension": "User Manipulation - Message Complete"
+      } 
     },
     "required": ["features"]
   }
 };
-;cmapi.channel["map.feature.deselected.complete"] = {
+cmapi.channel["map.feature.deselected.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {	
+          "deSelectedId": {
+		    "type": "string"
+          },
+          "deSelectedName": {
+            "type": "string"
+          },
           "overlayId": {
             "type": "string"
           },
           "featureId": {
             "type": "string"
-          } 
+          }		 
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["deSelectedId", "deSelectedName", "featureId", "overlayId"]
   }
 };
-;cmapi.channel["map.feature.deselected"] = {
+cmapi.channel["map.feature.deselected"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.deselected",
@@ -211,7 +227,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId"]
   }
 };
-;cmapi.channel["map.feature.draw.complete"] = {
+cmapi.channel["map.feature.draw.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -242,10 +258,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "type": "array"
       }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId", "type", "feature", "format", "coordinates"]
   }
 };
-;cmapi.channel["map.feature.draw.progress"] = {
+cmapi.channel["map.feature.draw.progress"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.progress Details object",
@@ -310,10 +326,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
       }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId", "type", "feature", "format", "updates"]
   }
 };
-;cmapi.channel["map.feature.draw"] = {
+cmapi.channel["map.feature.draw"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.draw",
@@ -344,10 +360,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "extension": "User Manipulation - Context Menus"
       }
     },
-    "required": ["featureId", "messageId"]
+    "required": ["featureId", "messageId", "type"]
   }
 };
-;cmapi.channel["map.feature.edit.complete"] = {
+cmapi.channel["map.feature.edit.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -372,10 +388,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "type": "array"
       }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId", "feature", "format", "coordinates"]
   }
 };
-;cmapi.channel["map.feature.edit.progress"] = {
+cmapi.channel["map.feature.edit.progress"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.progress Details object",
@@ -433,17 +449,19 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
                   "type": "number",
                   "description": "The optional altitude component of the coordinate."
                 }
-              }
+              },
+              "required": ["lat", "lon"]
             },
             "additionalItems": true
           }
-        }
+        },
+        "required": ["type", "indices", "coordinates"]
       }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId", "feature", "format", "status", "updates"]
   }
 };
-;cmapi.channel["map.feature.edit"] = {
+cmapi.channel["map.feature.edit"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.edit",
@@ -462,7 +480,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId", "messageId"]
   }
 };
-;cmapi.channel["map.feature.get"] = {
+cmapi.channel["map.feature.get"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.get",
@@ -487,7 +505,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["features, messagId"]
   }
 };
-;cmapi.channel["map.feature.hide.complete"] = {
+cmapi.channel["map.feature.hide.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -503,7 +521,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId", "overlayId"]
   }
 };
-;cmapi.channel["map.feature.hide"] = {
+cmapi.channel["map.feature.hide"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.hide",
@@ -519,7 +537,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId"]
   }
 };
-;cmapi.channel["map.feature.mousedown"] = {
+cmapi.channel["map.feature.mousedown"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.mousedown",
@@ -561,7 +579,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
   }
 };
-;cmapi.channel["map.feature.mouseup"] = {
+cmapi.channel["map.feature.mouseup"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.mouseup",
@@ -602,7 +620,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
   }
 };
-;cmapi.channel["map.feature.plot.2525b"] = {
+cmapi.channel["map.feature.plot.2525b"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
@@ -778,7 +796,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     }
   }
 };
-;cmapi.channel["map.feature.plot.2525c"] = {
+cmapi.channel["map.feature.plot.2525c"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
@@ -954,7 +972,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     }
   }
 };
-;cmapi.channel["map.feature.plot.aoi"] = {
+cmapi.channel["map.feature.plot.aoi"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
@@ -981,7 +999,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     }
   }
 };
-;cmapi.channel["map.feature.plot.batch.complete"] = {
+cmapi.channel["map.feature.plot.batch.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -1000,29 +1018,27 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "type": "string"
           },
           "format": {
-            "type": "string",
-            "default": "kml"
+            "type": "string"
           },
           "feature": {
             "type": ["object", "string"],
             "additionalProperties": true
           },
           "readOnly": {
-            "type": "boolean",
-            "default": true
+            "type": "boolean"
           },
           "properties": {
             "additionalProperties": true,
             "type": "object"
           }
         },
-        "required": ["featureId", "overlayId"]
+        "required": ["featureId", "overlayId","name","format","feature","readOnly","properties"]
       }
     },
     "required": ["features"]
   }
 };
-;cmapi.channel["map.feature.plot.batch"] = {
+cmapi.channel["map.feature.plot.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.plot.batch",
@@ -1044,10 +1060,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "type": "boolean"
       }
     },
-    "required": ["features"]
+    "required": ["features","overlayId","format"]
   }
 };
-;cmapi.channel["map.feature.plot.complete"] = {
+cmapi.channel["map.feature.plot.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -1063,26 +1079,27 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "type": "string"
           },
           "format": {
-            "type": "string",
-            "default": "kml"
+            "type": "string"
           },
           "feature": {
             "type": ["object", "string"],
             "additionalProperties": true
           },
+		  "zoom": {
+            "type": "boolean",
+          }, 
           "readOnly": {
             "type": "boolean",
-            "default": true
           },
           "properties": {
             "additionalProperties": true,
             "type": "object"
           }
     },
-     "required": ["featureId", "overlayId"]
+     "required": ["featureId", "overlayId", "name","format","feature","zoom","readOnly","properties"]
   }
 };
-;cmapi.channel["map.feature.plot.geojson"] = {
+cmapi.channel["map.feature.plot.geojson"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
@@ -1208,7 +1225,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     }
   }
 };
-;cmapi.channel["map.feature.plot"] = {
+cmapi.channel["map.feature.plot"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.plot",
@@ -1249,7 +1266,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId", "feature"]
   }
 };
-;cmapi.channel["map.feature.plot.symbol"] = {
+cmapi.channel["map.feature.plot.symbol"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
@@ -1284,7 +1301,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     }
   }
 };
-;cmapi.channel["map.feature.plot.url.complete"] = {
+cmapi.channel["map.feature.plot.url.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -1300,8 +1317,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "type": "string"
           },
           "format": {
-            "type": "string",
-            "default": "kml"
+            "type": "string"
           },
           "url": {
             "type": "string"
@@ -1310,15 +1326,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
 			"type": "object"
 		  },
           "zoom": {
-            "type": "boolean",
-            "default": true
+            "type": "boolean"
           } 
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId","name","format","url","params","zoom"]
   }
 };
 
-;cmapi.channel["map.feature.plot.url"] = {
+cmapi.channel["map.feature.plot.url"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.plot.url",
@@ -1351,7 +1366,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId", "url"]
   }
 };
-;cmapi.channel["map.feature.selected.batch.complete"] = {
+cmapi.channel["map.feature.selected.batch.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -1360,20 +1375,26 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       "features": {
         "type": "array",
         "properties": {
+          "selectedId": {
+		    "type": "string"
+          },
+          "selectedName": {
+            "type": "string"
+          },
           "overlayId": {
             "type": "string"
           },
           "featureId": {
             "type": "string"
-          }
+          }		 
         },
-        "required": ["featureId", "overlayId"]
+        "required": ["selectedId", "selectedName", "featureId", "overlayId"]
       }
     },
     "required": ["features"]
   }
 };
-;cmapi.channel["map.feature.selected.batch"] = {
+cmapi.channel["map.feature.selected.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.selected.batch",
@@ -1393,12 +1414,18 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["features"]
   }
 };
-;cmapi.channel["map.feature.selected.complete"] = {
+cmapi.channel["map.feature.selected.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {
+		  "selectedId": {
+		    "type": "string"
+          },
+          "selectedName": {
+            "type": "string"
+          },
           "overlayId": {
             "type": "string"
           },
@@ -1406,10 +1433,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
             "type": "string"
           }		  
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["selectedId","selectedName","featureId", "overlayId"]
   }
 };
-;cmapi.channel["map.feature.selected"] = {
+cmapi.channel["map.feature.selected"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.selected",
@@ -1430,7 +1457,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId"]
   }
 };
-;cmapi.channel["map.feature.show.complete"] = {
+cmapi.channel["map.feature.show.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -1441,12 +1468,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
           },
           "featureId": {
             "type": "string"
-          }	
+          }	,
+		  "zoom": {
+			  "type":"boolean"
+		  }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId","zoom"]
   }
 };
-;cmapi.channel["map.feature.show"] = {
+cmapi.channel["map.feature.show"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.show",
@@ -1466,7 +1496,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId"]
   }
 };
-;cmapi.channel["map.feature.unplot.batch.complete"] = {
+cmapi.channel["map.feature.unplot.batch.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -1488,7 +1518,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["features"]
   }
 };
-;cmapi.channel["map.feature.unplot.batch"] = {
+cmapi.channel["map.feature.unplot.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.unplot.batch",
@@ -1505,7 +1535,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["features"]
   }
 };
-;cmapi.channel["map.feature.unplot.complete"] = {
+cmapi.channel["map.feature.unplot.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -1521,7 +1551,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId", "overlayId"]
   }
 };
-;cmapi.channel["map.feature.unplot"] = {
+cmapi.channel["map.feature.unplot"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.unplot",
@@ -1537,7 +1567,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId"]
   }
 };
-;cmapi.channel["map.feature.update.complete"] = {
+cmapi.channel["map.feature.update.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -1552,34 +1582,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
           "name": {
             "type": "string"
           },
-          "format": {
+          "newOverlayId": {
             "type": "string",
-            "default": "kml"
-          },
-          "feature": {
-            "type": ["object", "string"],
-            "additionalProperties": true
-          },
-          "readOnly": {
-            "type": "boolean",
-            "default": true
-          },
-          "properties": {
-            "additionalProperties": true,
-            "type": "object"
-          },
-          "url": {
-            "type": "string"
-          },
-          "params": {
-            "type": "boolean",
-            "default": true
-          } 
+          }
     },
-    "required": ["featureId", "overlayId"]	
+    "required": ["overlayId", "featureId", "name", "newOverlayId"]	
   }
 };
-;cmapi.channel["map.feature.update"] = {
+cmapi.channel["map.feature.update"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.update",
@@ -1601,7 +1611,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId"]
   }
 };
-;cmapi.channel["map.get.complete"] = {
+cmapi.channel["map.get.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.message.complete",
@@ -1617,7 +1627,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["messageId", "details"]
   }
 };
-;cmapi.channel["map.get"] = {
+cmapi.channel["map.get"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.get",
@@ -1649,7 +1659,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["types", "messageId"]
   }
 };
-;cmapi.channel["map.menu.clicked"] = {
+cmapi.channel["map.menu.clicked"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.menu.clicked",
@@ -1691,7 +1701,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["menuId", "menuItemId"]
   }
 };
-;cmapi.channel["map.menu.create"] = {
+cmapi.channel["map.menu.create"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.menu.create",
@@ -1728,7 +1738,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["menuId", "menuItems"]
   }
 };
-;cmapi.channel["map.menu.remove"] = {
+cmapi.channel["map.menu.remove"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.menu.remove",
@@ -1743,7 +1753,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["menuId"]
   }
 };
-;cmapi.channel["map.message.cancel"] = {
+cmapi.channel["map.message.cancel"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.message.cancel",
@@ -1756,7 +1766,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["messageId"]
   }
 };
-;cmapi.channel["map.message.complete"] = {
+cmapi.channel["map.message.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.message.complete",
@@ -1769,7 +1779,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "type": "string"
       },
       "status": {
-        "type": "enum",
+        "type": "string",
         "enum": ["success", "failure", "mixed", "cancelled"]
       },
       "details": {
@@ -1792,10 +1802,10 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         }
       }
     },
-    "required": ["failures", "messageId", "status"]
+    "required": ["failures", "messageId", "status", "details"]
   }
 };
-;cmapi.channel["map.message.progress"] = {
+cmapi.channel["map.message.progress"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.message.progress",
@@ -1814,7 +1824,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["messageId", "details"]
   }
 };
-;cmapi.channel["map.overlay.cluster.activate"] = {
+cmapi.channel["map.overlay.cluster.activate"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.cluster.activate",
@@ -1826,7 +1836,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.overlay.cluster.deactivate"] = {
+cmapi.channel["map.overlay.cluster.deactivate"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.cluster.deactivate",
@@ -1838,7 +1848,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.overlay.cluster.remove"] = {
+cmapi.channel["map.overlay.cluster.remove"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.cluster.remove",
@@ -1850,7 +1860,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.overlay.cluster.set"] = {
+cmapi.channel["map.overlay.cluster.set"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.cluster.set",
@@ -1935,7 +1945,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.overlay.create.complete"] = {
+cmapi.channel["map.overlay.create.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.overlay.create map.message.complete Details object",
@@ -1960,7 +1970,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["overlayId"]
   }
 };
-;cmapi.channel["map.overlay.create"] = {
+cmapi.channel["map.overlay.create"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.create",
@@ -1982,7 +1992,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.overlay.features.get"] = {
+cmapi.channel["map.overlay.features.get"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.features.get",
@@ -2007,7 +2017,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["features, messagId"]
   }
 };
-;cmapi.channel["map.overlay.get"] = {
+cmapi.channel["map.overlay.get"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.get",
@@ -2029,7 +2039,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["features, messagId"]
   }
 };
-;cmapi.channel["map.overlay.hide.complete"] = {
+cmapi.channel["map.overlay.hide.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -2042,7 +2052,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["overlayId"]
   }
 };
-;cmapi.channel["map.overlay.hide"] = {
+cmapi.channel["map.overlay.hide"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.hide",
@@ -2054,7 +2064,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.overlay.remove.complete"] = {
+cmapi.channel["map.overlay.remove.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -2067,7 +2077,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["overlayId"]
   }
 };
-;cmapi.channel["map.overlay.remove"] = {
+cmapi.channel["map.overlay.remove"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.remove",
@@ -2079,7 +2089,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.overlay.show.complete"] = {
+cmapi.channel["map.overlay.show.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -2092,7 +2102,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["overlayId"]
   }
 };
-;cmapi.channel["map.overlay.show"] = {
+cmapi.channel["map.overlay.show"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.show",
@@ -2104,7 +2114,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.overlay.update.complete"] = {
+cmapi.channel["map.overlay.update.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -2118,19 +2128,12 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
       },
       "parentId": {
         "type": "string"
-      },
-      "properties": {
-        "type": "object"
-      },
-      "menuId": {
-        "type": "string",
-        "extension": "User Manipulation - Context Menus"
       }
     },
-    "required": ["overlayId"]
+    "required": ["name", "overlayId", "parentId"]
   }
 };
-;cmapi.channel["map.overlay.update"] = {
+cmapi.channel["map.overlay.update"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.overlay.update",
@@ -2148,7 +2151,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.status.about"] = {
+cmapi.channel["map.status.about"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.about",
@@ -2158,8 +2161,8 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
         "type": "string"
       },
       "type": {
-        "enum": ["2-D", "3-D", "other"],
-        "default": " "
+		"type":"string",
+        "enum": ["2-D", "3-D", "other"]
       },
       "widgetName": {
         "type": "string"
@@ -2182,7 +2185,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["version", "type", "widgetName", "extensions"]
   }
 };
-;cmapi.channel["map.status.format"] = {
+cmapi.channel["map.status.format"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.format",
@@ -2200,7 +2203,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["formats"]
   }
 };
-;cmapi.channel["map.status.initialization"] = {
+cmapi.channel["map.status.initialization"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.initialization",
@@ -2214,7 +2217,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["status"]
   }
 };
-;cmapi.channel["map.status.request"] = {
+cmapi.channel["map.status.request"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.request",
@@ -2230,7 +2233,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.status.selected"] = {
+cmapi.channel["map.status.selected"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.selected",
@@ -2265,7 +2268,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["overlayId", "selectedFeatures"]
   }
 };
-;cmapi.channel["map.status.view"] = {
+cmapi.channel["map.status.view"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.view",
@@ -2336,7 +2339,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["bounds", "center", "range"]
   }
 };
-;cmapi.channel["map.view.area.selected"] = {
+cmapi.channel["map.view.area.selected"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.area.selected",
@@ -2398,7 +2401,59 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["bounds", "keys", "button"]
   }
 };
-;cmapi.channel["map.view.center.bounds"] = {
+cmapi.channel["map.view.center.bounds"] = {
+  schema: {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "map.view.center.bounds.complete",
+    "type": "object",
+    "properties": {
+      "bounds": {
+        "type": "object",
+        "default": " ",
+        "properties": {
+          "southWest": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90
+              },
+              "lon": {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+              }
+            },
+            "required": ["lat", "lon"]
+          },
+          "northEast": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90
+              },
+              "lon": {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+              }
+            },
+            "required": ["lat", "lon"]
+          }
+        },
+        "required": ["southWest", "northEast"]
+      },
+      "zoom": {
+        "type": ["string", "number"]
+      }
+    },
+    "required": ["bounds", "zoom"]
+  }
+};
+cmapi.channel["map.view.center.bounds"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.center.bounds",
@@ -2450,7 +2505,26 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["bounds"]
   }
 };
-;cmapi.channel["map.view.center.feature"] = {
+cmapi.channel["map.view.center.feature.complete"] = {
+  schema: {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "map.view.center.feature.commplete",
+    "type": "object",
+    "properties": {
+      "overlayId": {
+        "type": "string"
+      },
+      "featureId": {
+        "type": "string"
+      },
+      "zoom": {
+        "type": ["string", "number"]
+      }
+    },
+    "required": ["overlayId", "featureId", "zoom"]
+  }
+};
+cmapi.channel["map.view.center.feature"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.center.feature",
@@ -2469,7 +2543,36 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["featureId"]
   }
 };
-;cmapi.channel["map.view.center.location"] = {
+cmapi.channel["map.view.center.location.complete"] = {
+  schema: {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "map.view.center.location.complete",
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "lon": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          }
+        },
+        "required": ["lat", "lon"]
+      },
+      "zoom": {
+        "type": ["string", "number"]
+      }
+    },
+    "required": ["location", "zoom"]
+  }
+};
+cmapi.channel["map.view.center.location"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.center.location",
@@ -2498,7 +2601,23 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["location"]
   }
 };
-;cmapi.channel["map.view.center.overlay"] = {
+cmapi.channel["map.view.center.overlay.complete"] = {
+  schema: {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "map.view.center.overlay.complete",
+    "type": "object",
+    "properties": {
+      "overlayId": {
+        "type": "string"
+      },
+      "zoom": {
+        "type": "string"
+      }
+    },
+    "required": ["overlayId", "zoom"]
+  }
+};
+cmapi.channel["map.view.center.overlay"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.center.overlay",
@@ -2514,7 +2633,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": []
   }
 };
-;cmapi.channel["map.view.clicked"] = {
+cmapi.channel["map.view.clicked"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.clicked",
@@ -2552,7 +2671,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["lat", "lon", "button", "keys", "type"]
   }
 };
-;cmapi.channel["map.view.complete"] = {
+cmapi.channel["map.view.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
@@ -2607,7 +2726,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["bounds", "range", "center"]
   }
 };
-;cmapi.channel["map.view.mousedown"] = {
+cmapi.channel["map.view.mousedown"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.mousedown",
@@ -2645,7 +2764,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["lat", "lon", "button", "keys", "type"]
   }
 };
-;cmapi.channel["map.view.mouseup"] = {
+cmapi.channel["map.view.mouseup"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.mouseup",
@@ -2683,7 +2802,20 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"] = {
     "required": ["lat", "lon", "button", "keys", "type"]
   }
 };
-;cmapi.channel["map.view.zoom"] = {
+cmapi.channel["map.view.zoom.complete"] = {
+  schema: {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Schema for map.message.complete Details object",
+    "type": "object",
+    "properties": {
+      "range": {
+        "type": "number"
+      }
+    },
+    "required": ["range"]
+  }
+};
+cmapi.channel["map.view.zoom"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.zoom",

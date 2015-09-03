@@ -292,7 +292,7 @@ var cmajs = (function () {
    */
   return cmajsInterface;
 }());
-;cmajs.utils.Hash = function () {
+cmajs.utils.Hash = function () {
   var i;
   this.length = 0;
   this.items = [];
@@ -369,7 +369,7 @@ var cmajs = (function () {
     this.length = 0;
   };
 };
-;/*global cmajs */
+/*global cmajs */
 (function () {
   if (cmajs && cmajs.utils) {
     cmajs.utils.getObjectFromSchema = function (jsonSchema) {
@@ -397,7 +397,7 @@ var cmajs = (function () {
     };
   }
 }());
-;/*global cmajs */
+/*global cmajs */
 (function () {
    function template () {
 
@@ -463,7 +463,7 @@ var cmajs = (function () {
   // append to cmajs.runtime namespcae
   cmajs.utils.getRuntimeTemplate = template;
 }());
-;/*global cmajs */
+/*global cmajs */
 (function () {
   // Keep track of used ids to make sure we never use the same id twice in one session
   var usedIds = {};
@@ -489,7 +489,7 @@ var cmajs = (function () {
     // append this function to the cmajs.utils namespace
   cmajs.utils.getUUID = generateUUID;
 }());
-;/*global cmapi, cmajs */
+/*global cmapi, cmajs */
 (function () {
 
   function isArray(o) {
@@ -498,7 +498,7 @@ var cmajs = (function () {
   // append to cmajs.utils namespace
   cmajs.utils.isArray = isArray;
 }());
-;/*global cmapi, cmajs */
+/*global cmapi, cmajs */
 (function () {
   function logError(error) {
     if (console && console.hasOwnProperty("error")) {
@@ -507,7 +507,7 @@ var cmajs = (function () {
   }
   cmajs.utils.logError = logError;
 }());
-;/*global cmapi,console, cmajs */
+/*global cmapi,console, cmajs */
 (function () {
   function logMessage(message) {
     if (console && console.hasOwnProperty("log")) {
@@ -517,7 +517,7 @@ var cmajs = (function () {
 
   cmajs.utils.logMessage = logMessage;
 }());
-;/*global cmajs, tv4, cmapi */
+/*global cmajs, tv4, cmapi */
 (function () {
    
     function getValidationErrorString(valError, index, total) {
@@ -575,7 +575,7 @@ var cmajs = (function () {
     // append to cmajs.utils namespace
    cmajs.utils.validateMessage = validate;
 }());
-;/*global cmajs */
+/*global cmajs */
 (function () {
 
   var template = cmajs.utils.getRuntimeTemplate(),
@@ -639,7 +639,7 @@ var cmajs = (function () {
   cmajs.runtimes.browser = template;
 
 }());
-;/*global cmajs */
+/*global cmajs */
 (function () {
   cmajs.runtimes.browser.mediator = (function () {
     var listeners = new cmajs.utils.Hash(),
@@ -713,7 +713,7 @@ var cmajs = (function () {
     return publicInterface;
   }());
 }());
-;/*global cmajs, tv4 */
+/*global cmajs, tv4 */
 
   // Verify that the tv4 JSON schema validation library is avaialbe in current application
   if (!tv4) {

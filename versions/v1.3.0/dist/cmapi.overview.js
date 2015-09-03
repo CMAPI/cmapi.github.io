@@ -1,6 +1,6 @@
 var cmapi = cmapi || {};
 cmapi.channel = cmapi.channel || {};
-cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] = {
+cmapi.overview = cmapi.overview || {};cmapi.overview["cmapi.acknowledgements"] = {
 	"sections": [{
 		"title": "CMAPI Editors",
 		"paragraphs": [
@@ -15,7 +15,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"Collecting list of contributors..."
 		]
 	}]
-};;cmapi.overview["cmapi.acronyms"] = {
+};cmapi.overview["cmapi.acronyms"] = {
 	"sections": [{
 		"title": "Acronyms",
 		"paragraphs": [
@@ -32,7 +32,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"RFC - Request For Comment"
 		]
 	}]
-};;cmapi.overview["cmapi.appendecies.overview"] = {
+};cmapi.overview["cmapi.appendecies.overview"] = {
   "title": "CMAPI Appendecies",
   "sections": [{
     "title": "Overview",
@@ -41,7 +41,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.appendix.a"] = {
+cmapi.overview["cmapi.appendix.a"] = {
   "title": "Appendix A: Unique Identifiers",
   "sections": [{
     "title": "Unique Identifiers",
@@ -51,7 +51,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.changelog"] = {
+cmapi.overview["cmapi.changelog"] = {
   "title": "CMAPI 1.3.0 Change Log",
   "sections": [{
     "title": "Changes",
@@ -79,7 +79,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.core.overview"] = {
+cmapi.overview["cmapi.core.overview"] = {
   "title": "CMAPI Core ",
   "sections": [{
     "title": "Overview",
@@ -94,7 +94,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.extensions.cluster.overview"] = {
+cmapi.overview["cmapi.extensions.cluster.overview"] = {
 	"title" : "Feature Clustering",
 	"sections": [{
 		"title": "Background",
@@ -106,7 +106,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"Note that clustering rules are applied at the overlay level.  If it is desired to separate items into different clustering rules, then the elements should be separated into different overlays and the appropriate clustering rule set for each specific overlay."
 		]
 	}]
-};;cmapi.overview["cmapi.extensions.manipulation.overview"] = {
+};cmapi.overview["cmapi.extensions.manipulation.overview"] = {
   "title": "User Manipulation Extension",
   "sections": [{
     "title": "Overview",
@@ -120,7 +120,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.extensions.overview"] = {
+cmapi.overview["cmapi.extensions.overview"] = {
   "title": "CMAPI Extensions",
   "sections": [{
     "title": "Overview",
@@ -129,7 +129,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.overview"] = {
+cmapi.overview["cmapi.overview"] = {
 	"title": "CMAPI Overview",
 	"sections": [{
 		"title": "Background",
@@ -218,7 +218,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 		]
 
 	}]
-};;cmapi.overview["cmapi.references"] = {
+};cmapi.overview["cmapi.references"] = {
 	"sections": [{
 		"title": "References",
 		"paragraphs": [
@@ -228,7 +228,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"Open Geospatial Consortium WMS specification -  -  <a href=\"http://www.opengeospatial.org/standards/wms\" target=\"_blank\" >http://www.opengeospatial.org/standards/wms</a>"
 		]
 	}]
-};;cmapi.overview["cmapi.runtimes.overview"] = {
+};cmapi.overview["cmapi.runtimes.overview"] = {
   "title": "CMAPI Rutime Extensions",
   "sections": [{
     "title": "Overview",
@@ -237,7 +237,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.runtimes.owf.overview"] = {
+cmapi.overview["cmapi.runtimes.owf.overview"] = {
   "title": "OWF Specific Extensions",
   "sections": [{
     "title": "Overview",
@@ -246,7 +246,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.validation.overview"] = {
+cmapi.overview["cmapi.validation.overview"] = {
   "title": "Validating CMAPI messages with JSON Schemas",
   "sections": [{
     "title": "Overview",
@@ -259,7 +259,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["cmapi.widget-intents.overview"] = {
+cmapi.overview["cmapi.widget-intents.overview"] = {
 	"title" : "Widget Intents",
 	"sections": [{
 		"title": "Background",
@@ -278,7 +278,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"For each intent defined below, the properties identified in the <b>metadata</b> section are intended to go into the <b>data.common_map</b> object.  The identified properties are defined in the Common Map Widget API core specification, and a reference to the payload they are defined in is provided in the text.  Note that there is a potential inconsistency here between the fact that the metadata object <b>data.common_map</b> is optional, but some of the properties within the <b>data.common_map</b> object are defined as “required” in the Common Map Widget API core spec.  In these cases, when the <b>data.common_map</b> object is not sent with the given intent, the features being viewed or plotted may not be accessible to the other Common Map Widget API functions (e.g., via a map.feature.selected event)."
 		]
 	}]
-};;cmapi.overview["cmapi.widget-intents.pick.overview"] = {
+};cmapi.overview["cmapi.widget-intents.pick.overview"] = {
 	"title": "Picking a Map widget",
 	"sections": [{
 		"title": "Purpose",
@@ -314,7 +314,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"In OWF.Intents.startActivity, the payload SHOULD be empty (i.e., no actual data is conveyed in the map widget pick intent).  An example use case that this supports is for an end user to connect a specific data widget with a specific map widget for further directed communications via the Common Map Widget API. "
 		]
 	}]
-};;cmapi.overview["cmapi.widget-intents.plot.overview"] = {
+};cmapi.overview["cmapi.widget-intents.plot.overview"] = {
 	"title": "Plotting Data",
 	"sections": [{
 		"title": "Purpose",
@@ -353,7 +353,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"<pre><code class=\"javascript\">OWF.Intents.startActivity(<br/>  { action: 'plot', dataType: 'application/vnd.google-earth.kml+xml' }, <br/>  { <br/>    data: '&lt?xml version=\"1.0\"?&gt&ltkml&gt…&lt/kml&gt',<br/>    common_map: {<br/>      overlayId: 'abc123',<br/>      featureId: 'def456',<br/>      name: 'My Geo Data',<br/>      zoom: true<br/>    }<br/>  }<br/>  function(dest) { … }<br/>);</code></pre>"
 		]
 	}]
-};;cmapi.overview["cmapi.widget-intents.view.overview"] = {
+};cmapi.overview["cmapi.widget-intents.view.overview"] = {
 	"title" : "Viewing Data",
 	"sections": [{
 		"title": "Purpose",
@@ -392,7 +392,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"<pre><code class=\"javascript\">OWF.Intents.startActivity(<br/> { action: 'view', dataType: 'application/vnd.google-earth.kml+xml' }, <br/> { <br/>  data: '&lt?xml version=\"1.0\"?&gt&ltkml&gt…&lt/kml&gt',<br/>  common_map: {<br/>   overlayId: 'abc123',<br/>   featureId: 'def456',<br/>   name: 'My Geo Data',<br/>   zoom: true<br/>  }<br/> },<br/> function(dest) { … }<br/>);</code></pre>"
 			]
 	}]
-};;cmapi.overview["map.feature.formats.overview"] = {
+};cmapi.overview["map.feature.formats.overview"] = {
   "title": "map.feature data formats",
   "sections": [{
     "title": "Overview",
@@ -401,7 +401,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.feature.overview"] = {
+cmapi.overview["map.feature.overview"] = {
   "title": "map.feature namespace",
   "sections": [{
     "title": "Overview",
@@ -410,7 +410,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.feature.plot.formats.overview"] = {
+cmapi.overview["map.feature.plot.formats.overview"] = {
   "title": "Data formats supported in map.feature channels",
   "sections": [{
     "title": "Overview",
@@ -419,7 +419,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.feature.plot.kml"] = {
+cmapi.overview["map.feature.plot.kml"] = {
   "title" : "map.feature.plot - KML",
 	"sections": [{
 		"title": "map.feature.plot - KML",
@@ -428,7 +428,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"<figure><img src='img/kml.diagram.figureA1.jpg'></img> <figcaption>Figure A.1 - Minimum support for KML. </figcaption></figure>"
 		]
 	}]
-};;cmapi.overview["map.menu.overview"] = {
+};cmapi.overview["map.menu.overview"] = {
   "title": "map.menu namespace",
   "sections": [{
     "title": "Overview",
@@ -437,7 +437,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.message.overview"] = {
+cmapi.overview["map.message.overview"] = {
   "title": "map.overlay.cluster namespace ",
   "sections": [{
     "title": "Overview",
@@ -446,7 +446,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.overlay.cluster.overview"] = {
+cmapi.overview["map.overlay.cluster.overview"] = {
   "title": "map.overlay.cluster namespace ",
   "sections": [{
     "title": "Overview",
@@ -455,7 +455,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.overlay.cluster.references"] = {
+cmapi.overview["map.overlay.cluster.references"] = {
 	"title" : "Clustering: References",
 	"sections": [{
 		"title": " ",
@@ -463,7 +463,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			"Too Many Markers by Luke Mahe and Chris Broadfoot  -  <a href=\"https://developers.google.com/maps/articles/toomanymarkers\" target=\"_blank\" >https://developers.google.com/maps/articles/toomanymarkers</a>"
 		]
 	}]
-};;cmapi.overview["map.overlay.cluster.replaceableParameters"] = {
+};cmapi.overview["map.overlay.cluster.replaceableParameters"] = {
 	"title" : "Clustering: Replaceable Parameters",
 	"sections": [{
 		"title": " ",
@@ -474,7 +474,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
 			
 		]
 	}]
-};;cmapi.overview["map.overlay.overview"] = {
+};cmapi.overview["map.overlay.overview"] = {
   "title": "map.overlay namespace",
   "sections": [{
     "title": "Overview",
@@ -483,7 +483,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.overview"] = {
+cmapi.overview["map.overview"] = {
   "title": "map namespace",
   "sections": [{
     "title": "Overview",
@@ -492,7 +492,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.status.overview"] = {
+cmapi.overview["map.status.overview"] = {
   "title": "map.status namespace",
   "sections": [{
     "title": "Overview",
@@ -501,7 +501,16 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.view.center.overview"] = {
+cmapi.overview["map.view.area"] = {
+  "title": "map.view.area namespace",
+  "sections": [{
+    "title": "Overview",
+    "paragraphs": [
+      "Namespace for those messages and channels that are associated with the map view area (i.e., what portion of the map view the end user is interested in)."
+    ]
+  }]
+};
+cmapi.overview["map.view.center.overview"] = {
   "title": "map.view.center namespace ",
   "sections": [{
     "title": "Overview",
@@ -510,7 +519,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.overview["cmapi.acknowledgements"] 
     ]
   }]
 };
-;cmapi.overview["map.view.overview"] = {
+cmapi.overview["map.view.overview"] = {
   "title": "map.view namespace",
   "sections": [{
     "title": "Overview",

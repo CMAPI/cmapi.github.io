@@ -1,6 +1,6 @@
 var cmapi = cmapi || {};
 cmapi.channel = cmapi.channel || {};
-cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples = [{
+cmapi.overview = cmapi.overview || {};cmapi.channel["map.drag-drop"].examples = [{
     "title": "Example Drag Drop Data",
     "description": "",
     "valid": true,
@@ -16,7 +16,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
             }
         }
     }
-}];;cmapi.channel["map.error"].examples = [{
+}];cmapi.channel["map.error"].examples = [{
   "title": "Example map error",
   "description": "",
   "valid": true,
@@ -29,7 +29,35 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     },
     "error": "No feature with id example.mapWidget.doesntExist found to hide."
   }
-}];;cmapi.channel["map.feature.deselected.batch"].examples = [{
+}];cmapi.channel["map.feature.deselected.batch.complete"].examples = [{
+  "title": "de-select batch complete",
+  "description": "",
+  "valid": true,
+  "payload": {"features": [
+	{
+		"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"featureId": "example.mapWidget.1",
+		"deSelectedName": "World Trade Center",
+		"deSelectedId":""
+	},{
+		"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"featureId": "example.mapWidget.2",
+		"deSelectedName": "911 Memorial Museum",
+		"deSelectedId":""
+	},{
+		"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"featureId": "example.mapWidget.3",
+		"deSelectedName": "Millenium Hilton",
+		"deSelectedId":""
+	},{
+		"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"featureId": "example.mapWidget.4",
+		"deSelectedName": "911 Tribute Center",
+		"deSelectedId":""
+	}],
+ 
+}}];
+cmapi.channel["map.feature.deselected.batch"].examples = [{
   "title": "de-select batch",
   "description": "",
   "valid": true,
@@ -49,7 +77,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 	}],
   "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
 }}];
-;cmapi.channel["map.feature.deselected"].examples = [
+cmapi.channel["map.feature.deselected.complete"].examples = [
     {
         "title": "Feature De-selected Message",
         "description" : "De-select a feature",
@@ -65,19 +93,111 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.feature.draw"].examples = [{
-    "title": "Edit a feature",
-    "description": "Draw a new feature on the map",
-    "valid": true,
-    "payload": {
-        "featureId": "0001-0002-0003-0004",
-        "name": "My new line",
-        "overlayId": "0005-0006-0007-0008",
-        "type": "line",
-        "messageId": "19733f70-d0b8-11e3-9c1a-0800200c9a66"
+cmapi.channel["map.feature.deselected"].examples = [
+    {
+        "title": "Feature De-selected Message",
+        "description" : "De-select a feature",
+        "valid": true,
+        "payload": {
+            "deSelectedId": "example.mapWidget.1.1", 
+            "deSelectedName": "World Trade Center", 
+            "featureId": "example.mapWidget.1", 
+            "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+        }
     }
+];
+
+
+
+cmapi.channel["map.feature.draw.complete"].examples = [{
+  "title": "draw a feature",
+  "description": "Progress event while drawing a new feature on the map",
+  "valid": true,
+  "payload": {
+    "overlayId": "mario foxtrot",
+    "featureId": "broccoli yankee",
+    "type": "line",
+    "name": "broccoli yankee",
+    "format": "geojson",
+    "feature": {
+      "coordinates": [
+        [19.971319934313282, 29.202454144467602],
+        [22.689376560644526, 25.718380484872096],
+        [28.624369253738855, 25.201776348153214],
+        [30.99439955610537, 27.721359806455116]
+      ],
+      "type": "LineString"
+    },
+    "coordinates": [{
+      "lat": 29.202454144467602,
+      "lon": 19.971319934313282,
+      "alt": 0
+    }, {
+      "lat": 25.718380484872096,
+      "lon": 22.689376560644526,
+      "alt": 0
+    }, {
+      "lat": 25.201776348153214,
+      "lon": 28.624369253738855,
+      "alt": 0
+    }, {
+      "lat": 27.721359806455116,
+      "lon": 30.99439955610537,
+      "alt": 0
+    }]
+  }
 }];
-;cmapi.channel["map.feature.edit"].examples = [{
+cmapi.channel["map.feature.draw"].examples = [{
+  "title": "Edit a feature",
+  "description": "Draw a new feature on the map",
+  "valid": true,
+  "payload": {
+    "overlayId": "mario foxtrot",
+    "featureId": "broccoli yankee",
+    "name": "broccoli yankee",
+    "type": "line",
+    "messageId": "00049622-581b-d609-d818-32f8930412e0"
+  }
+}];
+cmapi.channel["map.feature.draw.progress"].examples = [{
+  "title": "draw a feature",
+  "description": "Progress event while drawing a new feature on the map",
+  "valid": true,
+  "payload": {
+    "overlayId": "mario foxtrot",
+    "featureId": "broccoli yankee",
+    "name": "broccoli yankee",
+    "type": "line",
+    "format": "geojson",
+    "feature": {
+      "coordinates": [
+        [19.971319934313282, 29.202454144467602],
+        [22.689376560644526, 25.718380484872096],
+        [28.624369253738855, 25.201776348153214]
+      ],
+      "type": "LineString"
+    },
+    "status": "update",
+    "updates": {
+      "type": "add",
+      "indices": [2],
+      "coordinates": [{
+        "lat": 29.202454144467602,
+        "lon": 19.971319934313282,
+        "alt": 0
+      }, {
+        "lat": 25.718380484872096,
+        "lon": 22.689376560644526,
+        "alt": 0
+      }, {
+        "lat": 25.201776348153214,
+        "lon": 28.624369253738855,
+        "alt": 0
+      }]
+    }
+  }
+}];
+cmapi.channel["map.feature.edit"].examples = [{
     "title": "Edit a feature",
     "description": "Edit an existing feature on the map",
     "valid": true,
@@ -87,7 +207,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
         "messageId": "19733f70-d0b8-11e3-9c1a-0800200c9a66"
     }
 }];
-;cmapi.channel["map.feature.hide"].examples = [
+cmapi.channel["map.feature.hide.complete"].examples = [
     {
         "title": "Hide a feature",
         "description" : "Hide an existing feature on the map",
@@ -101,7 +221,21 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.feature.plot.batch"].examples = [{
+cmapi.channel["map.feature.hide"].examples = [
+    {
+        "title": "Hide a feature",
+        "description" : "Hide an existing feature on the map",
+        "valid": true,
+        "payload": {
+            "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",  
+            "featureId": "example.mapWidget.2"
+        }
+    }
+];
+
+
+
+cmapi.channel["map.feature.plot.batch.complete"].examples = [{
   "title": "Plot KML batch",
   "description": "",
   "valid": true,
@@ -125,10 +259,207 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 	}],
   "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
   "format":"kml",
-  "zoom":true,
+  "zoom":false,
   "readOnly":false
 }}];
-;cmapi.channel["map.feature.plot"].examples = [{
+cmapi.channel["map.feature.plot.batch"].examples = [{
+  "title": "Plot KML batch",
+  "description": "",
+  "valid": true,
+  "payload": {"features": [
+	{
+		"featureId": "example.mapWidget.1",
+		"feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.1\"><name>World Trade Center</name><description><![CDATA[Site of World Trade Center]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.01324033737183,40.71149172571141,0 </coordinates></Point></Placemark></kml>",
+		"name": "World Trade Center"
+	},{
+		"featureId": "example.mapWidget.2",
+		"feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.2\"><name>911 Memorial Museum</name><description><![CDATA[Site of 911 Memorial Museum]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.0136,40.7117,0 </coordinates></Point></Placemark></kml>",
+		"name": "911 Memorial Museum"
+	},{
+		"featureId": "example.mapWidget.3",
+		"feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.3\"><name>Millenium Hilton</name><description><![CDATA[Site of Millenium Hilton]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.0103,40.7111,0 </coordinates></Point></Placemark></kml>",
+		"name": "Millenium Hilton"
+	},{
+		"featureId": "example.mapWidget.4",
+		"feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.4\"><name>911 Tribute Center</name><description><![CDATA[Site of 911 Tribute Center]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.0124,40.7101,0 </coordinates></Point></Placemark></kml>",
+		"name": "911 Tribute Center"
+	}],
+  "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+  "format":"kml",
+  "zoom": false,
+  "readOnly":false
+}}];
+cmapi.channel["map.feature.plot.complete"].examples = [{
+  "title": "Plot KML",
+  "description": "",
+  "valid": true,
+  "payload": {
+    "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+    "featureId": "example.mapWidget.1",
+	"name": "World Trade Center",
+	"format": "kml",
+    "feature": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><Placemark id=\"example.mapWidget.1.1\"><name>World Trade Center</name><description><![CDATA[Site of World Trade Center]]></description><Style><IconStyle><Icon><href>https://localhost/widgets/mapWidget/images/blu-circle.png</href></Icon><hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"></hotSpot></IconStyle></Style><Point><coordinates>-74.01324033737183,40.71149172571141,0 </coordinates></Point></Placemark></kml>",
+    "zoom": true,
+	"readOnly": true,
+	"properties":{}
+  }
+}, {
+  "title": "Plot GeoJSON",
+  "valid": true,
+  "payload": {
+    "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+    "featureId": "example.geojson.1",
+	"name": "Sample GeoJSON Feature Collection",
+    "format": "geojson",
+    "feature": {
+      "type": "FeatureCollection",
+      "features": [{
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              100,
+              0
+            ],
+            [
+              101,
+              0
+            ],
+            [
+              101,
+              1
+            ],
+            [
+              100,
+              1
+            ],
+            [
+              100,
+              0
+            ]
+          ]
+        },
+        "properties": {
+          "style": {
+            "lineStyle": {
+              "color": {
+                "r": 255,
+                "g": 0,
+                "b": 255,
+                "a": 0.5
+              }
+            },
+            "polyStyle": {
+              "color": {
+                "r": 0,
+                "g": 255,
+                "b": 0,
+                "a": 0.25
+              }
+            },
+            "name": "test polygon",
+            "id": "tp13456",
+            "description": "polygon pop-up text"
+          }
+        }
+      }, {
+        "type": "Feature",
+        "geometry": {
+          "type": "Line",
+          "coordinates": [
+            [
+              80,
+              3
+            ],
+            [
+              81,
+              3
+            ],
+            [
+              81,
+              5
+            ],
+            [
+              82,
+              2
+            ]
+          ]
+        },
+        "properties": {
+          "style": {
+            "lineStyle": {
+              "color": {
+                "r": 0,
+                "g": 255,
+                "b": 255,
+                "a": 0.5
+              }
+            }
+          }
+        },
+        "name": "crossingLine",
+        "id": "0x45632",
+        "description": "this is a line you don’t want to cross"
+      }]
+    },
+    "zoom": true,
+    "readOnly": false,
+	"properties": {}
+  }
+}, {
+  "title": "Plot Area of Interest (AOI)",
+  "valid": true,
+  "payload": {
+    "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+    "featureId": "example.aoi.1",
+	"name":"",
+    "format": "geojson",
+    "feature": {
+      "type": "Feature",
+      "geometry": {
+        "type": "point",
+        "coordinates": [
+          100,
+          0
+        ]
+      }
+    },
+    "zoom": true,
+    "readOnly": false,
+    "properties": {
+      "name": "SampleAOIBufferedpoint(i.e., Point/Radius)",
+      "aoi": {
+        "type": "point-radius",
+        "buffer": 1000
+      },
+      "style": {
+        "lineStyle": {
+          "color": {
+            "r": 255,
+            "g": 0,
+            "b": 255,
+            "a": 1
+          }
+        },
+        "polyStyle": {
+          "color": {
+            "r": 0,
+            "g": 255,
+            "b": 25,
+            "a": 0.5
+          },
+          "iconStyle": {
+            "url": "http: //www.coolicons.org/icon"
+          }
+        },
+        "id": "0x75023443",
+        "description": "ThisisimportanttextfortheAOIpopup"
+      }
+    }
+  }
+}];
+cmapi.channel["map.feature.plot"].examples = [{
   "title": "Plot KML",
   "description": "",
   "valid": true,
@@ -296,13 +627,49 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
         },
         "id": "0x75023443",
         "description": "ThisisimportanttextfortheAOIpopup"
-      },
-      "zoom": true,
-      "readOnly": "false"
-    }
+      }
+    },
+    "zoom": true,
+    "readOnly": false
   }
 }];
-;cmapi.channel["map.feature.plot.url"].examples = [
+cmapi.channel["map.feature.plot.url.complete"].examples = [
+    {
+    "title": "Plot KML From URL",
+    "description" : "",
+    "valid": true,
+    "payload": {
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1", 
+        "featureId": "example.mapWidget.2", 
+		"format":"kml",
+        "url": "https://developers.google.com/kml/documentation/KML_Samples.kml", 
+        "name": "Samples", 
+        "zoom": true,
+		"params":{}
+        }
+    },
+    {
+    "title": "Plot WMS",
+    "valid": true,
+    "payload": {
+        "overlayId":"xyz", 
+        "featureId":"def", 
+        "name": "Bodies of Water", 
+        "format":"wms", 
+        "url": "http://demo.opengeo.org/geoserver/wms", 
+		"zoom": false,
+        "params": {
+            "layers": "topp:tasmania_water_bodies", 
+            "transparent": true, 
+            "format": "image/gif"
+            }   
+        }
+    }
+];
+
+
+
+cmapi.channel["map.feature.plot.url"].examples = [
     {
     "title": "Plot KML From URL",
     "description" : "",
@@ -335,7 +702,34 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.feature.selected.batch"].examples = [{
+cmapi.channel["map.feature.selected.batch.complete"].examples = [{
+  "title": "select batch",
+  "description": "",
+  "valid": true,
+  "payload": {"features": [
+	{
+		"selectedId": "", 
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"featureId": "example.mapWidget.1",
+		"selectedName": "World Trade Center"
+	},{
+		"selectedId": "", 
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"featureId": "example.mapWidget.2",
+		"selectedName": "911 Memorial Museum"
+	},{
+		"selectedId": "", 
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"featureId": "example.mapWidget.3",
+		"selectedName": "Millenium Hilton"
+	},{
+		"selectedId": "", 
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"featureId": "example.mapWidget.4",
+		"selectedName": "911 Tribute Center"
+	}]
+}}];
+cmapi.channel["map.feature.selected.batch"].examples = [{
   "title": "select batch",
   "description": "",
   "valid": true,
@@ -355,7 +749,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 	}],
   "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
 }}];
-;cmapi.channel["map.feature.selected"].examples = [
+cmapi.channel["map.feature.selected.complete"].examples = [
     {
         "title": "Feature Selected Message",
         "description" : "Select a feature",
@@ -371,7 +765,23 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.feature.show"].examples = [
+cmapi.channel["map.feature.selected"].examples = [
+    {
+        "title": "Feature Selected Message",
+        "description" : "Select a feature",
+        "valid": true,
+        "payload": {
+            "selectedId": "example.mapWidget.1.1", 
+            "selectedName": "World Trade Center", 
+            "featureId": "example.mapWidget.1", 
+            "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+        }
+    }
+];
+
+
+
+cmapi.channel["map.feature.show.complete"].examples = [
     {
         "title": "Show a feature",
         "description" : "Show an existing feature on the map",
@@ -386,7 +796,41 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.feature.unplot.batch"].examples = [{
+cmapi.channel["map.feature.show"].examples = [
+    {
+        "title": "Show a feature",
+        "description" : "Show an existing feature on the map",
+        "valid": true,
+        "payload": {
+            "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",  
+            "featureId": "example.mapWidget.2",
+            "zoom" : true
+        }
+    }
+];
+
+
+
+cmapi.channel["map.feature.unplot.batch.complete"].examples = [{
+  "title": "Unplot batch complete",
+  "description": "",
+  "valid": true,
+  "payload": {"features": [
+	{
+		"featureId": "example.mapWidget.1",
+		"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+	},{
+		"featureId": "example.mapWidget.2",
+		"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+	},{
+		"featureId": "example.mapWidget.3",
+		"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+	},{
+		"featureId": "example.mapWidget.4",
+		"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+	}]
+}}];
+cmapi.channel["map.feature.unplot.batch"].examples = [{
   "title": "Unplot batch",
   "description": "",
   "valid": true,
@@ -402,7 +846,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 	}],
   "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
 }}];
-;cmapi.channel["map.feature.unplot"].examples = [{
+cmapi.channel["map.feature.unplot.complete"].examples = [{
   "title": "Unplot a feature",
   "description": "Remove an existing feature from the map",
   "valid": true,
@@ -411,7 +855,27 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "featureId": "example.mapWidget.2"
   }
 }];
-;cmapi.channel["map.feature.update"].examples = [{
+cmapi.channel["map.feature.unplot"].examples = [{
+  "title": "Unplot a feature",
+  "description": "Remove an existing feature from the map",
+  "valid": true,
+  "payload": {
+    "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+    "featureId": "example.mapWidget.2"
+  }
+}];
+cmapi.channel["map.feature.update.complete"].examples = [{
+  "title": "map.message.complete details object for map.feature.update message",
+  "description": "",
+  "valid": true,
+  "payload": {
+    "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+    "featureId": "example.mapWidget.2",
+    "name": "New Name",
+	"newOverlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+  }
+}];
+cmapi.channel["map.feature.update"].examples = [{
   "title": "Update a feature",
   "description": "",
   "valid": true,
@@ -421,28 +885,40 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "name": "New Name"
   }
 }];
-;cmapi.channel["map.overlay.cluster.activate"].examples = [{
+cmapi.channel["map.message.complete"].examples = [{
+  "title": "Message Complete resulting from earlier Hide Overlay message",
+  "description": "Example message complete from a hide overlay message",
+  "valid": true,
+  "payload": {
+	  "messageId":"19733f70-d0b8-11e3-9c1a-0800200c9a66",
+	  "originatingChannel":"map.overlay.hide",
+	  "status":"success",
+	  "details": {"overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"},
+	  "failures":[]
+  }
+}];
+cmapi.channel["map.overlay.cluster.activate"].examples = [{
   "title": "Activate overlay cluster rule example",
   "description": "",
   "valid": true,
   "payload": {
     "overlayId": "BattlePlan2"
   }
-}];;cmapi.channel["map.overlay.cluster.deactivate"].examples = [{
+}];cmapi.channel["map.overlay.cluster.deactivate"].examples = [{
   "title": "Deactivate overlay cluster rule example",
   "description": "",
   "valid": true,
   "payload": {
     "overlayId": "BattlePlan2"
   }
-}];;cmapi.channel["map.overlay.cluster.remove"].examples = [{
+}];cmapi.channel["map.overlay.cluster.remove"].examples = [{
   "title": "Remove overlay cluster rule example",
   "description": "",
   "valid": true,
   "payload": {
     "overlayId": "BattlePlan2"
   }
-}];;cmapi.channel["map.overlay.cluster.set"].examples = [{
+}];cmapi.channel["map.overlay.cluster.set"].examples = [{
   "title": "Point example",
   "description": "",
   "valid": true,
@@ -522,7 +998,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     },
     "overlayId": "BattlePlan2"
   }
-}];;cmapi.channel["map.overlay.create"].examples = [
+}];cmapi.channel["map.overlay.create"].examples = [
     {
     "title": "Create Overlay",
     "description" : "",
@@ -536,7 +1012,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.overlay.hide"].examples = [{
+cmapi.channel["map.overlay.hide.complete"].examples = [{
+  "title": "map.message.complete details object for map.overlay.hide message",
+  "description": "Hide existing overlay on the map",
+  "valid": true,
+  "payload": {
+    "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+  }
+}];
+cmapi.channel["map.overlay.hide"].examples = [{
   "title": "Hide Overlay",
   "description": "Hide existing overlay on the map",
   "valid": true,
@@ -544,7 +1028,20 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
   }
 }];
-;cmapi.channel["map.overlay.remove"].examples = [
+cmapi.channel["map.overlay.remove.complete"].examples = [
+    {
+    "title": "map.message.complete details object for map.overlay.remove message",
+    "description" : "Remove entire overlay from the map.",
+    "valid": true,
+    "payload": {
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+        }
+    }
+];
+
+
+
+cmapi.channel["map.overlay.remove"].examples = [
     {
     "title": "Remove Overlay",
     "description" : "Remove entire overlay from the map.",
@@ -557,7 +1054,20 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.overlay.show"].examples = [
+cmapi.channel["map.overlay.show.complete"].examples = [
+    {
+    "title": "map.message.complete details object for map.overlay.show message",
+    "description" : "Show existing overlay on the map.",
+    "valid": true,
+    "payload": {
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1"
+        }
+    }
+];
+
+
+
+cmapi.channel["map.overlay.show"].examples = [
     {
     "title": "Show Overlay",
     "description" : "Show existing overlay on the map.",
@@ -570,7 +1080,22 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.overlay.update"].examples = [
+cmapi.channel["map.overlay.update.complete"].examples = [
+    {
+    "title": "map.message.complete details object for map.overlay.update message",
+    "description" : "",
+    "valid": true,
+    "payload": {
+        "name": "2d882141-0d9e-59d4-20bb-58e6d0460699.1", 
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+		"parentId": " "
+        }
+    }
+];
+
+
+
+cmapi.channel["map.overlay.update"].examples = [
     {
     "title": "Update Overlay",
     "description" : "",
@@ -584,7 +1109,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
 
 
 
-;cmapi.channel["map.status.about"].examples = [{
+cmapi.channel["map.status.about"].examples = [{
   "title": "Send out static information about this map implementation",
   "description": "",
   "valid": true,
@@ -595,7 +1120,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "extensions": ["clustering", "userManipulation"]
   }
 }];
-;cmapi.channel["map.status.format"].examples = [{
+cmapi.channel["map.status.format"].examples = [{
   "title": "Send view status with all properties",
   "description": "",
   "valid": true,
@@ -624,14 +1149,14 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
   "valid": false,
   "payload": {}
 }];
-;cmapi.channel["map.status.initialization"].examples = [{
+cmapi.channel["map.status.initialization"].examples = [{
   "title": "Initialization status",
   "description": "",
   "valid": true,
   "payload": {
     "status": "mapswapinprogress"
   }
-}];;cmapi.channel["map.status.request"].examples = [{
+}];cmapi.channel["map.status.request"].examples = [{
   "title": "Send a status request",
   "description": "",
   "valid": true,
@@ -668,7 +1193,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
       "selected"
     ]
   }
-}];;cmapi.channel["map.status.selected"].examples = [{
+}];cmapi.channel["map.status.selected"].examples = [{
   "title": "Send out the list of currently selected features",
   "description": "",
   "valid": true,
@@ -702,7 +1227,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
       "selectedId": "example.mapWidget.2.1"
     }]
   }
-}];;cmapi.channel["map.status.view"].examples = [{
+}];cmapi.channel["map.status.view"].examples = [{
   "title": "Send view status with all properties",
   "description": "",
   "valid": true,
@@ -794,7 +1319,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     }
   }
 }];
-;cmapi.channel["map.view.center.bounds"].examples = [
+cmapi.channel["map.view.center.bounds.complete"].examples = [
   {
     "title": "Center on bounds",
     "description": "",
@@ -839,7 +1364,62 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
       "zoom": 3000000
     }
   }
-];;cmapi.channel["map.view.center.feature"].examples = [{
+];cmapi.channel["map.view.center.bounds"].examples = [
+  {
+    "title": "Center on bounds",
+    "description": "",
+    "valid": true,
+    "payload": {
+      "bounds": {
+        "southWest": {
+          "lat": 24.5,
+          "lon": -124
+        },
+        "northEast": {
+          "lat": 50.5,
+          "lon": -79
+        }
+      },
+      "zoom": 3000000
+    }
+  },
+  {
+    "title": "Invalid center on bounds",
+    "description": "",
+    "valid": false,
+    "payload": {
+      "zoom": 3000000
+    }
+  },
+  {
+    "title": "Invalid center on bounds",
+    "description": "",
+    "valid": false,
+    "payload": {
+      "bounds": {
+        "southWest": {
+          "lat": 24.5,
+          "lon": -8124
+        },
+        "northEast": {
+          "lat": 50.5,
+          "lon": -79
+        }
+      },
+      "zoom": 3000000
+    }
+  }
+];cmapi.channel["map.view.center.feature.complete"].examples = [{
+  "title": "map.message.complete details object for Center on a feature",
+  "description": "Center the map on a particular feature",
+  "valid": true,
+  "payload": {
+    "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1",
+    "featureId": "example.mapWidget.1",
+	"zoom": 3750
+  }
+}];
+cmapi.channel["map.view.center.feature"].examples = [{
   "title": "Center on a feature",
   "description": "Center the map on a particular feature",
   "valid": true,
@@ -848,7 +1428,41 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "featureId": "example.mapWidget.1"
   }
 }];
-;cmapi.channel["map.view.center.location"].examples = [{
+cmapi.channel["map.view.center.location.complete"].examples = [{
+  "title": "map.message.complete details object for map.view.center.location message",
+  "description": "Map centered on a particular location and zoomed to range of 1000",
+  "valid": true,
+  "payload": {
+    "location": {
+      "lat": 38.8708,
+      "lon": -77.0558
+    },
+    "zoom": 1000
+  }
+}, {
+  "title": "Map centered on a location and not zoomed",
+  "description": "Center the map on a particular location and do not zoom",
+  "valid": true,
+  "payload": {
+    "location": {
+      "lat": 38.8708,
+      "lon": -77.0558
+    },
+	"zoom":2730
+  }
+}, {
+  "title": "Center on an invalid location",
+  "description": "Center the map on a particular overlay",
+  "valid": false,
+  "payload": {
+    "location": {
+      "lat": 38.8708,
+      "lon": -777.0558
+    },
+    "zoom": 2700
+  }
+}];
+cmapi.channel["map.view.center.location"].examples = [{
   "title": "Center on a location and zoom",
   "description": "Center the map on a particular location and zoom to range of 1000",
   "valid": true,
@@ -881,7 +1495,16 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "zoom": false
   }
 }];
-;cmapi.channel["map.view.center.overlay"].examples = [{
+cmapi.channel["map.view.center.overlay.complete"].examples = [{
+  "title": "map.message.complete details object for Center on an Overlay",
+  "description": "Center the map on a particular overlay",
+  "valid": true,
+  "payload": {
+    "overlayId": "2tyjhp-23idk38-rml389k6kd-29-flsow2c",
+	"zoom":"9500"
+  }
+}];
+cmapi.channel["map.view.center.overlay"].examples = [{
   "title": "Center on an Overlay",
   "description": "Center the map on a particular overlay",
   "valid": true,
@@ -889,7 +1512,7 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "overlayId": "2tyjhp-23idk38-rml389k6kd-29-flsow2c"
   }
 }];
-;cmapi.channel["map.view.clicked"].examples = [{
+cmapi.channel["map.view.clicked"].examples = [{
   "title": "Map Clicked",
   "description": "Report that the map was clicked at a location",
   "valid": true,
@@ -933,7 +1556,15 @@ cmapi.overview = cmapi.overview || {};;cmapi.channel["map.drag-drop"].examples =
     "keys": ["shift", "ctrl"]
   }
 }];
-;cmapi.channel["map.view.zoom"].examples = [{
+cmapi.channel["map.view.zoom.complete"].examples = [{
+  "title": "Zoomto a range",
+  "description": "The range the map was zoomed to",
+  "valid": true,
+  "payload": {
+    "range": 100000
+  }
+}];
+cmapi.channel["map.view.zoom"].examples = [{
   "title": "Zoomto a range",
   "description": "Zoom the map to a particular range.",
   "valid": true,
