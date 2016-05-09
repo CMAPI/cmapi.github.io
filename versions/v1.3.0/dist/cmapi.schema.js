@@ -1132,6 +1132,23 @@ cmapi.channel["map.feature.plot.geojson"] = {
             },
             "required": ["begin", "end"]
           },
+          "timeSpans": {
+            "type": "Array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "begin": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": ["begin", "end"]
+            }
+          },
           "timeStamp": {
             "type": "string",
             "format": "date-time"
@@ -1614,7 +1631,7 @@ cmapi.channel["map.feature.update"] = {
 cmapi.channel["map.get.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.message.complete",
+    "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {
       "messageId": {
@@ -2334,6 +2351,46 @@ cmapi.channel["map.status.view"] = {
       "requester": {
         "type": "string",
         "status": "updated"
+      },
+      "time": {
+        "type": "object",
+        "properties": {
+          "timeSpan": {
+            "type": "object",
+            "properties": {
+              "begin": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "end": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": ["begin", "end"]
+          },
+          "timeSpans": {
+            "type": "Array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "begin": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": ["begin", "end"]
+            }
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       }
     },
     "required": ["bounds", "center", "range"]
@@ -2401,7 +2458,7 @@ cmapi.channel["map.view.area.selected"] = {
     "required": ["bounds", "keys", "button"]
   }
 };
-cmapi.channel["map.view.center.bounds"] = {
+cmapi.channel["map.view.center.bounds.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.center.bounds.complete",
@@ -2508,7 +2565,7 @@ cmapi.channel["map.view.center.bounds"] = {
 cmapi.channel["map.view.center.feature.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.view.center.feature.commplete",
+    "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {
       "overlayId": {
@@ -2546,7 +2603,7 @@ cmapi.channel["map.view.center.feature"] = {
 cmapi.channel["map.view.center.location.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.view.center.location.complete",
+    "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {
       "location": {
@@ -2604,7 +2661,7 @@ cmapi.channel["map.view.center.location"] = {
 cmapi.channel["map.view.center.overlay.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.view.center.overlay.complete",
+    "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {
       "overlayId": {
@@ -2638,6 +2695,22 @@ cmapi.channel["map.view.clicked"] = {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.clicked",
     "type": "object",
+    "definitions": {
+      "timeSpan": {
+        "type": "object",
+        "properties": {
+          "begin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["begin", "end"]
+      }
+    },
     "properties": {
       "lat": {
         "type": "number",
@@ -2665,6 +2738,24 @@ cmapi.channel["map.view.clicked"] = {
         "default": ["none"],
         "items": {
           "enum": ["shift", "alt", "ctrl", "none"]
+        }
+      },
+      "time": {
+        "type": "object",
+        "properties": {
+          "timeSpan": {
+            "$ref": "#/definitions/timeSpan"
+          },
+          "timeSpans": {
+            "type": "Array",
+            "items": {
+              "$ref": "#/definitions/timeSpan"
+            }
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       }
     },

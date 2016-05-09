@@ -87,66 +87,127 @@ cmapi.overview["cmapi.core.channels.overview"] = {
 			"CMAPI is a publish subscribe specifiation that defines JSON objects and the named channels over which they are to be transmitted.  Below are the channels used in the CMAPI COre.  Optional extensions to these channels and JSON messages as well as additional channels are defined in the CMAPI extensions section."
 		]
 	}]
-};cmapi.overview["cmapi.core.general.requirements.overview"] = {
-  "title": "CMAPI Core General Requirements",
+};cmapi.overview["cmapi.core.general.requirements.batch.overview"] = {
+  "title": "Batch Behavior",
   "sections": [{
-    "title": "Notation",
-    "paragraphs": [
-      "The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL in this document, when in all capital letters, are to be interpreted as described in RFC 2119 (http://tools.ietf.org/html/rfc2119)."
-    ]
-  }, {
-    "title": "Overlays",
-    "paragraphs": [
-      "By default, all data added by an individual application is placed into a single overlay unique to that application, which means one overlay per application. However, the API supports specifying into which overlay data are inserted, so an application can insert data in multiple overlays, and multiple applications can insert data into the same overlay. To prevent unintended merging of data due to multiple applications unintentionally using the same overlay ID, it is suggested that if an application needs to use multiple overlays, and no sharing of those overlays with other applications is intended, developers include the application ID as part of the overlay ID.  If an application needs to share overlays with other applications, developers SHOULD follow the guidelines in the OWF documentation regarding preference namespaces for shared overlays to avoid unintended collisions."
-    ]
-  }, {
-    "title": "Features and Feature IDs",
-    "paragraphs": [
-      "Features in the context of this document refer to the discrete pieces of data passed to the API. A feature may be a single marker, polygon, or a complex feature (for example, a KML or GeoJSON Document containing many sub-features). The feature ID used by the API (featureId) refers to the feature ID given when plotting the entire feature. Sub-features also have IDs but their IDs are only used in the map.feature.selected message, which contains the ID of the lowest level feature selected (if available).  Since feature IDs are required to be unique within an overlay, it is recommended to use an approach similar to the OWF channels:  use a hierarchical naming pattern with the levels of the hierarchy separated by a dot (.). To form a unique feature ID, begin with the ID of the application creating the feature ID. Then, the application can generate a unique number to complete the feature ID. For example, if generating a feature ID from an application with the name of “army.bccs.targeter”, the feature ID’s would begin with army.bccs.targeter. See Appendix D for more information on how to generate unique IDs."
-    ]
-  }, {
-    "title": "Payloads",
-    "paragraphs": [
-      "With the exception of the batch channels, all Payloads SHOULD a single message payload object.  If it is desired to send an array of message payload objects in one message event, the applicable batch channel SHOULD to be used.  For backwards compatibility, arrays on any channel MUST still be supported, however arrays on these channels should be considered deprecated.  In future versions of this specification, arrays will only be supported on the batch channels."
-    ]
-  },
-  {
-    "title": "Batch Behavior",
+    "title": "",
     "paragraphs": [
       "Batch processing allows an application to send a group of messages bundled with top level meta data.  This enables reduction of duplicate values, such as overlayId on a map.feature.plot, where 500 features are targeting the overlay.  This also allows the sending application to treat the entire batch as one message and leverage the map.message.complete to know when this batch of messages has finished processing, as well as seeing any errors raised during the processing.",
       "In previous versions of CMAPI (1.2.0 and earlier) a message payload was allowed to be either an object representing a single payload, or an array representing multiple payloads.  Beginning in CMAPI 1.2.1 developers SHOULD use the batch channels in place of arrays of payloads."
     ]
-  }, {
-    "title": "Latitude and Longitude",
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.case.overview"] = {
+  "title": "Case Sensitivity",
+  "sections": [{
+    "title": "",
     "paragraphs": [
-      "All latitudes and longitudes are in decimal degrees. "
+      "All keywords (i.e., those specifically identified in this API) in a message payload are case sensitive unless otherwise noted.",
+      "Keywords and object property values SHOULD be in lower case or when they are multiple words SHOULD be be in camel case"
     ]
-  }, {
-    "title": "Errors",
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.channelnaming.overview"] = {
+  "title": "Channel Naming Convention",
+  "sections": [{
+    "title": "",
     "paragraphs": [
-      "Any message sent that is missing a required attribute SHOULD result in the map application publishing an error message on the error channel. An error is also published if the map application is unable to find an object based on the given identifier. In general, any time the map is unable to complete a requested operation, an error will be published (if possible)."
+      "All channel names MUST be lower case with each word separated by a period (e.g., map.feature.plot).  When adding new channels, names SHOULD follow the pattern currently established. "
     ]
-  }, {
-    "title": "Case Sensitivity",
-    "paragraphs": [
-      "All keywords (i.e., those specifically identified in this API) in a message payload are case sensitive unless otherwise noted"
-    ]
-  }, {
-    "title": "Coordinate Reference System",
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.coordref.overview"] = {
+  "title": "Coordinate Reference System",
+  "sections": [{
+    "title": "",
     "paragraphs": [
       "All latitudes and longitudes MUST be in the WGS-84 Geocentric coordinate reference system (CRS) as defined in the Open Geospatial Consortium (OGC) KML Specification Section 6.2, Coordinate Reference System and Annex B, KML Coordinate Reference System Definition.  The specification can be found at http://www.opengeospatial.org/standards/kml."
     ]
-  }, {
-    "title": "Core API",
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.errors.overview"] = {
+  "title": "Errors",
+  "sections": [{
+    "title": "",
     "paragraphs": [
-      "The channels associated with the Common Map API core specification are grouped according to the following:",
-      "map.overlay channels – Messages associated with creating and manipulating overlays.",
-      "map.feature channels – Messages associated with loading feature data onto the map.",
-      "map.view channels – Messages associated with manipulating the map view.",
-      "map.status channels – Messages associated with obtaining the current map state.",
-      "map.error channels – Error messages."
+      "Any message sent that is missing a required attribute SHOULD result in the map application publishing an error message on the error channel. An error is also published if the map application is unable to find an object based on the given identifier. In general, any time the map is unable to complete a requested operation, an error will be published (if possible)."
     ]
-
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.featureids.overview"] = {
+  "title": "Features and Feature IDs",
+  "sections": [{
+    "title": "",
+    "paragraphs": [
+      "Features in the context of this document refer to the discrete pieces of data passed to the API. A feature may be a single marker, polygon, or a complex feature (for example, a KML or GeoJSON Document containing many sub-features). The feature ID used by the API (featureId) refers to the feature ID given when plotting the entire feature. Sub-features also have IDs but their IDs are only used in the map.feature.selected message, which contains the ID of the lowest level feature selected (if available).  Since feature IDs are required to be unique within an overlay, it is recommended to use an approach similar to the OWF channels:  use a hierarchical naming pattern with the levels of the hierarchy separated by a dot (.). To form a unique feature ID, begin with the ID of the application creating the feature ID. Then, the application can generate a unique number to complete the feature ID. For example, if generating a feature ID from an application with the name of “army.bccs.targeter”, the feature ID’s would begin with army.bccs.targeter. See Appendix D for more information on how to generate unique IDs."
+    ]
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.latlon.overview"] = {
+  "title": "Latitude and Longitude",
+  "sections": [{
+    "title": "",
+    "paragraphs": [
+      "All latitudes and longitudes are in decimal degrees. "
+    ]
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.notation.overview"] = {
+  "title": "Notation",
+  "sections": [{
+    "title": "",
+    "paragraphs": [
+      "The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL in this document, when in all capital letters, are to be interpreted as described in RFC 2119 (http://tools.ietf.org/html/rfc2119)."
+    ]
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.overlays.overview"] = {
+  "title": "Overlays",
+  "sections": [{
+    "title": "",
+    "paragraphs": [
+      "By default, all data added by an individual application is placed into a single overlay unique to that application, which means one overlay per application. However, the API supports specifying into which overlay data are inserted, so an application can insert data in multiple overlays, and multiple applications can insert data into the same overlay. To prevent unintended merging of data due to multiple applications unintentionally using the same overlay ID, it is suggested that if an application needs to use multiple overlays, and no sharing of those overlays with other applications is intended, developers include the application ID as part of the overlay ID.  If an application needs to share overlays with other applications, developers SHOULD follow the guidelines in the OWF documentation regarding preference namespaces for shared overlays to avoid unintended collisions."
+    ]
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.overview"] = {
+  "title": "CMAPI Core General Requirements",
+  "sections": [{
+    "title": "",
+    "paragraphs": [
+      "This section contains general guidance that applies to CMAPI behavior and documentation "
+    ]
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.payloads.overview"] = {
+  "title": "Payloads",
+  "sections": [{
+    "title": "",
+    "paragraphs": [
+      "With the exception of the batch channels, all Payloads SHOULD a single message payload object.  If it is desired to send an array of message payload objects in one message event, the applicable batch channel SHOULD to be used.  For backwards compatibility, arrays on any channel MUST still be supported, however arrays on these channels should be considered deprecated.  In future versions of this specification, arrays will only be supported on the batch channels."
+    ]
+  }]
+};
+cmapi.overview["cmapi.core.general.requirements.whentosend.overview"] = {
+  "title": "When to Send Messages",
+  "sections": [{
+    "title": "Overview",
+    "paragraphs": [
+      "Any component that desires to change the state of the map or data SHALL send out the appropriate message.  If the map application is changing state via direct user input (i.e., not in response to a CMAPI message) then the map SHALL send out the appropriate message to notify other componetns of the state change.",
+      "While many channels are bi-direntional (i.e., they can be sent by a application or the map) some channels have more specific use cases.  More specific expectations for each channel are covered in the given channels description."
+    ]
+  },{
+    "title": "Example: map.overlay.hide",
+    "paragraphs": [
+      "If a component wishes to set the visibility of an overlay to hidden, that component will send a map.overlay.hide message and the map will respond to the message making the overlay hidden.  The Map will not send another map.overlay.hide message as the action was completed by the map and another message would be redundant. ",
+      "On the other hand, if the action to hide the overlay originates within the map application\'s user interface (i.e., the map is not responding to an external message), the map will send out a corresponding map.overlay.hide message."
+    ]
+  },{
+    "title": "Example: map.status.view",
+    "paragraphs": [
+      "If a component wishes to get the map's current view state, it can send a map.status.request message specifying \"view\" as the request type.  The map will then respond with a map.status.view message.",
+      " Alternatively, if the map's view is changed via direct user input(i.e, the user drags the map to a different location) the map will send a map.status.view message to notify other components that the map's view has changed."
+    ]
   }]
 };
 cmapi.overview["cmapi.core.overview"] = {
@@ -220,7 +281,7 @@ cmapi.overview["cmapi.overview"] = {
 		"title": "How to use the channels and messages",
 		"paragraphs": [
 			"There are two ways that the map can be manipulated. The first is by other applications via the Common Map API. The second is by a user directly manipulating the map via the map Graphical User Interface (GUI) (for example, using a drawing tool on the map).",
-			"To manipulate the map, applications send messages in the map channels, and the map application responds by modifying its current state. The current map state can be modified by a data source application requesting that a Keyhole Markup Language (KML) or GeoJSON file be loaded or that the view change to some other location. The map and any listening applications react to these change requests and modify their state accordingly.",
+			"To manipulate the map, applications send messages in the map channels, and the map application responds by modifying its current state. The current map state can be modified by a data source application requesting that an <a href='http://www.opengeospatial.org/standards/kml/' target='_blank'>OGC KML</a> or <a href='http://geojson.org/' target='_blank'>GeoJSON</a> file be loaded or that the view change to some other location. The map and any listening applications react to these change requests and modify their state accordingly.",
 			"When the user manipulates the map, the map will post messages to the map channels, and any application listening to the map channels can respond the changes.",
 			"In other words, if a feature is selected by an application request or by a user, a map.feature.selected message is sent out to any application configured to receive the message. "
 		]
@@ -436,8 +497,8 @@ cmapi.overview["map.feature.plot.kml"] = {
 	"sections": [{
 		"title": "map.feature.plot - KML",
 		"paragraphs": [
-			"Implementers of the Common Map Widget API MUST support at least as much of the official KML spec (<a href=\"http://www.opengeospatial.org/standards/kml\" >http://www.opengeospatial.org/standards/kml</a>) as is highlighted in Figure A.1.  The diagram in Figure A.1 is a subset of the diagram showing all of the various elements of the KML specification at <a href=\"https://developers.google.com/kml/documentation/kmlreference\" >https://developers.google.com/kml/documentation/kmlreference</a>. ",
-			"<figure><img src='img/kml.diagram.figureA1.jpg'></img> <figcaption>Figure A.1 - Minimum support for KML. </figcaption></figure>"
+			"Implementers of the Common Map Widget API MUST support at least as much of the official KML spec (<a href=\"http://www.opengeospatial.org/standards/kml\" >http://www.opengeospatial.org/standards/kml</a>) as is highlighted in Figure A.1.",
+			"<figure><img src='img/kml.diagram.figureA1.jpg'></img> <figcaption>Figure A.1 - Minimum support for KML</figcaption></figure>"
 		]
 	}]
 };cmapi.overview["map.menu.overview"] = {

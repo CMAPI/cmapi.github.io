@@ -31,7 +31,7 @@ cmapi.overview = cmapi.overview || {};cmapi.channel["map.drag-drop"].notes = [
     "If the edit is completed, the map SHALL additionally send a map.feature.plot message so that other widgets receive the final state of the edited feature.  The map SHALL NOT issue a map.feature.plot message if the edit was cancelled."
   ];cmapi.channel["map.feature.plot.aoi"].notes = [
     "If sending an AOI, the GeoJSON object MUST be a single GeoJSON Feature object with either a Line, Point, or Polygon geometry type.  MulitLineStrings, MultiPolygons, and GeometryCollections are NOT supported for AOIs.",
-    "For example of AOI, see map.feature.plot Example 4 (Plot Area of Interest)."
+    "For example of AOI, see <a href='index.html#map.feature.plot'>map.feature.plot Example 4 (Plot Area of Interest)</a>."
   ];cmapi.channel["map.feature.plot.geojson"].notes = [
     "For example of GeoJSON, see map.feature.plot Example 3 (Plot GeoJSON)."
   ];cmapi.channel["map.feature.plot"].notes = [
@@ -40,7 +40,11 @@ cmapi.overview = cmapi.overview || {};cmapi.channel["map.drag-drop"].notes = [
     'When plotting an Area of Interest, the format MUST be geojson AND the aoi object defined in Appendix B MUST be included as part of the GeoJSON parameters object.'
   ];cmapi.channel["map.feature.plot.url"].notes = [
     "For version 1.1.0 of the API, featureName was changed to name for consistency with feature.plot.  In order to maintain backwards compatibility with version 1.0.* of the API, it is suggested that developers on the receiving side of these messages should look for the old featureName if name is not found in the message."
-  ];cmapi.channel["map.feature.plot"].notes = [
+  ];cmapi.channel["map.overlay.hide"].notes = [
+    "If the action to hide the overlay originates within the map application\'s user interface (i.e., the map is not responding to an external message), the map SHALL send out a corresponding map.overlay.hide message."
+];cmapi.channel["map.overlay.show"].notes = [
+    "If the action to show the overlay originates within the map application\'s user interface (i.e., the map is not responding to an external message), the map SHALL send out a corresponding map.overlay.show message."
+];cmapi.channel["map.feature.plot"].notes = [
     'If using the channel shouter to send a feature, embedded quotes in KML MUST be escaped with a backward slash (that is, use \\" instead of ").',
     'If sending GeoJSON follow the guidance in Appendix B for style information.',
     'When plotting an Area of Interest, the format MUST be geojson AND the aoi object defined in Appendix B MUST be included as part of the GeoJSON parameters object.'
