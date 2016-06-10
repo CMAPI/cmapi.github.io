@@ -143,7 +143,7 @@ cmapi.channel["cmapi.appendix.b"] = {
             "description": "",
             "properties": {
               "url": {
-                "type": "uri",
+                "type": "string",
                 "description": "URL to an image file that will be used for the icon for a point.",
                 "default": "If no URL is provided, result will be map’s default icon."
               }
