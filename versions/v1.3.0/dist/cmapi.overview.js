@@ -79,6 +79,58 @@ cmapi.overview["cmapi.changelog"] = {
     ]
   }]
 };
+cmapi.overview["cmapi.compliance.core"] = {
+    "title": "CMAPI Core Compliance",
+    "sections": [{
+        "title": "Overview",
+        "paragraphs": ["The following channels and messages comprise the core CMAPI specification.  Implementation of all of the below linked channels is required for conformance.  Within each channel, the specifics of the message processing to be implemented per channel is defined."
+        ]
+    },{
+        "title": "Required Channels",
+        "paragraphs": [
+        "<a href='index.html?rf=map.overlay.create#map.overlay.create'>map.overlay.create</a>",
+        "<a href='index.html?rf=map.overlay.remove#map.overlay.remove'>map.overlay.remove</a>",
+        "<a href='index.html?rf=map.overlay.hide#map.overlay.hide'>map.overlay.hide</a>",
+        "<a href='index.html?rf=map.overlay.show#map.overlay.show'>map.overlay.show</a>",
+        "<a href='index.html?rf=map.overlay.update#map.overlay.update'>map.overlay.update</a>",
+            "<a href='index.html?rf=map.feature.plot#map.feature.plot'>map.feature.plot</a>",
+            "<a href='index.html?rf=map.feature.plot.batch#map.feature.plot.batch'>map.feature.plot.batch</a>",
+            "<a href='index.html?rf=map.feature.unplot#map.feature.remove'>map.feature.unplot</a>",
+            "<a href='index.html?rf=map.feature.unplot.batch#map.feature.unplot.batch'>map.feature.unplot.batch</a>",
+            "<a href='index.html?rf=map.feature.hide#map.feature.hide'>map.feature.hide</a>",
+            "<a href='index.html?rf=map.feature.show#map.feature.show'>map.feature.show</a>",
+            "<a href='index.html?rf=map.feature.selected#map.feature.selected'>map.feature.selected</a>",
+            "<a href='index.html?rf=map.feature.selected.batch#map.feature.selected.batch'>map.feature.selected.batch</a>",
+            "<a href='index.html?rf=map.feature.deselected#map.feature.deselected'>map.feature.deselected</a>",
+            "<a href='index.html?rf=map.feature.deselected.batch#map.feature.deselected.batch'>map.feature.deselected.batch</a>",
+            "<a href='index.html?rf=map.feature.update#map.feature.update'>map.feature.update</a>",
+            "<a href='index.html?rf=map.view.zoom#map.view.zoom'>map.view.zoom</a>",
+            "<a href='index.html?rf=map.view.center.overlay#map.view.center.overlay'>map.view.center.overlay</a>",
+            "<a href='index.html?rf=map.view.center.feature#map.view.center.feature'>map.view.center.feature</a>",
+            "<a href='index.html?rf=map.view.center.location#map.view.center.location'>map.view.center.location</a>",
+            "<a href='index.html?rf=map.view.center.bounds#map.view.center.bounds'>map.view.center.bounds</a>",
+            "<a href='index.html?rf=map.view.clicked#map.view.clicked'>map.view.clicked</a>",
+            "<a href='index.html?rf=map.status.request#map.status.request'>map.status.request</a>",
+            "<a href='index.html?rf=map.status.view#map.status.view'>map.status.view</a>",
+            "<a href='index.html?rf=map.status.format#map.status.format'>map.status.format</a>",
+            "<a href='index.html?rf=map.status.about#map.status.about'>map.status.about</a>",
+            "<a href='index.html?rf=map.status.selected#map.status.selected'>map.status.selected</a>",
+            "<a href='index.html?rf=map.status.initialization#map.status.initialization'>map.status.initialization</a>",
+            "<a href='index.html?rf=map.error#map.error'>map.error</a>"
+        ]
+    }]
+};
+cmapi.overview["cmapi.compliance.overview"] = {
+    "title": "CMAPI Conformance",
+    "sections": [{
+        "title": "",
+        "paragraphs": [
+            "Conformance to the CMAPI requires, at a minimum, implementation of all if the channels and messages identified in the core specification.  ",
+            "Extensions provide additional capability that compliments and extends the CMAPI core by adding new channels, and/or additional attributes to messages on existing channels. Extensions assume implementation of the core specification.  You can be CMAPI conformant without implementing any of the extensions in this section, however, IF a particular extension is implemented, it MUST be fully implemented. I.e., in order to be CMAPI conformant, if your map widget implements an extension, then your map widget MUST implement ALL of the extension and not only a part of the extension. IF an implementation only implements part of any given extension, it MUST NOT include that extension in the extensions element of a map.status.about message."
+        ]
+
+    }]
+};
 cmapi.overview["cmapi.core.channels.overview"] = {
 	"title": "CMAPI Core Message Channels",
 	"sections": [{
@@ -236,7 +288,17 @@ cmapi.overview["cmapi.extensions.cluster.overview"] = {
 			"The CMAPI Technical Committee has decided to support clustering of results onto the map via an optional extension to the core CMAPI specification.  This document defines the optional clustering extension to the CMAPI core specification. Currently, this extension supports clustering multiple features into a single point feature styled using CSS color values or an icon URL. Support for additional clustering features will be added in future versions of the extension to CMAPI.",
 			"Note that clustering rules are applied at the overlay level.  If it is desired to separate items into different clustering rules, then the elements should be separated into different overlays and the appropriate clustering rule set for each specific overlay."
 		]
-	}]
+	},{
+        "title": "Required Channels",
+        "paragraphs": [
+        "<a href='index.html?rf=map.overlay.cluster.set#map.overlay.cluster.set'>map.overlay.cluster.set</a>",
+        "<a href='index.html?rf=map.overlay.cluster.remove#map.overlay.cluster.remove'>map.overlay.cluster.remove</a>",
+        "<a href='index.html?rf=map.overlay.cluster.activate#map.overlay.cluster.activate'>map.overlay.cluster.activate</a>",
+        "<a href='index.html?rf=map.overlay.cluster.deactivate#map.overlay.cluster.deactivate'>map.overlay.cluster.deactivate</a>",
+
+
+        ]
+    }]
 };cmapi.overview["cmapi.extensions.manipulation.overview"] = {
   "title": "User Manipulation Extension",
   "sections": [{
@@ -249,7 +311,23 @@ cmapi.overview["cmapi.extensions.cluster.overview"] = {
       "An example of how map.message progress and complete can be useful is wanting to receive messages during a draw operation each time a point is added to a line that is being drawn by clicking on the map.  These messages would come on the map.message.progress channel with the same messageId used on the map.feature.draw message that began the draw operation.  When the user completes the draw operation, a map.message.complete message would be sent from the map with the same messageId as well.",
       "Each map.message.progress and map.message.complete payload will have a details object that is specific to the channel the original message was sent on.  The details of each of these details object is listed under the map.message.progress and map.message.complete channels.  If a channel is not listed, then map.message.progress of map.message.complete is not supported for that channel."
     ]
-  }]
+  },{
+        "title": "Required Channels",
+        "paragraphs": [
+        "<a href='index.html?rf=map.message.complete#map.message.complete'>map.message.complete</a>",
+        "<a href='index.html?rf=map.message.progress#map.message.progress'>map.message.progress</a>",
+        "<a href='index.html?rf=map.message.cancel#map.message.cancel'>map.message.cancel</a>",
+        "<a href='index.html?rf=map.feature.edit#map.feature.edit'>map.feature.edit</a>",
+        "<a href='index.html?rf=map.feature.draw#map.feature.draw'>map.feature.draw</a>",
+        "<a href='index.html?rf=map.feature.clicked#map.feature.clicked'>map.feature.clicked</a>",
+        "<a href='index.html?rf=map.feature.mousedown#map.feature.mousedown'>map.feature.mousedown</a>",
+        "<a href='index.html?rf=map.feature.mouseup#map.feature.mouseup'>map.feature.mouseup</a>",
+        "<a href='index.html?rf=map.view.mousedown#map.view.mousedown'>map.view.mousedown</a>",
+        "<a href='index.html?rf=map.view.area.selected#map.view.area.selected'>map.view.area.selected</a>",
+        "<a href='index.html?rf=map.get#map.get'>map.get</a>",
+
+        ]
+    }]
 };
 cmapi.overview["cmapi.extensions.overview"] = {
   "title": "CMAPI Extensions",
@@ -526,7 +604,17 @@ cmapi.overview["map.overlay.cluster.overview"] = {
     "paragraphs": [
       "Namespace for map.overlay.cluster that allow control for how points within an overlay get clustered or decluttered for display on the map"
     ]
-  }]
+  },{
+        "title": "Required Channels",
+        "paragraphs": [
+        "<a href='index.html?rf=map.overlay.cluster.set#map.overlay.cluster.set'>map.overlay.cluster.set</a>",
+        "<a href='index.html?rf=map.overlay.cluster.remove#map.overlay.cluster.remove'>map.overlay.cluster.remove</a>",
+        "<a href='index.html?rf=map.overlay.cluster.activate#map.overlay.cluster.activate'>map.overlay.cluster.activate</a>",
+        "<a href='index.html?rf=map.overlay.cluster.deactivate#map.overlay.cluster.deactivate'>map.overlay.cluster.deactivate</a>",
+
+
+        ]
+    }]
 };
 cmapi.overview["map.overlay.cluster.references"] = {
 	"title" : "Clustering: References",

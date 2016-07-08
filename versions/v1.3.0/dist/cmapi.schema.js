@@ -1228,7 +1228,7 @@ cmapi.channel["map.feature.plot.geojson"] = {
             "type": "object",
             "properties": {
               "url": {
-                "type": "uri"
+                "type": "string"
               },
               "size": {
                 "type": "integer",
@@ -1631,50 +1631,66 @@ cmapi.channel["map.feature.update"] = {
 cmapi.channel["map.get.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
+    "title": "Schema for a map.get response in the map.message.complete Details object",
     "type": "object",
     "properties": {
-      "messageId": {
-        "type": "string"
-      },
-      "details": {
-        "type": "object"
+      "successes": {
+        "type": "object",
+        "properties" : {
+          "overlay":{
+            "type" : "array"
+          },
+          "feature":{
+            "type" : "array"
+          }
+        }
       }
     },
     "required": ["messageId", "details"]
   }
 };
 cmapi.channel["map.get"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.get",
-    "properties": {
-      "recursive": {
-        "type": "boolean",
-        "default": false
-      },
-      "types": {
-        "type": ["array", "string"],
-        "enum": ["overlay", "feature"]
-      },
-      "filter": {
-        "type": "array",
+    schema: {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "map.get",
         "properties": {
-          "property": {
-            "type": "string"
-          },
-          "term": {
-            "type": ["string", "number", "boolean"]
-          }
+            "recursive": {
+                "type": "boolean",
+                "default": false
+            },
+            "types": {
+                "type": "array",
+                "items": [{ "enum": ["overlay", "feature"] }]
+            },
+            "select": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "additionalItems": true
+            },
+            "filter": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties":{
+                    "property": {
+                        "type": "string"
+                    },
+                    "term": {
+                        "type": ["string", "number", "boolean"]
+                    }
+                  }
+                },
+                "additionalItems": true
+            },
+            "messageId": {
+                "type": "string"
+            }
+
         },
-        "additionalItems": true
-      },
-      "messageId": {
-        "type": "string"
-      }
-    },
-    "required": ["types", "messageId"]
-  }
+        "required": ["types", "messageId"]
+    }
 };
 cmapi.channel["map.menu.clicked"] = {
   schema: {
