@@ -1060,7 +1060,7 @@ cmapi.channel["map.feature.plot.batch"] = {
         "type": "boolean"
       }
     },
-    "required": ["features","overlayId","format"]
+    "required": ["features","format"]
   }
 };
 cmapi.channel["map.feature.plot.complete"] = {
@@ -1276,8 +1276,7 @@ cmapi.channel["map.feature.plot"] = {
       },
       "properties": {
         "additionalProperties": true,
-        "type": "object",
-        "status": "new"
+        "type": "object"
       }
     },
     "required": ["featureId", "feature"]
@@ -1545,8 +1544,7 @@ cmapi.channel["map.feature.unplot.batch"] = {
         "type": "array"
       },
       "overlayId": {
-        "type": "string",
-        "default": ""
+        "type": "string"
       }
     },
     "required": ["features"]
@@ -1623,6 +1621,10 @@ cmapi.channel["map.feature.update"] = {
       },
       "newOverlayId": {
         "type": "string",
+      },
+      "properties": {
+        "additionalProperties": true,
+        "type": "object"
       }
     },
     "required": ["featureId"]
@@ -1671,16 +1673,18 @@ cmapi.channel["map.get"] = {
             },
             "filter": {
                 "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties":{
-                    "property": {
-                        "type": "string"
-                    },
-                    "term": {
-                        "type": ["string", "number", "boolean"]
+                "properties": {
+                    "filterObject": {
+                        "type": "object",
+                        "properties": {
+                            "property": {
+                                "type": "string"
+                            },
+                            "term": {
+                                "type": ["string", "boolean", "number"]
+                            }
+                        }
                     }
-                  }
                 },
                 "additionalItems": true
             },
@@ -2018,8 +2022,8 @@ cmapi.channel["map.overlay.create"] = {
         "type": "string"
       },
       "properties": {
-        "type": "object",
-        "status": "new"
+        "additionalProperties": true,
+        "type": "object"
       }
     },
     "required": []
@@ -2179,6 +2183,10 @@ cmapi.channel["map.overlay.update"] = {
       },
       "parentId": {
         "type": "string"
+      },
+      "properties": {
+        "additionalProperties": true,
+        "type": "object"
       }
     },
     "required": []
@@ -2700,7 +2708,7 @@ cmapi.channel["map.view.center.overlay"] = {
         "type": "string"
       },
       "zoom": {
-        "type": "string"
+        "type": ["number","string"]
       }
     },
     "required": []

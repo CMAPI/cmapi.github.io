@@ -162,8 +162,8 @@ cmapi.channel["map.feature.deselected.batch"].description = {
       "defaultValue": ""
     },
     "overlayId": {
-      "description": "The default overlayId to be applied to all map.feature.deSelected objects in the payloads array that don't include an overlayId. I.e., similar behavior to CSS.  See map.feature.deSelected for more details",
-      "defaultValue": ""
+      "description": "The default overlayId to be applied to all map.feature.deSelected objects in the payloads array that don't include an overlayId.  See map.feature.deSelected for more details",
+      "defaultValue": "Sending widget's id"
     },
 	 "messageId": {
       "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
@@ -1034,11 +1034,11 @@ cmapi.channel["map.feature.plot.batch"].description = {
       "defaultValue": ""
     },
     "overlayId": {
-      "description": "The default overlayId to be applied to all feature objects in the features array that don’t include an overlayId. I.e., similar behavior to CSS.  See map.feature.plot for more details",
-      "defaultValue": ""
+      "description": "The default overlayId to be applied to all feature objects in the features array that don’t include an overlayId. If omitted and the feature object also omits this property, the behavior SHALL be as documented in the map.feature.plot overlayId property.  See map.feature.plot for more details.",
+      "defaultValue": "Sending widget's id"
     },
     "format": {
-      "description": "The default format to be applied to all feature objects in the features array that don’t include a format value. I.e., similar behavior to CSS.  See map.feature.plot for definition of format property.   More details about feature formats can be found in the map.feature Data Formats section of the documentation.",
+      "description": "The default format to be applied to all feature objects in the features array that don’t include a format value. See map.feature.plot for definition of format property.   More details about feature formats can be found in the map.feature Data Formats section of the documentation.",
       "defaultValue": ""
     },
 	"zoom": {
@@ -1046,7 +1046,7 @@ cmapi.channel["map.feature.plot.batch"].description = {
 		"defaultValue": ""
 	},
     "readOnly": {
-      "description": "The default value for readOnly to be applied to all feature objects in the features array that don’t include a readOnly value. I.e., similar behavior to CSS.  See map.feature.plot for definition of readOnly property.",
+      "description": "The default value for readOnly to be applied to all feature objects in the features array that don’t include a readOnly value. See map.feature.plot for definition of readOnly property.",
       "defaultValue": ""
     }
   }
@@ -1383,8 +1383,8 @@ cmapi.channel["map.feature.selected.batch"].description = {
       "defaultValue": ""
     },
     "overlayId": {
-      "description": "The default overlayId to be applied to all map.feature.selected objects in the payloads array that don't include an overlayId. I.e., similar behavior to CSS.  See map.feature.selected for more details",
-      "defaultValue": ""
+      "description": "The default overlayId to be applied to all map.feature.selected objects in the payloads array that don't include an overlayId.  See map.feature.selected for more details",
+      "defaultValue": "Sending widget's id"
     },
     "messageId": {
       "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
@@ -1496,8 +1496,8 @@ cmapi.channel["map.feature.unplot.batch"].description = {
       "defaultValue": ""
     },
     "overlayId": {
-      "description": "when included at the array level, this value will be applied to all map.feature.unplot objects in the features array that don't include an overlayID. I.e., similar behavior to CSS.  See map.feature.unplot for definition of this property",
-      "defaultValue": ""
+      "description": "when included at the array level, this value will be applied to all map.feature.unplot objects in the features array that don't include an overlayID.  See map.feature.unplot for definition of this property",
+      "defaultValue": "Sending widget's id"
     }
   }
 };
@@ -1562,20 +1562,27 @@ cmapi.channel["map.feature.update"].description = {
     "newOverlayId": {
       "description": "This represents the ID of an overlay to move the feature to.  If this attribute is provided, the feature MUST be removed from its current overlay and added to the overlay with this ID.  If an overlay with an ID of newOverlayId does not exist, a new overlay will be created with an ID of newOverlayId, and the feature to be updated will be moved to the overlay identified by newOverlayId.",
       "defaultValue": ""
+    },
+    "properties": {
+      "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without polluting or conflicting with the CMAPI specified payload of the message.",
+      "defaultValue": ""
     }
   }
 };
 cmapi.channel["map.get.complete"].description = {
-  "description": "Allows the Map Widget to report progress during the processing of a message.  If a widget receives a map.message.progress message but does not have a record of sending a message with the matching messageId, then the widget should ignore the message.  Note that not all channels that support a messageId will report progress between when the message is sent and the return of the map.message.complete.  See each channel’s definition for map.message.progress details object so see if the channel supports progress messages.  Multiple map.message.progress events may be sent for a single message. E.g., every time a new point is added to a line during the processing of a map.feature.draw message, a map.message.progress message will be sent with the latest geometry of the line being drawn as shown in Example 1 below.",
+  "description": "Schema for the details object for a map.message.complete message after a map.get",
   "properties": {
-    "messageId": {
-      "description": "A globally unique ID that identifies the particular message or message batch that progress is being reported on.",
-      "defaultValue": ""
-    },
-    "details": {
-      "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like",
-      "defaultValue": ""
-    }
+      "successes": {
+        "description": "An object containing successful results (features and overlays) pertaining to the filter parameters provided in the corresponding map.get message",
+        "properties" : {
+          "overlay":{
+            "description" : "An array of overlay objects (see map.overlay.create) that meet the map.get filter criteria"
+          },
+          "feature":{
+            "description" : "An array of feature objects (see map.feature.plot) that meet the map.get filter criteria"
+          }
+        }
+      }
   }
 };
 cmapi.channel["map.get"].description = {
@@ -1590,20 +1597,26 @@ cmapi.channel["map.get"].description = {
       "defaultValue": ""
     },
     "select": {
-      "description": "An array of the properties you want returned on the overlay and/or features results of the query.  For example if you provide ['visible'] you will get a list of results with the item's featureId, overlayId, and visible property only.  This works similar to a SQL select statement where the property names of the object are used instead of a column anme in a table.  An empty or null select statement will act as a select all and return the full objects with all properties.",
+      "description": "An array of the properties you want returned on the overlay and/or features results of the query.  For example if you provide ['visible'] you will get a list of results with the item's featureId, overlayId, and visible property only.  This works similar to a SQL select statement where the property names of the object are used instead of a column name in a table.  An empty or null select statement will act as a select all and return the full objects with all properties.",
       "defaultValue": ""
     },
     "filter": {
-      "description": "An array of terms to use a filter criteria for on the overlays and features that will be returned.  See the map.feature.plot and map.overlay.add channels for definitions of the properties which can be used as filters.",
+      "description": "The filter property is an array of filter objects that contain key value pairs that can be used to filter the items that will be returned from a map.get message.",
       "defaultValue": "",
       "properties": {
-        "property": {
-          "description": "This field must contain the name of the property field which value must match the value in the term property.",
-          "defaultValue": ""
-        },
-        "term": {
-          "description": "This field must contain the value to match. Type checking is performed. ('10' !== 10)",
-          "defaultValue": ""
+        "filterObject": {
+          "description": "Simple object with two attributes to represent a key value pair to use as a query filter on the map.get message.  All properties that represent primitive types, such as number, string, and boolean documented on map.feature.plot and map.overlay.create can be used as filter values in the filter objects \"property\" attribute.  Additionally the term of \"visible\" SHALL be supported which is a boolean that the map SHALL interpret as a request to only include items when that item's visibilty matches the boolean value. The visible attribute is calculated as an on /off state which does not consider whether or not the item is within the map's current view. Visibility is controlled by the map.feature.show / map.overlay.show, and map.feature.hide and map.overlay.hide channels",
+          "type": "object",
+          "properties": {
+            "property": {
+              "description": "This field must contain the name of the property field which value must match the value in the term property.",
+              "defaultValue": ""
+            },
+            "term": {
+              "description": "This field must contain the value to match. Type checking is performed. ('10' !== 10)",
+              "defaultValue": ""
+            }
+          }
         }
       }
     },
@@ -1858,7 +1871,7 @@ cmapi.channel["map.overlay.create"].description = {
 	  "defaultValue": "sending widget's ID"
     },
     "parentId": {
-      "description": "The ID of the parent overlay in which to create this overlay. If an overlay with an ID of parentId does not exist, a new overlay will be created with an ID of parentId, and the parentage of the overlay identified by overlayId will be set to the newly created parent overlay."
+      "description": "The ID of the parent overlay in which to create this overlay. If an overlay with an ID of parentId does not exist, a new overlay will be created with an ID of parentId, and the parentage of the overlay identified by overlayId will be set to the newly created parent overlay. If parentId is not provided or set to an empty string, the overlay SHALL become a top level overlay."
     },
     "properties": {
       "description": "A free form object that can contain any additional JSON objects or elements to send with this message.  This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message."
@@ -1987,7 +2000,11 @@ cmapi.channel["map.overlay.update"].description = {
       "defaultValue": "sending widget's ID"
     },
     "parentId": {
-      "description": "The ID of the parent overlay that is associated with this overlay.  If no ID is provided, the overlay will keep its existing parentage.  If a parentId is provided, the parentage of the overlay will be changed to the new parentId.  If an overlay with an ID of parentId does not exist, a new overlay will be created and the parentage of the overlay identified by overlayId will be changed to the newly created parent overlay. If the this field is set to an empty string, the overlay SHALL become a top level overlay."
+      "description": "The ID of the parent overlay that is associated with this overlay.  If no ID is provided, the overlay will keep its existing parentage.  If a parentId is provided, the parentage of the overlay will be changed to the new parentId.  If an overlay with an ID of parentId does not exist, a new overlay will be created and the parentage of the overlay identified by overlayId will be changed to the newly created parent overlay. If this field is set to an empty string, the overlay SHALL become a top level overlay."
+    },
+    "properties": {
+      "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without polluting or conflicting with the CMAPI specified payload of the message.",
+      "defaultValue": ""
     }
   }
 };
@@ -2074,7 +2091,7 @@ cmapi.channel["map.status.view"].description = {
       "defaultValue": "",
       "properties": {
         "southWest": {
-          "description": "Bottom right of the bounds",
+          "description": "Southwestern corner of the bounds",
           "defaultValue": "",
           "properties": {
             "lat": {
@@ -2088,7 +2105,7 @@ cmapi.channel["map.status.view"].description = {
           }
         },
         "northEast": {
-          "description": "Top left of the bounds",
+          "description": "Northeastern corner of the bounds",
           "defaultValue": "",
           "properties": {
             "lat": {
@@ -2244,7 +2261,7 @@ cmapi.channel["map.view.center.bounds"].description = {
       "defaultValue": "",
       "properties": {
         "southWest": {
-          "description": "Bottom right of the bounds",
+          "description": "Southwestern corner of the bounds",
           "defaultValue": "",
           "properties": {
             "lat": {
@@ -2258,7 +2275,7 @@ cmapi.channel["map.view.center.bounds"].description = {
           }
         },
         "northEast": {
-          "description": "Top left of the bounds",
+          "description": "Northeastern corner of the bounds",
           "defaultValue": "",
           "properties": {
             "lat": {
