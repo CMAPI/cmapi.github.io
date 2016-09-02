@@ -404,7 +404,6 @@ cmapi.overview["cmapi.validation.overview"] = {
     "paragraphs": [
       "The same JSON schema files that are used to generate this documentation can also be used to validate CMAPI messages in your application.  You can test validation for each channel in the examples section on the channels documentation page.",
       "The minified distributable file with all of the CMAPI schemas is located <a href='../dist/cmapi.schema.min.js'>here</a>.",
-      "A listing of the individual schema files can be viewed <a href='../src/schemas/' target='_blank'>here</a>.",
       "<pre><code id='sampleCodeBox' class='javascript'>// cmapi.channels is defined in cmapi.schemas.min.js\n// Use the channel as the key to retrieve the correct schema\n  var schema = cmapi.channel[\"map.feature.plot\"];\n  // Create a map.feature.plot payload to validate\n  var payload ={\n    \"overlayId\": \"2d882141-0d9e-59d4-20bb-58e6d0460699.1\",\n    \"featureId\": \"example.geojson.1\",\n    \"format\": \"geojson\",\n    \"feature\": {\n      \"type\": \"Feature\",\n      \"geometry\": {\n          \"type\": \"Polygon\",\n          \"coordinates\": [[100,0],[101,0],[101,1],[100,1],[100,0]]\n      }\n    },\n    \"name\": \"Sample GeoJSON Feature\",\n    \"zoom\": true,\n    \"readOnly\": false\n  }\n// validate the payload against the schema using tv4 -  an open source javaScript JSON schema validation library\n// https://github.com/geraintluff/tv4\n  var validation =  tv4.validateMultiple(payload, schema, true);\n  if(validation.valid === true){\n    alert(\"the payload is valid\");\n  } else {\n    var errorMessage = validation.errors[0].message + \" \" + validation.errors[0].dataPath; \n    alert(\"the payload is NOT valid! \"+errorMessage);\n  }</code></pre>",
       "<a href='javascript:eval($(\"#sampleCodeBox\").html());'>Run the code sample </a>"
     ]
@@ -589,11 +588,11 @@ cmapi.overview["map.feature.plot.kml"] = {
   }]
 };
 cmapi.overview["map.message.overview"] = {
-  "title": "map.overlay.cluster namespace ",
+  "title": "map.message namespace ",
   "sections": [{
     "title": "Overview",
     "paragraphs": [
-      "Namespace for map.message channels that enable feedback for message progress and completion for messsages sent via other channels. The map.message channels require that an attribute messageId be aded to the message payload for any message you wish to get a message complete or message progress event.  The messageId MUST be a unique id which will be used for the duration of a single message.  The channels that support message complete and message progress are listed under those channels."
+      "Namespace for map.message channels that enable feedback for message progress and completion for messsages sent via other channels. The map.message channels require that an attribute messageId be added to the message payload for any message you wish to get a message complete or message progress event.  The messageId MUST be a unique id which will be used for the duration of a single message.  The channels that support message complete and message progress are listed under those channels."
     ]
   }]
 };

@@ -74,7 +74,7 @@ cmapi.overview = cmapi.overview || {};cmapi.channel["map.drag-drop"].description
   }
 };
 cmapi.channel["map.error"].description = {
-  "description": "Map Widget reports errors occurred when attempting to process any message.",
+  "description": "Report runtime error that caused a message to fail being processed.  If the map implementation supports the map.message.complete channels and the message includes the messageId property, errors SHALL instead be sent back via the map.message.complete failures property for the corresponding failed message, and NOT on the map.error channel.",
   "properties": {
     "sender": {
       "description": "Sender ID of message that caused error.",
@@ -1852,10 +1852,6 @@ cmapi.channel["map.overlay.create.complete"].description = {
     },
     "properties": {
       "description": "A free form object that can contain any additional JSON objects or elements to send with this message.  This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
-      "defaultValue": ""
-    },
-    "menuId": {
-      "description": "The id of a context menu.  If populated, the context menu MUST have already been pre-registered via the map.menu.create channel.  If populated, the context menu associated with this id will appear when the feature is 'right-clicked', allowing the user to invoke actions on the feature which will be handled by the widget which originally registered the context menu.  If no menuId is assigned, the feature will not have a context menu associated when right-clicked.",
       "defaultValue": ""
     }
   }
