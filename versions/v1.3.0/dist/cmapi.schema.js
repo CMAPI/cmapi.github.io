@@ -136,34 +136,6 @@ cmapi.channel["map.feature.clicked"] = {
     "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
   }
 };
-cmapi.channel["map.feature.deselected.batch.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "features": {
-        "type": "array",
-        "properties": {
-          "deSelectedId": {
-		    "type": "string"
-          },
-          "deSelectedName": {
-            "type": "string"
-          },
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          }		 
-        },
-        "required": ["deSelectedId", "deSelectedName", "featureId", "overlayId"]
-      }
-    },
-    "required": ["features"]
-  }
-};
 cmapi.channel["map.feature.deselected.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -182,28 +154,6 @@ cmapi.channel["map.feature.deselected.batch"] = {
       } 
     },
     "required": ["features"]
-  }
-};
-cmapi.channel["map.feature.deselected.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {	
-          "deSelectedId": {
-		    "type": "string"
-          },
-          "deSelectedName": {
-            "type": "string"
-          },
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          }		 
-    },
-    "required": ["deSelectedId", "deSelectedName", "featureId", "overlayId"]
   }
 };
 cmapi.channel["map.feature.deselected"] = {
@@ -503,22 +453,6 @@ cmapi.channel["map.feature.get"] = {
       }
     },
     "required": ["features, messagId"]
-  }
-};
-cmapi.channel["map.feature.hide.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {		
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          } 
-    },
-    "required": ["featureId", "overlayId"]
   }
 };
 cmapi.channel["map.feature.hide"] = {
@@ -999,45 +933,6 @@ cmapi.channel["map.feature.plot.aoi"] = {
     }
   }
 };
-cmapi.channel["map.feature.plot.batch.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "features": {
-        "type": "array",
-        "properties": {
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "format": {
-            "type": "string"
-          },
-          "feature": {
-            "type": ["object", "string"],
-            "additionalProperties": true
-          },
-          "readOnly": {
-            "type": "boolean"
-          },
-          "properties": {
-            "additionalProperties": true,
-            "type": "object"
-          }
-        },
-        "required": ["featureId", "overlayId","name","format","feature","readOnly","properties"]
-      }
-    },
-    "required": ["features"]
-  }
-};
 cmapi.channel["map.feature.plot.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1382,34 +1277,6 @@ cmapi.channel["map.feature.plot.url"] = {
     "required": ["featureId", "url"]
   }
 };
-cmapi.channel["map.feature.selected.batch.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "features": {
-        "type": "array",
-        "properties": {
-          "selectedId": {
-		    "type": "string"
-          },
-          "selectedName": {
-            "type": "string"
-          },
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          }		 
-        },
-        "required": ["selectedId", "selectedName", "featureId", "overlayId"]
-      }
-    },
-    "required": ["features"]
-  }
-};
 cmapi.channel["map.feature.selected.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1428,28 +1295,6 @@ cmapi.channel["map.feature.selected.batch"] = {
       }
     },
     "required": ["features"]
-  }
-};
-cmapi.channel["map.feature.selected.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-		  "selectedId": {
-		    "type": "string"
-          },
-          "selectedName": {
-            "type": "string"
-          },
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          }		  
-    },
-    "required": ["selectedId","selectedName","featureId", "overlayId"]
   }
 };
 cmapi.channel["map.feature.selected"] = {
@@ -1473,25 +1318,6 @@ cmapi.channel["map.feature.selected"] = {
     "required": ["featureId"]
   }
 };
-cmapi.channel["map.feature.show.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {		
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          }	,
-		  "zoom": {
-			  "type":"boolean"
-		  }
-    },
-    "required": ["featureId", "overlayId","zoom"]
-  }
-};
 cmapi.channel["map.feature.show"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1512,28 +1338,6 @@ cmapi.channel["map.feature.show"] = {
     "required": ["featureId"]
   }
 };
-cmapi.channel["map.feature.unplot.batch.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "features": {
-        "type": "array",
-        "properties": {
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          }
-        },
-        "required": ["featureId", "overlayId"]
-      }
-    },
-    "required": ["features"]
-  }
-};
 cmapi.channel["map.feature.unplot.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1550,22 +1354,6 @@ cmapi.channel["map.feature.unplot.batch"] = {
     "required": ["features"]
   }
 };
-cmapi.channel["map.feature.unplot.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {	
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          }
-    },
-    "required": ["featureId", "overlayId"]
-  }
-};
 cmapi.channel["map.feature.unplot"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -1580,28 +1368,6 @@ cmapi.channel["map.feature.unplot"] = {
       }
     },
     "required": ["featureId"]
-  }
-};
-cmapi.channel["map.feature.update.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {		
-          "overlayId": {
-            "type": "string"
-          },
-          "featureId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "newOverlayId": {
-            "type": "string",
-          }
-    },
-    "required": ["overlayId", "featureId", "name", "newOverlayId"]	
   }
 };
 cmapi.channel["map.feature.update"] = {
@@ -1839,7 +1605,7 @@ cmapi.channel["map.message.complete"] = {
         }
       }
     },
-    "required": ["failures", "messageId", "status", "details"]
+    "required": ["failures", "messageId", "status"]
   }
 };
 cmapi.channel["map.message.progress"] = {
@@ -1982,28 +1748,6 @@ cmapi.channel["map.overlay.cluster.set"] = {
     "required": []
   }
 };
-cmapi.channel["map.overlay.create.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.overlay.create map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "name": {
-        "type": "string"
-      },
-      "overlayId": {
-        "type": "string"
-      },
-      "parentId": {
-        "type": "string"
-      },
-      "properties": {
-        "type": "object"
-      }
-    },
-    "required": ["overlayId"]
-  }
-};
 cmapi.channel["map.overlay.create"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2073,19 +1817,6 @@ cmapi.channel["map.overlay.get"] = {
     "required": ["features, messagId"]
   }
 };
-cmapi.channel["map.overlay.hide.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "overlayId": {
-        "type": "string"
-      }
-    },
-    "required": ["overlayId"]
-  }
-};
 cmapi.channel["map.overlay.hide"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2096,19 +1827,6 @@ cmapi.channel["map.overlay.hide"] = {
       }
     },
     "required": []
-  }
-};
-cmapi.channel["map.overlay.remove.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "overlayId": {
-        "type": "string"
-      }
-    },
-    "required": ["overlayId"]
   }
 };
 cmapi.channel["map.overlay.remove"] = {
@@ -2123,19 +1841,6 @@ cmapi.channel["map.overlay.remove"] = {
     "required": []
   }
 };
-cmapi.channel["map.overlay.show.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "overlayId": {
-        "type": "string"
-      }
-    },
-    "required": ["overlayId"]
-  }
-};
 cmapi.channel["map.overlay.show"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2146,25 +1851,6 @@ cmapi.channel["map.overlay.show"] = {
       }
     },
     "required": []
-  }
-};
-cmapi.channel["map.overlay.update.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "name": {
-        "type": "string"
-      },
-      "overlayId": {
-        "type": "string"
-      },
-      "parentId": {
-        "type": "string"
-      }
-    },
-    "required": ["name", "overlayId", "parentId"]
   }
 };
 cmapi.channel["map.overlay.update"] = {
@@ -2479,58 +2165,6 @@ cmapi.channel["map.view.area.selected"] = {
     "required": ["bounds", "keys", "button"]
   }
 };
-cmapi.channel["map.view.center.bounds.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.view.center.bounds.complete",
-    "type": "object",
-    "properties": {
-      "bounds": {
-        "type": "object",
-        "default": " ",
-        "properties": {
-          "southWest": {
-            "type": "object",
-            "properties": {
-              "lat": {
-                "type": "number",
-                "minimum": -90,
-                "maximum": 90
-              },
-              "lon": {
-                "type": "number",
-                "minimum": -180,
-                "maximum": 180
-              }
-            },
-            "required": ["lat", "lon"]
-          },
-          "northEast": {
-            "type": "object",
-            "properties": {
-              "lat": {
-                "type": "number",
-                "minimum": -90,
-                "maximum": 90
-              },
-              "lon": {
-                "type": "number",
-                "minimum": -180,
-                "maximum": 180
-              }
-            },
-            "required": ["lat", "lon"]
-          }
-        },
-        "required": ["southWest", "northEast"]
-      },
-      "zoom": {
-        "type": ["string", "number"]
-      }
-    },
-    "required": ["bounds", "zoom"]
-  }
-};
 cmapi.channel["map.view.center.bounds"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2583,25 +2217,6 @@ cmapi.channel["map.view.center.bounds"] = {
     "required": ["bounds"]
   }
 };
-cmapi.channel["map.view.center.feature.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "overlayId": {
-        "type": "string"
-      },
-      "featureId": {
-        "type": "string"
-      },
-      "zoom": {
-        "type": ["string", "number"]
-      }
-    },
-    "required": ["overlayId", "featureId", "zoom"]
-  }
-};
 cmapi.channel["map.view.center.feature"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2619,35 +2234,6 @@ cmapi.channel["map.view.center.feature"] = {
       }
     },
     "required": ["featureId"]
-  }
-};
-cmapi.channel["map.view.center.location.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "location": {
-        "type": "object",
-        "properties": {
-          "lat": {
-            "type": "number",
-            "minimum": -90,
-            "maximum": 90
-          },
-          "lon": {
-            "type": "number",
-            "minimum": -180,
-            "maximum": 180
-          }
-        },
-        "required": ["lat", "lon"]
-      },
-      "zoom": {
-        "type": ["string", "number"]
-      }
-    },
-    "required": ["location", "zoom"]
   }
 };
 cmapi.channel["map.view.center.location"] = {
@@ -2677,22 +2263,6 @@ cmapi.channel["map.view.center.location"] = {
       }
     },
     "required": ["location"]
-  }
-};
-cmapi.channel["map.view.center.overlay.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "overlayId": {
-        "type": "string"
-      },
-      "zoom": {
-        "type": "string"
-      }
-    },
-    "required": ["overlayId", "zoom"]
   }
 };
 cmapi.channel["map.view.center.overlay"] = {
@@ -2783,61 +2353,6 @@ cmapi.channel["map.view.clicked"] = {
     "required": ["lat", "lon", "button", "keys", "type"]
   }
 };
-cmapi.channel["map.view.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "bounds": {
-        "type": "object",
-        "properties": {
-          "northEast": {
-            "type": "object",
-            "properties": {
-              "lat": {
-                "type": "number"
-              },
-              "lon": {
-                "type": "number"
-              }
-            },
-            "required": ["lat", "lon"]
-          },
-          "southWest": {
-            "type": "object",
-            "properties": {
-              "lat": {
-                "type": "number"
-              },
-              "lon": {
-                "type": "number"
-              }
-            },
-            "required": ["lat", "lon"]
-          }
-        },
-        "required": ["northEast", "southWest"]
-      },
-      "range": {
-        "type": "number"
-      },
-      "center": {
-        "type": "object",
-        "properties": {
-          "lat": {
-            "type": "number"
-          },
-          "lon": {
-            "type": "number"
-          }
-        },
-        "required": ["lat", "lon"]
-      }
-    },
-    "required": ["bounds", "range", "center"]
-  }
-};
 cmapi.channel["map.view.mousedown"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2912,19 +2427,6 @@ cmapi.channel["map.view.mouseup"] = {
       }
     },
     "required": ["lat", "lon", "button", "keys", "type"]
-  }
-};
-cmapi.channel["map.view.zoom.complete"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
-    "type": "object",
-    "properties": {
-      "range": {
-        "type": "number"
-      }
-    },
-    "required": ["range"]
   }
 };
 cmapi.channel["map.view.zoom"] = {

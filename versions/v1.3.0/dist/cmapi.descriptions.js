@@ -127,33 +127,6 @@ cmapi.channel["map.feature.clicked"].description = {
     }
   }
 };
-cmapi.channel["map.feature.deselected.batch.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.deselected.batch.",
-  "properties": {
-    "features": {
-      "description": "An array of feature identifier objects.",
-      "defaultValue": "",
-      "properties": {
-       "deSelectedId": {
-          "description": "The deSelectedId passed in the original message.  If no deSelectedId was passed in the original message, then this value MUST be an empty string",
-          "defaultValue": ""
-        },
-        "deSelectedName": {
-          "description": "The name passed in the original message.  If no name passed in original message, then this value MUST be an empty string",
-          "defaultValue": ""
-        },
-        "overlayId": {
-          "description": "The ID of the overlay containing the deselected feature.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the deselected feature.",
-          "defaultValue": ""
-        }	
-      }
-    }
-  }
-};
 cmapi.channel["map.feature.deselected.batch"].description = {
   "description": "De-Select, or report that a collection of feature objects were de-selected.",
   "properties": {
@@ -169,27 +142,6 @@ cmapi.channel["map.feature.deselected.batch"].description = {
       "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
       "defaultValue": ""
     }
-  }
-};
-cmapi.channel["map.feature.deselected.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.deselected.",
-  "properties": {	  
-        "deSelectedId": {
-          "description": "The deSelectedId passed in the original message.  If no deSelectedId was passed in the original message, then this value MUST be an empty string",
-          "defaultValue": ""
-        },
-        "deSelectedName": {
-          "description": "The name passed in the original message.  If no name passed in original message, then this value MUST be an empty string",
-          "defaultValue": ""
-        },
-        "overlayId": {
-          "description": "The ID of the overlay containing the deselected feature.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the deselected feature.",
-          "defaultValue": ""
-        }	
   }
 };
 cmapi.channel["map.feature.deselected"].description = {
@@ -444,19 +396,6 @@ cmapi.channel["map.feature.get"].description = {
       "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
       "defaultValue": ""
     }
-  }
-};
-cmapi.channel["map.feature.hide.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.hide.",
-  "properties": {	  
-        "overlayId": {
-          "description": "The ID of the overlay currently containing the feature being hidden.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the given feature.",
-          "defaultValue": ""
-        }	
   }
 };
 cmapi.channel["map.feature.hide"].description = {
@@ -983,49 +922,6 @@ cmapi.channel["map.feature.plot.aoi"].description = {
     }
   }
 };
-cmapi.channel["map.feature.plot.batch.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.plot.batch.",
-  "properties": {
-    "features": {
-      "description": "An array of feature objects.",
-      "defaultValue": "",
-      "properties": {
-        "overlayId": {
-          "description": "The ID of the overlay this feature was loaded into.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the given feature data.",
-          "defaultValue": ""
-        },
-        "name": {
-          "description": "Name for the given feature data.",
-          "defaultValue": ""
-        },
-        "format": {
-          "description": "Data format of the given feature.",
-          "defaultValue": ""
-        },
-        "feature": {
-          "description": "Feature data loaded into the map.   If the actual feature data that was loaded onto the map differs from what was originally sent, this message MUST contain the actual feature data loaded",
-          "defaultValue": ""
-        },
-		"zoom": {
-			"description": "Zoom value set in original message. If no value passed in original message, this MUST be set to the default value of the original message",
-			"defaultValue":""
-		},
-        "readOnly": {
-          "description": "Value identifying whether the feature is editable from the map's user interface or not. Valid values are true or false. Value MUST match the actual state of the feature - whether that state matches the passed in value or not.  Value MUST be 'true' if the end user IS NOT able to edit the feature from the map's user interface, or MUST be 'false' if the end user MAY edit the feature from the map’s user interface.",
-          "defaultValue": ""
-        },
-        "properties": {
-          "description": "Properties passed in the original message.  If no properties value was passed in original message, this value MUST be an empty object",
-          "defaultValue": ""
-        }
-      }
-    }
-  }
-};
 cmapi.channel["map.feature.plot.batch"].description = {
   "description": "Plots a batch of feature data on the map.",
   "properties": {
@@ -1049,43 +945,6 @@ cmapi.channel["map.feature.plot.batch"].description = {
       "description": "The default value for readOnly to be applied to all feature objects in the features array that don’t include a readOnly value. See map.feature.plot for definition of readOnly property.",
       "defaultValue": ""
     }
-  }
-};
-cmapi.channel["map.feature.plot.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.plot.",
-  "properties": {  
-        "overlayId": {
-          "description": "The ID of the overlay this feature was loaded into.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the given feature data.",
-          "defaultValue": ""
-        },
-        "name": {
-          "description": "Name for the given feature data.  If no name was passed in the original message, this MUST contain the name that was actually assigned to the feature.  If no name was assigned to the feature, then this MUST return an empty string",
-          "defaultValue": ""
-        },
-        "format": {
-          "description": "Data format of the given feature.",
-          "defaultValue": ""
-        },
-        "feature": {
-          "description": "Feature data loaded into the map.  If the actual feature data that was loaded onto the map differs from what was originally sent, this message MUST contain the actual feature data loaded",
-          "defaultValue": ""
-        },
-		"zoom": {
-          "description": "Zoom value passed in original message. If no value passed in original message, this MUST be set to the default value of the original message",
-          "defaultValue":""
-        },
-        "readOnly": {
-          "description": "readOnly value passed in the original message. If no value passed in original message, this MUST be set to the default value of the original message",
-          "defaultValue":""
-        },
-        "properties": {
-          "description": "Properties object passed in original message.  If no properties value was passed in original message, this value MUST be an empty object",
-          "defaultValue": ""
-        }
   }
 };
 cmapi.channel["map.feature.plot"].description = {
@@ -1129,14 +988,14 @@ cmapi.channel["map.feature.plot"].description = {
   }
 };
 cmapi.channel["map.feature.plot.geojson"].description = {
-  "description": "The GeoJSON specification can be found at <a href=\"http://geojson.org/geojson-spec.html\" >http://geojson.org/geojson-spec.html</a>.  The Common Map Widget API specification extends the GeoJSON specification by adding the “style”, “name”, “id”, “description“, and “timePrimitive“ objects to the “Properties” object of the GeoJSON specification.  These extended objects ONLY apply to the GeoJSON Feature object.",
+  "description": "The GeoJSON specification can be found at <a target='_blank' href=\"https://tools.ietf.org/html/rfc7946\" >https://tools.ietf.org/html/rfc7946</a>.  The Common Map API specification extends the GeoJSON specification by adding the “style”, “name”, <strong style='color: red;'>“id”*</strong>, “description“, and “timePrimitive“ objects to the “Properties” object of the GeoJSON specification.  These extended objects ONLY apply to the GeoJSON Feature object. <strong style='color: red;'>*NOTE</strong>: “id” has been deprecated, see description for more information.",
   "properties": {
     "name": {
       "description": "name of the specific GeoJSON feature.  Generally used when the GeoJSON parent object is a featureCollection or feature objects.",
       "defaultValue": ""
     },
     "id": {
-      "description": "a unique identifier for the feature object.  Though not required, it is RECOMMENDED. If the id of the GeoJSON Feature.properties.id is omitted, and part of a FeatureCollection, selection may not work for these features as they cannot be uniquely identified. ",
+      "description": "<strong style='color: red;'>*DEPRECATED</strong>: This property SHOULD be located at the root level of the GeoJSON Feature object, not within the properties object according to the RFC 7946 GeoJSON specification. In order to maintain backwards compatibility this property's value should be checked for the id value if an “id” does not exist at the GeoJSON Feature root level.  If populated “id” is a unique identifier for the feature object.",
       "defaultValue": ""
     },
     "description": {
@@ -1280,39 +1139,6 @@ cmapi.channel["map.feature.plot.symbol"].description = {
     }
   }
 };
-cmapi.channel["map.feature.plot.url.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.plot.url.",
-  "properties": {	  
-        "overlayId": {
-          "description": "The ID of the overlay this feature was loaded into.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the given feature data.",
-          "defaultValue": ""
-        },
-        "name": {
-          "description": "Name for the given feature data.  If no name was passed in the original message, this MUST contain the name that was actually assigned to the feature.  If no name was assigned to the feature, then this MUST return an empty string",
-          "defaultValue": ""
-        },
-        "format": {
-          "description": "Data format of the given feature.",
-          "defaultValue": ""
-        },
-        "url": {
-          "description": "The url provided in the original message.",
-          "defaultValue": ""
-        },
-        "params": {
-          "description": "The parameters passed in the original message.  If original message did not contain a params object, then this value MUST be an empty object or string",
-          "defaultValue": ""
-        },
-		"zoom": {
-          "description": "The zoom parameter value passed in the original message. If no value passed in original message, this MUST be set to the default value of the original message",
-          "defaultValue": ""
-        }
-  }
-};
 cmapi.channel["map.feature.plot.url"].description = {
   "description": "Have the map plot feature data from a Uniform Resource Locator (URL).",
   "properties": {
@@ -1348,33 +1174,6 @@ cmapi.channel["map.feature.plot.url"].description = {
     }
   }
 };
-cmapi.channel["map.feature.selected.batch.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.selected.batch.",
-  "properties": {
-    "features": {
-      "description": "An array of feature ID's.",
-      "defaultValue": "",
-      "properties": {
-			"selectedId": {
-			  "description": "The selectedId passed in the original message.  If no selectedId was passed in the original message, then this value MUST be an empty string",
-			  "defaultValue": ""
-			},
-			"selectedName": {
-			  "description": "The name passed in the original message.  If no name passed in original message, then this value MUST be an empty string",
-			  "defaultValue": ""
-			},
-			"overlayId": {
-			  "description": "The ID of the overlay containing the selected feature.",
-			  "defaultValue": ""
-			},
-			"featureId": {
-			  "description": "Unique identifier for the selected feature.",
-			  "defaultValue": ""
-			}
-      }
-    }
-  }
-};
 cmapi.channel["map.feature.selected.batch"].description = {
   "description": "Select, or report that a collection of feature objects were selected.",
   "properties": {
@@ -1390,27 +1189,6 @@ cmapi.channel["map.feature.selected.batch"].description = {
       "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
       "defaultValue": ""
     }
-  }
-};
-cmapi.channel["map.feature.selected.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.selected.",
-  "properties": {
-		"selectedId": {
-          "description": "The selectedId passed in the original message.  If no selectedId was passed in the original message, then this value MUST be an empty string",
-          "defaultValue": ""
-        },
-        "selectedName": {
-          "description": "The name passed in the original message.  If no name passed in original message, then this value MUST be an empty string",
-          "defaultValue": ""
-        },
-        "overlayId": {
-          "description": "The ID of the overlay containing the selected feature.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the selected feature.",
-          "defaultValue": ""
-        }
   }
 };
 cmapi.channel["map.feature.selected"].description = {
@@ -1434,23 +1212,6 @@ cmapi.channel["map.feature.selected"].description = {
     }
   }
 };
-cmapi.channel["map.feature.show.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.show.",
-  "properties": {	  
-        "overlayId": {
-          "description": "The ID of the overlay containing the feature to be shown.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the given feature.",
-          "defaultValue": ""
-        },
-		"zoom": {
-          "description": "zoom value passed in original message.  If no value passed in original message, this MUST be set to the default value of the original message",
-          "defaultValue": ""
-        }
-  }
-};
 cmapi.channel["map.feature.show"].description = {
   "description": "Have the map show previously hidden feature data.",
   "properties": {
@@ -1469,25 +1230,6 @@ cmapi.channel["map.feature.show"].description = {
     }
   }
 };
-cmapi.channel["map.feature.unplot.batch.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.unplot.batch.",
-  "properties": {
-    "features": {
-      "description": "An array of feature identifier objects",
-      "defaultValue": "",
-      "properties": {
-        "overlayId": {
-          "description": "The ID of the overlay this feature was removed from.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the given feature.",
-          "defaultValue": ""
-        }
-      }
-    }
-  }
-};
 cmapi.channel["map.feature.unplot.batch"].description = {
   "description": "Remove collection of features from the map.",
   "properties": {
@@ -1501,19 +1243,6 @@ cmapi.channel["map.feature.unplot.batch"].description = {
     }
   }
 };
-cmapi.channel["map.feature.unplot.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.unplot.",
-  "properties": {	  
-        "overlayId": {
-          "description": "The ID of the overlay this feature was removed from.",
-          "defaultValue": ""
-        },
-        "featureId": {
-          "description": "Unique identifier for the given feature.",
-          "defaultValue": ""
-        }	
-  }
-};
 cmapi.channel["map.feature.unplot"].description = {
   "description": "Removes feature data from the map.",
   "properties": {
@@ -1525,23 +1254,6 @@ cmapi.channel["map.feature.unplot"].description = {
       "description": "The ID of the feature to be removed.",
       "defaultValue": ""
     }
-  }
-};
-cmapi.channel["map.feature.update.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.feature.update.",
-  "properties": {
-        "overlayId": {
-          "description": "The ID of the overlay this feature was in when the map.feature.update message was originally sent"
-        },
-        "featureId": {
-          "description": "Unique identifier for the feature that was updated."
-        },
-        "name": {
-          "description": "Name of the feature that was updated.  If the map.feature.update message updated the feature name, then this element MUST be populated with the updated name.  If the feature does not have a name, then this field will be populated with an empty string"
-        },
-        "newOverlayId": {
-          "description": "The ID of the overlay this feature was moved to (i.e., overlay the feature was in when the map.feature.update message was executed). If the feature was re-named and not moved,  then this MUST be the same value as the 'overlayId' above"
-        }
   }
 };
 cmapi.channel["map.feature.update"].description = {
@@ -1685,7 +1397,7 @@ cmapi.channel["map.menu.create"].description = {"description":"Creates a context
 	  "allowableValues" : "failure, mixed, success, cancelled"
     },
     "details": {
-      "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like.  In the case that no details object is specified, the details object should be populated as an empty object for consistency.",
+      "description": "Details relevant to the completion of the messages sent over the map.feature.edit, map.feature.draw, and map.get channels. Specific object formats are listed under map.message.complete section.",
       "defaultValue": ""
     },
     "failures": {
@@ -1722,7 +1434,7 @@ cmapi.channel["map.message.progress"].description = {
       "defaultValue": ""
     },
     "details": {
-      "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like",
+      "description": "Details relevant to the completion of the messages sent over the map.feature.edit, map.feature.draw channels. Specific object formats are listed under map.message.progress section.",
       "defaultValue": ""
     }
   }
@@ -1835,27 +1547,6 @@ cmapi.channel["map.overlay.cluster.set"].description = {
     }
   }
 };
-cmapi.channel["map.overlay.create.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.overlay.create.",
-  "properties": {
-    "name": {
-      "description": "The name of the overlay.",
-      "defaultValue": "N/A"
-    },
-    "overlayId": {
-      "description": "The unique ID of the new overlay.",
-      "defaultValue": "sending widget's ID"
-    },
-    "parentId": {
-      "description": "The ID of the parent overlay in which the overlay was created.",
-      "defaultValue": "N/A"
-    },
-    "properties": {
-      "description": "A free form object that can contain any additional JSON objects or elements to send with this message.  This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
-      "defaultValue": ""
-    }
-  }
-};
 cmapi.channel["map.overlay.create"].description = {
   "description": "Create an overlay into which data can be aggregated.",
   "properties": {
@@ -1916,30 +1607,12 @@ cmapi.channel["map.overlay.get"].description = {
     }
   }
 };
-cmapi.channel["map.overlay.hide.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.overlay.hide.",
-  "properties": {
-    "overlayId": {
-      "description": "The unique ID of the hidden overlay.",
-      "defaultValue": ""
-    }
-  }
-};
 cmapi.channel["map.overlay.hide"].description = {
   "description": "Hide existing overlay on the map.",
   "properties": {
     "overlayId": {
       "description": "The ID of the overlay to be hidden. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed. ",
 	  "defaultValue": "sending widget's ID"
-    }
-  }
-};
-cmapi.channel["map.overlay.remove.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.overlay.remove.",
-  "properties": {
-    "overlayId": {
-      "description": "The unique ID of the overlay removed.",
-      "defaultValue": ""
     }
   }
 };
@@ -1952,35 +1625,12 @@ cmapi.channel["map.overlay.remove"].description = {
     }
   }
 };
-cmapi.channel["map.overlay.show.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.overlay.show.",
-  "properties": {
-    "overlayId": {
-      "description": "The unique ID of the shown overlay.",
-      "defaultValue": ""
-    }
-  }
-};
 cmapi.channel["map.overlay.show"].description = {
   "description": "Show existing overlay on the map.",
   "properties": {
     "overlayId": {
       "description": "The ID of the overlay to be shown. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
       "defaultValue": "sending widget's ID"
-    }
-  }
-};
-cmapi.channel["map.overlay.update.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.overlay.update.",
-  "properties": {
-    "name": {
-      "description": "The name of the overlay that was updated",
-    },
-    "overlayId": {
-      "description": "The unique ID of the updated overlay.",
-    },
-    "parentId": {
-      "description": "The unique ID of the parent overlay.  If the updated overlay does not have a parent overlay, then this element value MUST be an empty string",
     }
   }
 };
@@ -2205,50 +1855,6 @@ cmapi.channel["map.view.area.selected"].description = {
     }
   }
 };
-cmapi.channel["map.view.center.bounds.complete"] = cmapi.channel["map.view.center.bounds.complete"] || {};
-cmapi.channel["map.view.center.bounds.complete"].description = {
-  "description": "map.complete.details object for the map.view.center.bounds.complete message",
-  "properties": {
-    "bounds": {
-      "description": "Bounding box of area the map is centered at.",
-      "defaultValue": "",
-      "properties": {
-        "southWest": {
-          "description": "Bottom right of the bounds",
-          "defaultValue": "",
-          "properties": {
-            "lat": {
-              "description": "The latitude value of the point",
-              "defaultValue": ""
-            },
-            "lon": {
-              "description": "The longitude value of the point",
-              "defaultValue": ""
-            }
-          }
-        },
-        "northEast": {
-          "description": "Top left of the bounds",
-          "defaultValue": "",
-          "properties": {
-            "lat": {
-              "description": "The latitude value of the point",
-              "defaultValue": ""
-            },
-            "lon": {
-              "description": "The longitude value of the point",
-              "defaultValue": ""
-            }
-          }
-        }
-      }
-    },
-    "zoom": {
-      "description": "what level the map is zoomed to",
-      "defaultValue": ""
-    }
-  }
-};
 cmapi.channel["map.view.center.bounds"].description = {
   "description": "Center the map on a particular bounding box. The map may also be zoomed to show the entire bounds (if possible) or to show a given range.",
   "properties": {
@@ -2292,23 +1898,6 @@ cmapi.channel["map.view.center.bounds"].description = {
     }
   }
 };
-cmapi.channel["map.view.center.feature.complete"].description = {
-  "description": "map.message.complete details object for map.view.center.feature.complete message",
-  "properties": {
-    "overlayId": {
-      "description": "The ID of the overlay centered on",
-      "defaultValue": ""
-    },
-    "featureId": {
-      "description": "The ID of the feature centered on",
-      "defaultValue": ""
-    },
-    "zoom": {
-      "description": "Zoom level of the map",
-      "defaultValue": ""
-    }
-  }
-};
 cmapi.channel["map.view.center.feature"].description = {
   "description": "Center the map on a particular feature. The map may also be zoomed to show the entire feature (if possible) or to show a given range.",
   "properties": {
@@ -2322,29 +1911,6 @@ cmapi.channel["map.view.center.feature"].description = {
     },
     "zoom": {
       "description": "Attribute that defines the zoom behaviour of the map. If auto, map will adjust to best fit the feature in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
-      "defaultValue": ""
-    }
-  }
-};
-cmapi.channel["map.view.center.location.complete"].description = {
-  "description": "map.message.complete details object for map.view.center.location.complete message",
-  "properties": {
-    "location": {
-      "description": "Location the map is centered on",
-      "defaultValue": "",
-      "properties": {
-        "lat": {
-          "description": "The latitude value of the point",
-          "defaultValue": ""
-        },
-        "lon": {
-          "description": "The longitude value of the point",
-          "defaultValue": ""
-        }
-      }
-    },
-    "zoom": {
-      "description": "Zoom level of the map",
       "defaultValue": ""
     }
   }
@@ -2368,19 +1934,6 @@ cmapi.channel["map.view.center.location"].description = {
     },
     "zoom": {
       "description": "If auto, map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
-      "defaultValue": ""
-    }
-  }
-};
-cmapi.channel["map.view.center.overlay.complete"].description = {
-  "description": "map.message.complete details object for map.view.center.overlay.complete message",
-  "properties": {
-    "overlayId": {
-      "description": "The ID of the overlay centered on",
-      "defaultValue": ""
-    },
-    "zoom": {
-      "description": "Zoom level of the map",
       "defaultValue": ""
     }
   }
@@ -2423,63 +1976,6 @@ cmapi.channel["map.view.clicked"].description = {
       "description": "An array of keys pressed during the click event.  Allowable values are alt, ctrl, shift, and none. For backwards compatibility, if this attribute is not populated it MUST be assumed that no additional keys were pressed and behave the same way as if it were populated with none.",
       "defaultValue": "none",
 	  "allowableValues" : "alt, ctrl, shift, none"
-    }
-  }
-};
-cmapi.channel["map.view.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.view.zoom, map.view.center.*.",
-  "properties": {
-    "bounds": {
-      "description": "The bounds coordinates of the maps viewing area.",
-      "defaultValue": "",
-      "properties": {
-        "northEast": {
-          "description": "The coordinates of the north east corner of the maps viewing area.",
-          "defaultValue": "",
-          "properties": {
-            "lat": {
-              "description": "The latitude of the most northen section of the viewing area. A value between -90 and 90.",
-              "defaultValue": ""
-            },
-            "lon": {
-              "description": "The longitude of the most easternly section of the viewing area. A value between -180 and 180.",
-              "defaultValue": ""
-            }
-          }
-        },
-        "southWest": {
-          "description": "The coordinates of the south west corner of the maps viewing area.",
-          "defaultValue": "",
-          "properties": {
-            "lat": {
-              "description": "The latitude of the most southern section of the viewing area. A value between -90 and 90.",
-              "defaultValue": ""
-            },
-            "lon": {
-              "description": "The longitude of the most westernly section of the viewing area. A value between -180 and 180.",
-              "defaultValue": ""
-            }
-          }
-        }
-      }
-    },
-    "range": {
-      "description": "The altitude of the maps view point",
-      "defaultValue": ""
-    },
-    "center": {
-      "description": "The center coordinate of the maps viewing area.",
-      "defaultValue": "",
-      "properties": {
-        "lat": {
-          "description": "The latitude of the center of the viewing area. A value between -90 and 90.",
-          "defaultValue": ""
-        },
-        "lon": {
-          "description": "The longitude of the center of the viewing area. A value between -180 and 180.",
-          "defaultValue": ""
-        }
-      }
     }
   }
 };
@@ -2530,15 +2026,6 @@ cmapi.channel["map.view.mouseup"].description = {
     "keys": {
       "description": "An array of keys pressed during the click event.  Allowable values are alt, ctrl, shift, and none. For backwards compatibility, if this attribute is not populated it MUST be assumed that no additional keys were pressed and behave the same way as if it were populated with none.",
       "defaultValue": ["none"]
-    }
-  }
-};
-cmapi.channel["map.view.zoom.complete"].description = {
-  "description": "Schema for the details object for a map.message.complete message after a map.view.zoom.",
-  "properties": {
-    "range": {
-      "description": "The distance in meters from the map that the zoom was set to",
-      "defaultValue": ""
     }
   }
 };
