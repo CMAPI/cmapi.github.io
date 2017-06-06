@@ -303,11 +303,6 @@ cmapi.channel["map.feature.draw"] = {
       },
       "properties": {
         "type": "object"
-      },
-      "menuId": {
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": ["featureId", "messageId", "type"]
@@ -1461,100 +1456,6 @@ cmapi.channel["map.get"] = {
         },
         "required": ["types", "messageId"]
     }
-};
-cmapi.channel["map.menu.clicked"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.menu.clicked",
-    "properties": {
-      "menuId": {
-        "type": "string"
-      },
-      "menuItemId": {
-        "type": "string"
-      },
-      "overlayId": {
-        "type": "string"
-      },
-      "featureId": {
-        "type": "string"
-      },
-      "lat": {
-        "type": "number",
-        "minimum": -90,
-        "maximum": 90
-      },
-      "lon": {
-        "type": "number",
-        "minimum": -180,
-        "maximum": 180
-      },
-      "x": {
-        "type": "number",
-        "minimum": 0
-      },
-      "y": {
-        "type": "number",
-        "minimum": 0
-      },
-      "elevation": {
-        "type": "number"
-      }
-    },
-    "required": ["menuId", "menuItemId"]
-  }
-};
-cmapi.channel["map.menu.create"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.menu.create",
-    "properties": {
-      "name": {
-        "type": "string",
-        "default": "value passed in menuId param"
-      },
-      "menuId": {
-        "type": "string"
-      },
-      "menuType": {
-        "enum": ["mapglobal", "overlayglobal", "featureglobal", "objectinstance", "submenu"]
-      },
-      "menuItems": {
-        "type": "array",
-        "properties": {
-          "menuItemId": {
-            "type": "string"
-          },
-          "label": {
-            "type": "string"
-          },
-          "iconUrl": {
-            "type": "string"
-          }
-        },
-        "required": ["menuItemId", "label"]
-      },
-      "messageId": {
-        "type": "string"
-      }
-    },
-    "required": ["menuId", "menuItems"]
-  }
-};
-cmapi.channel["map.menu.remove"] = {
-  schema: {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.menu.remove",
-    "properties": {
-      "menuId": {
-        "type": "string"
-      },
-      "messageId": {
-        "type": "string"
-      }
-    },
-    "required": ["menuId"]
-  }
 };
 cmapi.channel["map.message.cancel"] = {
   schema: {

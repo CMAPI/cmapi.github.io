@@ -228,10 +228,6 @@ cmapi.channel["map.feature.draw"].description = {
     "properties": {
       "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without polluting or conflicting with the CMAPI specified payload of the message.",
       "defaultValue": ""
-    },
-    "menuId": {
-      "description": "The id of a context menu. If populated, the context menu MUST have already been pre-registered via the map.menu.create channel. If populated, the context menu associated with this id will appear when the feature is 'right-clicked', allowing the user to invoke actions on the feature which will be handled by the widget which originally registered the context menu. If no menuId is assigned, the feature will not have a context menu associated when right-clicked.",
-      "defaultValue": ""
     }
   }
 };
@@ -1339,48 +1335,7 @@ cmapi.channel["map.get"].description = {
   },
   "required" : ["messageId", "types"]
 };
-cmapi.channel["map.menu.clicked"].description = {
-  "description": "Called by the map after a context menu item is clicked to notify the widget which registered the context menu to take action.",
-  "properties": {
-    "menuId": {
-      "description": "The unique ID of the menu that the user selected.  MUST be the menuId that was assigned when the menu was registered.",
-      "defaultValue": ""
-    },
-    "menuItemId": {
-      "description": "The unique ID of the specific menu item that the user selected.  MUST be the menuItemId that was assigned when the menu was registered.",
-      "defaultValue": ""
-    },
-    "overlayId": {
-      "description": "The ID of the overlay, or the overlay containing the feature, that was right-clicked to bring up the context menu.  SHOULD be populated if the context menu was an 'objectinstance' scoped context menu",
-      "defaultValue": "N/A"
-    },
-    "featureId": {
-      "description": "The ID of the feature that was right-clicked to bring up the context menu.  SHOULD be populated if the context menu was an 'objectinstance' scoped context menu",
-      "defaultValue": ""
-    },
-    "lat": {
-      "description": "The latitude coordinate in degrees decimal identifying where the right-click took place on the map",
-      "defaultValue": ""
-    },
-    "lon": {
-      "description": "The longitude coordinate in degrees decimal of where the right-click took place on the map",
-      "defaultValue": ""
-    },
-    "x": {
-      "description": "The pixel coordinate on the x axis where the right-click took place on the map, relative to the top left corner of the map",
-      "defaultValue": ""
-    },
-    "y": {
-      "description": "The pixel coordinate on the y axis where the right-click took place on the map, relative to the top left corner of the map",
-      "defaultValue": ""
-    },
-    "elevation": {
-      "description": "The elevation in meters of the location that was right-clicked, if terrain elevation data is available",
-      "defaultValue": ""
-    }
-  }
-};
-cmapi.channel["map.menu.create"].description = {"description":"Creates a context menu and registers it with the map so that when the user right clicks on the map (or feature or overlay) the registered menu items will appear.  This allows for multiple widgets to register contextMenu items.  The menuId is used to establish what widget(s) will handle the action of a given menu item click.","properties":{"name":{"description":"The name of the menu. If not included, the menuId is used as the name. Note that menu names do not have to be unique and are intended for display purposes only.","defaultValue":"value passed in menuId param"},"menuId":{"description":"A globally unique ID that is used both to identify the menu, and as a handle for the widget which originally registered the menu so it can identify which map.menu.clicked events it should respond to.","defaultValue":""},"menuType":{"description":"A value indicating the scope of the menu being registered.  The options are:<ol><li>mapglobal -  Menu is applicable to the entire map.  The menu items will show in a aggregate list of all mapglogal menus when the map is right-clicked</li><li>overlayglobal - Menu will appear when any overlay is right-clicked</li><li>featureglobal - Menu will appear when any features is right-clicked</li><li>objectinstance - Menu will only appear when a particular overlay or feature is right-clicked, and requires an additional registration step for the menu to be 'activated' (e.g., map.feature.update or map.overlay.update)</li><li>submenu - Menu is to be used as a sub menu to another menu.</li></ol>","defaultValue":""},"menuItems":{"description":"An array of menu items.  These items will become the elements of the menu (i.e., will show up in an ordered list when the appropriate map element is right clicked)","defaultValue":"","properties":{"menuItemId":{"description":"Unique ID used to correlate a map.menu.clicked message with this particular menu item.  This ID must only be unique within this menu","defaultValue":""},"label":{"description":"The visible label assigned to this item in the context menu","defaultValue":""},"iconUrl":{"description":"A URL to a specific icon that MAY be displayed next to the item in the context menu","defaultValue":""}}},"messageId":{"description":"A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.","defaultValue":""}}};cmapi.channel["map.menu.remove"].description = {"description":"Removes a context menu and any child menus associated with this context menu.  ","properties":{"menuId":{"description":"The unique ID of the menu that the user selected.  MUST be the menuId that was assigned when the menu was registered.","defaultValue":""},"messageId":{"description":"A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.","defaultValue":""}}};cmapi.channel["map.message.cancel"].description = {"description":"Allows a widget to cancel a batch or long-running message exchange that has not yet completed.","properties":{"messageId":{"description":"A globally unique ID that identifies the particular message or message batch that was cancelled.","defaultValue":""}}};cmapi.channel["map.message.complete"].description = {
+cmapi.channel["map.message.cancel"].description = {"description":"Allows a widget to cancel a batch or long-running message exchange that has not yet completed.","properties":{"messageId":{"description":"A globally unique ID that identifies the particular message or message batch that was cancelled.","defaultValue":""}}};cmapi.channel["map.message.complete"].description = {
   "description": "Allows the Map Widget to report results after processing a message.  If a widget receives a map.message.complete message but does not have a record of sending a message with the matching messageId, then the widget should ignore the message.  Note that when a messageId is sent AND if any of the message payloads failed to be enacted, the response in the map.message.complete message SHOULD contain a string indicating why the particular payload failed.",
   "properties": {
     "messageId": {
